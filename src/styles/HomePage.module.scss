@@ -47,7 +47,7 @@ $buttonWidth: 47.5%;
 
 .logoButton {
   position: fixed;
-  bottom: 3%;
+  bottom: 3.25%;
   left: 5%;
   width: 13%;
   height: 3%;
@@ -89,8 +89,11 @@ $buttonWidth: 47.5%;
   @extend .button;
   float: right;
   background: white;
-  color: $black;
-  font-size: 30px
+}
+
+.settingsIcon {
+  margin-top: 22.5%;
+  width: 38.5%;
 }
 
 .activeButton {
@@ -109,10 +112,6 @@ $buttonWidth: 47.5%;
   padding-top: 20%;
 }
 
-.settingsButtonText {
-  padding-top: 17.5%;
-}
-
 .hideForIphone11 {
   visibility: hidden;
   height: 0;
@@ -126,19 +125,19 @@ $buttonWidth: 47.5%;
 
 
 // iPhone 8 - 1
-@media only screen 
-and (device-width : 375px) 
-and (device-height : 667px) 
+@media only screen
+and (device-width : 375px)
+and (device-height : 667px)
 and (-webkit-device-pixel-ratio : 2) {
   .button {
     font-size: 13px;
   }
   .settingsButton {
     float: left;
-    font-size: 27.5px;
   }
-  .settingsButtonText {
-    padding-top: 21%;
+  .settingsIcon {
+    margin-top: 26.5%;
+    width: 40%;
   }
   .lineHeightButtonText {
     padding-top: 19%;
@@ -166,19 +165,13 @@ and (-webkit-device-pixel-ratio : 2) {
 }
 // end of iPhone 8 - 1 css
 
-// iPad Pro
+// iPad Pro 11
 @media only screen and (min-width: 834px) and (max-width: 1194px)  {
   .button {
     font-size: 16px;
   }
   .buttonText {
     padding-top: 33%;
-  }
-  .settingsButton {
-    font-size: 35px;
-  }
-  .settingsButtonText {
-    padding-top: 0px;
   }
   .output {
     float: left;
@@ -192,6 +185,10 @@ and (-webkit-device-pixel-ratio : 2) {
     right: 1.5%;
     width: 14%;
     height: 50%;
+  }
+  .settingsIcon {
+    margin-top: 7.5%;
+    width: 42.5%;
   }
   .logoButton {
     bottom: 4.5%;

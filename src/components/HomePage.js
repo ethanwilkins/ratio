@@ -1,6 +1,7 @@
 import React from 'react';
 
 import styles from '../styles/HomePage.module.scss';
+import settingsIcon from '../images/settingsIcon.svg';
 
 const HomePage = () => (
   <div className={styles.home}>
@@ -21,7 +22,7 @@ const HomePage = () => (
       </div>
       <div className={styles.row}>
         <div className={styles.settingsButton + ' ' + styles.hideForIphone11 + ' ' + styles.showForIphone8}>
-          <div className={styles.settingsButtonText}><i className="fa fa-cog"></i></div>
+          <img className={styles.settingsIcon} src={settingsIcon}/>
         </div>
         <div className={styles.mathButton + ' ' + styles.hideForIphone8}>
           <div className={styles.buttonText}>-</div>
@@ -48,7 +49,7 @@ const HomePage = () => (
       </div>
       <div className={styles.row + ' ' + styles.hideForIphone8}>
         <div className={styles.settingsButton}>
-          <div className={styles.settingsButtonText}><i className="fa fa-cog"></i></div>
+          <img className={styles.settingsIcon} src={settingsIcon}/>
         </div>
       </div>
     </div>
