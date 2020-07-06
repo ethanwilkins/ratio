@@ -164,3 +164,25 @@ and (-webkit-device-pixel-ratio : 2) {
     bottom: 1%;
   }
 }
+// end of iPhone 8 - 1 css
+
+// iPad Pro
+@media only screen and (min-width: 834px) and (max-width: 1194px)  {
+  .output {
+    float: left;
+    margin-top: 8%;
+    width: 38%;
+    height: 35%;
+    left: 10%;
+  }
+  .mainControls {
+    width: 14%;
+    height: 50%;
+  }
+  .logoButton {
+    bottom: 4.5%;
+    left: 2.5%;
+    width: 6%;
+    font-size: 32px;
+  }
+}
