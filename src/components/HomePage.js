@@ -12,32 +12,41 @@ const HomePage = () => (
     </div>
     <div className={styles.mainControls}>
       <div className={styles.row}>
-        <div className={styles.mathButton}>
+        <div className={styles.mathButton + ' ' + styles.hideForIphone8}>
           <div className={styles.buttonText}>+</div>
         </div>
-        <div className={styles.sizeButton + ' ' + styles.activeButton}>
+        <div className={styles.controlButton + ' ' + styles.activeButton}>
           <div className={styles.buttonText}>Size</div>
         </div>
       </div>
       <div className={styles.row}>
-        <div className={styles.mathButton}>
+        <div className={styles.settingsButton + ' ' + styles.hideForIphone11 + ' ' + styles.showForIphone8}>
+          <div className={styles.settingsButtonText}><i className="fa fa-cog"></i></div>
+        </div>
+        <div className={styles.mathButton + ' ' + styles.hideForIphone8}>
           <div className={styles.buttonText}>-</div>
         </div>
-        <div className={styles.sizeButton}>
+        <div className={styles.controlButton}>
           <div className={styles.buttonText}>ratio</div>
         </div>
       </div>
       <div className={styles.row}>
-        <div className={styles.lineHeightButton}>
+        <div className={styles.mathButton + ' ' + styles.hideForIphone11 + ' ' + styles.showForIphone8}>
+          <div className={styles.buttonText}>+</div>
+        </div>
+        <div className={styles.controlButton}>
           <div className={styles.lineHeightButtonText}>Line Height</div>
         </div>
       </div>
       <div className={styles.row}>
-        <div className={styles.resetButton}>
+        <div className={styles.mathButton + ' ' + styles.hideForIphone11 + ' ' + styles.showForIphone8}>
+          <div className={styles.buttonText}>-</div>
+        </div>
+        <div className={styles.controlButton}>
           <div className={styles.buttonText}>Reset</div>
         </div>
       </div>
-      <div className={styles.row}>
+      <div className={styles.row + ' ' + styles.hideForIphone8}>
         <div className={styles.settingsButton}>
           <div className={styles.settingsButtonText}><i className="fa fa-cog"></i></div>
         </div>

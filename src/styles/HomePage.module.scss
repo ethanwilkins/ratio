@@ -1,3 +1,5 @@
+// iPhone X/11 is the default, mobile first
+
 $black: rgba(0, 0, 0, 0.8);
 $pink: #D1A7AC;
 
@@ -64,7 +66,7 @@ $buttonWidth: 47.5%;
   width: $buttonWidth;
   border-radius: 15px;
   font-family: "Inter Bold";
-  font-size: 14px;
+  font-size: 12px;
   text-align: center;
   background: #2A2122;
   color: $pink;
@@ -78,22 +80,7 @@ $buttonWidth: 47.5%;
   color: $black;
 }
 
-.sizeButton {
-  @extend .button;
-  float: right;
-}
-
-.ratioButton {
-  @extend .button;
-  float: right;
-}
-
-.lineHeightButton {
-  @extend .button;
-  float: right;
-}
-
-.resetButton {
+.controlButton {
   @extend .button;
   float: right;
 }
@@ -115,13 +102,65 @@ $buttonWidth: 47.5%;
 }
 
 .buttonText {
-  padding-top: 30%;
+  padding-top: 32.5%;
 }
 
 .lineHeightButtonText {
-  padding-top: 17.5%;
+  padding-top: 20%;
 }
 
 .settingsButtonText {
   padding-top: 17.5%;
+}
+
+.hideForIphone11 {
+  visibility: hidden;
+  height: 0;
+  width: 0;
+}
+
+.showForIphone11 {
+  visibility: visible;
+}
+// end of iPhone X/11
+
+
+// iPhone 8 - 1
+@media only screen 
+and (device-width : 375px) 
+and (device-height : 667px) 
+and (-webkit-device-pixel-ratio : 2) {
+  .button {
+    font-size: 13px;
+  }
+  .settingsButton {
+    float: left;
+    font-size: 27.5px;
+  }
+  .settingsButtonText {
+    padding-top: 21%;
+  }
+  .lineHeightButtonText {
+    padding-top: 19%;
+  }
+  .output {
+    margin-top: 12.5%;
+    height: 48%;
+  }
+  .hideForIphone8 {
+    visibility: hidden;
+    height: 0;
+    width: 0;
+  }
+  .showForIphone8 {
+    visibility: visible;
+    height: $buttonHeight;
+    width: $buttonWidth;
+  }
+  .row {
+    height: 25%;
+  }
+  .mainControls {
+    bottom: 1%;
+  }
 }
