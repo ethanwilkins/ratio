@@ -1,3 +1,3 @@
 # Ratio
 
-A typographic scale with elegance and ease of use in mind
+A typographic scale built with elegance and ease of use in mind
