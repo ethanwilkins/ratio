@@ -14,14 +14,14 @@ class Settings extends Component {
   }
 
   componentDidMount() {
-    document.addEventListener('mousedown', this.handleClick);
+    document.addEventListener('mousedown', this.handleClickOutside);
   }
 
   componentWillUnmount() {
-      document.removeEventListener('mousedown', this.handleClick);
+      document.removeEventListener('mousedown', this.handleClickOutside);
   }
 
-  handleClick = (event) => {
+  handleClickOutside = (event) => {
     const { toggleSettings, settingsOpen } = this.props;
     if (settingsOpen) {
       if (!this.settings.current.contains(event.target)) {
