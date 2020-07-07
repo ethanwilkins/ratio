@@ -31,30 +31,12 @@ $buttonWidth: 47.5%;
   -webkit-tap-highlight-color: transparent;
 }
 
-.home {
+.main {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-}
-
-.output {
-  position: relative;
-  margin: auto;
-  margin-top: 22.5%;
-  width: 60%;
-  height: 35%;
-  font-family: "Inter Bold";
-}
-
-.ratio {
-  transition: color .15s linear;
-  color: white;
-}
-
-.show {
-  color: rgb(225, 225, 225);
 }
 
 .mainControls {
@@ -170,10 +152,6 @@ and (-webkit-device-pixel-ratio : 2) {
   .lineHeightButtonText {
     padding-top: 18%;
   }
-  .output {
-    margin-top: 12.5%;
-    height: 48%;
-  }
   .hideForIphone8 {
     visibility: hidden;
     height: 0;
@@ -202,13 +180,6 @@ and (-webkit-device-pixel-ratio : 2) {
   .buttonText {
     padding-top: 33%;
   }
-  .output {
-    float: left;
-    margin-top: 8%;
-    width: 38%;
-    height: 35%;
-    left: 10%;
-  }
   .mainControls {
     bottom: -2.5%;
     right: 1.5%;
@@ -232,12 +203,6 @@ and (-webkit-device-pixel-ratio : 2) {
 @media only screen and (min-width : 1280px) and (min-height : 720px) {
   .button {
     font-size: 14px;
-  }
-  .output {
-    float: left;
-    left: 10%;
-    margin-top: 7.5%;
-    height: 44%;
   }
   .mainControls {
     bottom: -1.5%;

@@ -18,9 +18,10 @@ class Settings extends Component {
   }
 
   componentWillUnmount() {
-      document.removeEventListener('mousedown', this.handleClickOutside);
+    document.removeEventListener('mousedown', this.handleClickOutside);
   }
 
+  // exits settings if user clicks anywhere outside of settings
   handleClickOutside = (event) => {
     const { toggleSettings, settingsOpen } = this.props;
     if (settingsOpen) {

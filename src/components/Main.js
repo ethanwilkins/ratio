@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+import Output from '../components/Output';
 import Settings from '../components/Settings';
 
 import settingsIcon from '../images/settingsIcon.svg';
@@ -37,24 +38,8 @@ class HomePage extends Component {
 
     return (
       <div>
-        <div className={styles.home}>
-          <div className={styles.output}>
-            <div style={{fontSize: '128px'}}>128<span className={cx(styles.ratio, {
-              show: activeControl === 'ratio' || activeControl === 'size'
-            })}>/32</span></div>
-
-            <div style={{fontSize: '64px'}}>64<span className={cx(styles.ratio, {
-              show: activeControl === 'ratio' || activeControl === 'size'
-            })}>/32</span></div>
-
-            <div style={{fontSize: '32px'}}>32<span className={cx(styles.ratio, {
-              show: activeControl === 'ratio' || activeControl === 'size'
-            })}>/32</span></div>
-
-            <div style={{fontSize: '16px'}}>16<span className={cx(styles.ratio, {
-              show: activeControl === 'ratio' || activeControl === 'size'
-            })}>/32</span></div>
-          </div>
+        <div className={styles.main}>
+          <Output activeControl={activeControl} />
 
           <div className={styles.mainControls}>
             <div className={styles.row}>
