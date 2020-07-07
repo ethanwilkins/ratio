@@ -49,11 +49,12 @@ $buttonWidth: 47.5%;
 }
 
 .ratio {
+  transition: color .15s linear;
   color: rgb(225, 225, 225);
 }
 
 .hide {
-  display: none;
+  color: white;
 }
 
 .mainControls {
@@ -161,8 +162,11 @@ and (-webkit-device-pixel-ratio : 2) {
     margin-top: 26.5%;
     width: 40%;
   }
+  .buttonText {
+    padding-top: 32.5%;
+  }
   .lineHeightButtonText {
-    padding-top: 19%;
+    padding-top: 18%;
   }
   .output {
     margin-top: 12.5%;
@@ -183,6 +187,7 @@ and (-webkit-device-pixel-ratio : 2) {
   }
   .mainControls {
     bottom: 1%;
+    width: 35%;
   }
 }
 // end of iPhone 8 - 1 css
