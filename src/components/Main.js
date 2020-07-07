@@ -54,7 +54,7 @@ class HomePage extends Component {
             </div>
 
             <div className={styles.row}>
-              <div className={styles.settingsButton + ' ' + styles.hideForIphone11 + ' ' + styles.showForIphone8}>
+              <div onClick={this.toggleSettings} className={styles.settingsButton + ' ' + styles.hideForIphone11 + ' ' + styles.showForIphone8}>
                 <img className={styles.settingsIcon} src={settingsIcon} alt="Settings Icon"/>
               </div>
               <div className={styles.mathButton + ' ' + styles.hideForIphone8}>
