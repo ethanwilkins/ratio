@@ -1,9 +1,31 @@
-import React from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
-const Settings = () => (
-  <div>
-    Settings
-  </div>
-);
+import styles from '../styles/Settings.module.scss';
+import classNames from 'classnames/bind';
+
+const cx = classNames.bind(styles);
+
+
+class Settings extends Component {
+
+  render() {
+    const { toggleSettings, settingsOpen } = this.props;
+
+    return (
+      <div className={cx(styles.settings, {
+        show: settingsOpen
+      })}>
+        <div onClick={toggleSettings}>x</div>
+      </div>
+    )
+
+  }
+}
+
+Settings.propTypes = {
+  toggleSettings: PropTypes.func.isRequired,
+  settingsOpen: PropTypes.bool.isRequired
+};
 
 export default Settings;

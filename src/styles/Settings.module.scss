@@ -1,0 +1,17 @@
+.settings {
+  transition: margin-top .3s linear;
+  position: relative;
+  width: 95%;
+  z-index: 10;
+  margin: 0 auto;
+  max-width: 500px;
+  margin-top: 110vh;
+  background: #FFFFFF;
+  box-shadow: 0px -1px 16px rgba(0, 0, 0, 0.2);
+  border-radius: 20px 20px 0px 0px;
+  height: 100vh;
+}
+
+.show {
+  margin-top: 10%;
+}
