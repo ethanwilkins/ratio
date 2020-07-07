@@ -8,7 +8,12 @@ const cx = classNames.bind(styles);
 
 class HomePage extends Component {
   state = {
-    activeControl: 'ratio'
+    activeControl: 'ratio',
+    baseSize: 16,
+    scale: 2,
+    lineHeight: 32,
+    font: '',
+    fontWeight: ''
   }
 
   setActiveControl = (control) => {
