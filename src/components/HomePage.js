@@ -8,7 +8,7 @@ const cx = classNames.bind(styles);
 
 class HomePage extends Component {
   state = {
-    activeControl: 'size'
+    activeControl: 'ratio'
   }
 
   setActiveControl = (control) => {
@@ -69,7 +69,7 @@ class HomePage extends Component {
             <div className={styles.mathButton + ' ' + styles.hideForIphone11 + ' ' + styles.showForIphone8}>
               <div className={styles.buttonText}>-</div>
             </div>
-            <div onClick={() => {this.setActiveControl('size')}} className={styles.controlButton}>
+            <div onClick={() => {this.setActiveControl('ratio')}} className={styles.controlButton}>
               <div className={styles.buttonText}>Reset</div>
             </div>
           </div>
