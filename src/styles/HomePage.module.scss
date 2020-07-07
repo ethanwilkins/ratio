@@ -20,6 +20,17 @@ $buttonWidth: 47.5%;
   font-style: normal;
 }
 
+// stops blue selection for tapping of links in mobile
+.noSelect {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
 .home {
   position: fixed;
   top: 0;
@@ -46,6 +57,7 @@ $buttonWidth: 47.5%;
 }
 
 .logoButton {
+  @extend .noSelect;
   position: fixed;
   bottom: 3.25%;
   left: 5%;
@@ -62,6 +74,7 @@ $buttonWidth: 47.5%;
 }
 
 .button {
+  @extend .noSelect;
   height: $buttonHeight;
   width: $buttonWidth;
   border-radius: 15px;
