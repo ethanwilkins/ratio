@@ -1,4 +1,4 @@
-// iPhone X/11 is the default, mobile first
+// iPhone 11 is the default, mobile first
 
 $black: rgba(0, 0, 0, 0.8);
 $pink: #D1A7AC;
@@ -60,14 +60,14 @@ $buttonWidth: 47.5%;
   position: fixed;
   bottom: 0px;
   right: 4%;
-  width: 36%;
+  width: 32.5%;
   height: 40%;
 }
 
 .logoButton {
   @extend .noSelect;
   position: fixed;
-  bottom: 3.25%;
+  bottom: 3.5%;
   left: 5%;
   width: 13%;
   height: 3%;
@@ -88,7 +88,7 @@ $buttonWidth: 47.5%;
   width: $buttonWidth;
   border-radius: 15px;
   font-family: "Inter Bold";
-  font-size: 12px;
+  font-size: 14px;
   text-align: center;
   background: #2A2122;
   color: $pink;
@@ -127,7 +127,7 @@ $buttonWidth: 47.5%;
 }
 
 .buttonText {
-  padding-top: 32.5%;
+  padding-top: 34%;
 }
 
 .lineHeightButtonText {
@@ -143,7 +143,7 @@ $buttonWidth: 47.5%;
 .showForIphone11 {
   visibility: visible;
 }
-// end of iPhone X/11
+// end of iPhone 11
 
 
 // iPhone 8 - 1
