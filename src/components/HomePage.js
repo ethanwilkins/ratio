@@ -19,13 +19,25 @@ class HomePage extends Component {
 
   render() {
     const { activeControl } = this.state;
+
     return (
       <div className={styles.home}>
         <div className={styles.output}>
-          <div style={{fontSize: '128px'}}>128</div>
-          <div style={{fontSize: '64px'}}>64</div>
-          <div style={{fontSize: '32px'}}>32</div>
-          <div style={{fontSize: '16px'}}>16</div>
+          <div style={{fontSize: '128px'}}>128<span className={cx(styles.ratio, {
+            hide: activeControl !== 'ratio'
+          })}>/32</span></div>
+
+          <div style={{fontSize: '64px'}}>64<span className={cx(styles.ratio, {
+            hide: activeControl !== 'ratio'
+          })}>/32</span></div>
+
+          <div style={{fontSize: '32px'}}>32<span className={cx(styles.ratio, {
+            hide: activeControl !== 'ratio'
+          })}>/32</span></div>
+
+          <div style={{fontSize: '16px'}}>16<span className={cx(styles.ratio, {
+            hide: activeControl !== 'ratio'
+          })}>/32</span></div>
         </div>
 
         <div className={styles.mainControls}>
