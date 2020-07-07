@@ -24,19 +24,19 @@ class HomePage extends Component {
       <div className={styles.home}>
         <div className={styles.output}>
           <div style={{fontSize: '128px'}}>128<span className={cx(styles.ratio, {
-            hide: activeControl !== 'ratio'
+            show: activeControl === 'ratio' || activeControl === 'size'
           })}>/32</span></div>
 
           <div style={{fontSize: '64px'}}>64<span className={cx(styles.ratio, {
-            hide: activeControl !== 'ratio'
+            show: activeControl === 'ratio' || activeControl === 'size'
           })}>/32</span></div>
 
           <div style={{fontSize: '32px'}}>32<span className={cx(styles.ratio, {
-            hide: activeControl !== 'ratio'
+            show: activeControl === 'ratio' || activeControl === 'size'
           })}>/32</span></div>
 
           <div style={{fontSize: '16px'}}>16<span className={cx(styles.ratio, {
-            hide: activeControl !== 'ratio'
+            show: activeControl === 'ratio' || activeControl === 'size'
           })}>/32</span></div>
         </div>
 

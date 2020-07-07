@@ -50,11 +50,11 @@ $buttonWidth: 47.5%;
 
 .ratio {
   transition: color .15s linear;
-  color: rgb(225, 225, 225);
+  color: white;
 }
 
-.hide {
-  color: white;
+.show {
+  color: rgb(225, 225, 225);
 }
 
 .mainControls {
