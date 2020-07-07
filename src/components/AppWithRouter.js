@@ -2,14 +2,14 @@ import React from 'react';
 import { createBrowserHistory } from 'history'
 import { Router, Route, Switch, withRouter } from 'react-router-dom';
 
-import HomePage from '../components/HomePage';
+import Main from '../components/Main';
 import NotFound from '../components/NotFound';
 
 export const history = createBrowserHistory();
 
 const Root = () => (
   <Switch>
-    <Route exact path="/" component={HomePage} />
+    <Route exact path="/" component={Main} />
     <Route component={NotFound} />
   </Switch>
 );

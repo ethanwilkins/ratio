@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import Settings from '../components/Settings';
 
 import settingsIcon from '../images/settingsIcon.svg';
-import styles from '../styles/HomePage.module.scss';
+import styles from '../styles/Main.module.scss';
 import classNames from 'classnames/bind';
 
 const cx = classNames.bind(styles);

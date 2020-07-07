@@ -16,7 +16,9 @@ class Settings extends Component {
       <div className={cx(styles.settings, {
         show: settingsOpen
       })}>
-        <div onClick={toggleSettings}>x</div>
+        <div className={styles.exitButton} onClick={toggleSettings}>
+          <i className="fa fa-times-circle"></i>
+        </div>
       </div>
     )
 
