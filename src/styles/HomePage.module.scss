@@ -197,3 +197,33 @@ and (-webkit-device-pixel-ratio : 2) {
     font-size: 32px;
   }
 }
+// end of iPad Pro 11
+
+// iMad
+@media only screen and (device-width : 1280px) and (device-height : 720px) {
+  .button {
+    font-size: 14px;
+  }
+  .output {
+    float: left;
+    left: 10%;
+    margin-top: 7.5%;
+    height: 44%;
+  }
+  .mainControls {
+    bottom: -1.5%;
+    right: 1.25%;
+    width: 11%;
+    height: 50%;
+  }
+  .settingsIcon {
+    margin-top: 7.5%;
+    width: 42.5%;
+  }
+  .logoButton {
+    bottom: 4.5%;
+    left: 2.5%;
+    width: 6%;
+    font-size: 30px;
+  }
+}
