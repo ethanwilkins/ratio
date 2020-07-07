@@ -8,12 +8,33 @@ const cx = classNames.bind(styles);
 
 
 class Settings extends Component {
+  constructor(props) {
+    super(props);
+    this.settings = React.createRef();
+  }
+
+  componentDidMount() {
+    document.addEventListener('mousedown', this.handleClick);
+  }
+
+  componentWillUnmount() {
+      document.removeEventListener('mousedown', this.handleClick);
+  }
+
+  handleClick = (event) => {
+    const { toggleSettings, settingsOpen } = this.props;
+    if (settingsOpen) {
+      if (!this.settings.current.contains(event.target)) {
+        toggleSettings();
+      }
+    }
+  };
 
   render() {
     const { toggleSettings, settingsOpen } = this.props;
 
     return (
-      <div className={cx(styles.settings, {
+      <div ref={this.settings} className={cx(styles.settings, {
         show: settingsOpen
       })}>
         <div className={styles.exitButton} onClick={toggleSettings}>
