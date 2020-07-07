@@ -126,8 +126,8 @@ $buttonWidth: 47.5%;
 
 // iPhone 8 - 1
 @media only screen
-and (device-width : 375px)
-and (device-height : 667px)
+and (max-width : 375px)
+and (max-height : 667px)
 and (-webkit-device-pixel-ratio : 2) {
   .button {
     font-size: 13px;
@@ -199,8 +199,8 @@ and (-webkit-device-pixel-ratio : 2) {
 }
 // end of iPad Pro 11
 
-// iMad
-@media only screen and (device-width : 1280px) and (device-height : 720px) {
+// iMac
+@media only screen and (min-width : 1280px) and (min-height : 720px) {
   .button {
     font-size: 14px;
   }
