@@ -38,6 +38,40 @@ class Settings extends Component {
       <div ref={this.settings} className={cx(styles.settings, {
         show: settingsOpen
       })}>
+        <div className={styles.container}>
+          <div className={styles.row}>
+            <div className={styles.text}>Size/Line height</div>
+            <div className={styles.button}>
+              <div className={styles.buttonText}>16/24</div>
+            </div>
+          </div>
+          <div className={styles.row}>
+            <div className={styles.text}>Ratio</div>
+            <div className={styles.button}>
+              <div className={styles.buttonText}>2</div>
+            </div>
+          </div>
+          <div className={styles.row}>
+            <div className={styles.text}>Line Count</div>
+            <div className={styles.button}>
+              <div className={styles.buttonText}>4</div>
+            </div>
+          </div>
+          <div className={styles.row + ' ' + styles.chooseFontRow}>
+            <div className={styles.chooseFontText}>
+              <div className={styles.textSmall}>Font</div>
+              <div className={styles.caption}>Uses Google Fonts</div>
+            </div>
+            <div className={styles.chooseFontButton}>
+              <div className={styles.chooseFontButtonText}>
+                <i className={styles.chooseFontButtonIcon + " fa fa-search"}></i> Inter
+              </div>
+            </div>
+          </div>
+          <div className={styles.row}>
+            <div className={styles.textSmall}>Export</div>
+          </div>
+        </div>
         <div className={styles.exitButton} onClick={toggleSettings}>
           <i className="fa fa-times-circle"></i>
         </div>
