@@ -6,7 +6,7 @@ import Settings from '../components/Settings';
 
 import styles from '../styles/Main.module.scss';
 
-class HomePage extends Component {
+class Main extends Component {
   state = {
     activeControl: 'ratio',
     baseSize: 16,
@@ -56,4 +56,4 @@ class HomePage extends Component {
   }
 }
 
-export default HomePage;
+export default Main;

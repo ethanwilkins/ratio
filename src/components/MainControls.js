@@ -8,7 +8,6 @@ import classNames from 'classnames/bind';
 
 const cx = classNames.bind(styles);
 
-
 class MainControls extends Component {
 
   render() {
