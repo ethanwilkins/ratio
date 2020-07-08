@@ -3,9 +3,9 @@ $black: rgba(0, 0, 0, 0.8);
 .output {
   position: relative;
   margin: auto;
-  margin-top: 22.5%;
-  width: 60%;
-  height: 35%;
+  margin-top: 110px;
+  width: 248px;
+  height: 248px;
   font-family: "Inter Bold";
 }
 
@@ -25,8 +25,8 @@ and (max-width : 375px)
 and (max-height : 667px)
 and (-webkit-device-pixel-ratio : 2) {
   .output {
-    margin-top: 12.5%;
-    height: 48%;
+    margin-top: 45px;
+    height: 320px;
   }
 }
 // end of iPhone 8 - 1 css
@@ -35,10 +35,10 @@ and (-webkit-device-pixel-ratio : 2) {
 @media only screen and (min-width: 834px) and (max-width: 1194px)  {
   .output {
     float: left;
-    margin-top: 8%;
-    width: 38%;
-    height: 35%;
-    left: 10%;
+    margin-top: 100px;
+    width: 454px;
+    height: 292px;
+    left: 130px;
   }
 }
 // end of iPad Pro 11
@@ -47,8 +47,8 @@ and (-webkit-device-pixel-ratio : 2) {
 @media only screen and (min-width : 1280px) and (min-height : 720px) {
   .output {
     float: left;
-    left: 10%;
-    margin-top: 7.5%;
-    height: 44%;
+    left: 130px;
+    margin-top: 95px;
+    height: 317px;
   }
 }
