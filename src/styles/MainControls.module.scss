@@ -108,6 +108,17 @@ $buttonWidth: 64.5px;
 .showForIphone11 {
   visibility: visible;
 }
+
+.logoButton {
+  @extend .noSelect;
+  position: fixed;
+  bottom: 40px;
+  left: 20px;
+  width: 54px;
+  font-family: "Inter Bold";
+  text-align: center;
+  cursor: pointer;
+}
 // end of iPhone 11
 
 
@@ -155,6 +166,10 @@ and (max-height : 667px) {
     width: 144px;
     height: 280px;
   }
+  .logoButton {
+    bottom: 15px;
+    left: 16px;
+  }
 }
 // end of iPhone 8 - 1 css
 
@@ -189,6 +204,11 @@ and (max-height : 667px) {
     margin-top: 7.5px;
     width: 32px;
   }
+  .logoButton {
+    bottom: 32px;
+    left: 35px;
+    width: 72px;
+  }
 }
 // end of iPad Pro 11
 
@@ -206,5 +226,10 @@ and (max-height : 667px) {
   .settingsIcon {
     margin-top: 4px;
     width: 27px;
+  }
+  .logoButton {
+    bottom: 28.5px;
+    left: 25px;
+    width: 55px;
   }
 }

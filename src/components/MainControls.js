@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import settingsIcon from '../images/settingsIcon.svg';
+import logo from '../images/logo.svg';
 
 import styles from '../styles/MainControls.module.scss';
 import classNames from 'classnames/bind';
@@ -65,6 +66,8 @@ class MainControls extends Component {
             <img className={styles.settingsIcon} src={settingsIcon} alt="Settings Icon"/>
           </div>
         </div>
+
+        <img className={styles.logoButton} src={logo} alt="Logo"/>
       </div>
     )
   }
