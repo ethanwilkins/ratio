@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
 
+import MainControls from '../components/MainControls';
 import Output from '../components/Output';
 import Settings from '../components/Settings';
 
-import settingsIcon from '../images/settingsIcon.svg';
 import styles from '../styles/Main.module.scss';
-import classNames from 'classnames/bind';
-
-const cx = classNames.bind(styles);
 
 class HomePage extends Component {
   state = {
@@ -41,58 +38,12 @@ class HomePage extends Component {
         <div className={styles.main}>
           <Output activeControl={activeControl} />
 
-          <div className={styles.mainControls}>
-            <div className={styles.row}>
-              <div className={styles.mathButton + ' ' + styles.hideForIphone8}>
-                <div className={styles.buttonText}>+</div>
-              </div>
-              <div onClick={() => {this.setActiveControl('size')}} className={cx(styles.controlButton, {
-                activeButton: activeControl === 'size'
-              })}>
-                <div className={styles.buttonText}>Size</div>
-              </div>
-            </div>
-
-            <div className={styles.row}>
-              <div onClick={this.toggleSettings} className={styles.settingsButton + ' ' + styles.hideForIphone11 + ' ' + styles.showForIphone8}>
-                <img className={styles.settingsIcon} src={settingsIcon} alt="Settings Icon"/>
-              </div>
-              <div className={styles.mathButton + ' ' + styles.hideForIphone8}>
-                <div className={styles.buttonText}>-</div>
-              </div>
-              <div onClick={() => {this.setActiveControl('ratio')}} className={cx(styles.controlButton, {
-                activeButton: activeControl === 'ratio'
-              })}>
-                <div className={styles.buttonText}>ratio</div>
-              </div>
-            </div>
-
-            <div className={styles.row}>
-              <div className={styles.mathButton + ' ' + styles.hideForIphone11 + ' ' + styles.showForIphone8}>
-                <div className={styles.buttonText}>+</div>
-              </div>
-              <div onClick={() => {this.setActiveControl('lineHeight')}} className={cx(styles.controlButton, {
-                activeButton: activeControl === 'lineHeight'
-              })}>
-                <div className={styles.lineHeightButtonText}>Line Height</div>
-              </div>
-            </div>
-
-            <div className={styles.row}>
-              <div className={styles.mathButton + ' ' + styles.hideForIphone11 + ' ' + styles.showForIphone8}>
-                <div className={styles.buttonText}>-</div>
-              </div>
-              <div onClick={() => {this.setActiveControl('ratio')}} className={styles.controlButton}>
-                <div className={styles.buttonText}>Reset</div>
-              </div>
-            </div>
-
-            <div className={styles.row + ' ' + styles.hideForIphone8}>
-              <div onClick={this.toggleSettings} className={styles.settingsButton}>
-                <img className={styles.settingsIcon} src={settingsIcon} alt="Settings Icon"/>
-              </div>
-            </div>
-          </div>
+          <MainControls
+            settingsOpen={settingsOpen}
+            toggleSettings={this.toggleSettings}
+            activeControl={activeControl}
+            setActiveControl={this.setActiveControl}
+          />
 
           <div className={styles.logoButton}>
             ratio

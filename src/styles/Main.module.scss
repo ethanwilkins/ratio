@@ -1,18 +1,5 @@
 // iPhone 11 is the default, mobile first
 
-$black: rgba(0, 0, 0, 0.8);
-$pink: #D1A7AC;
-
-$buttonHeight: 87.5%;
-$buttonWidth: 47.5%;
-
-@font-face {
-  font-family: "Inter";
-  src: url("../fonts/Inter.otf") format("truetype");
-  font-weight: normal;
-  font-style: normal;
-}
-
 @font-face {
   font-family: "Inter Bold";
   src: url("../fonts/Inter-Bold.woff") format("woff");
@@ -39,14 +26,6 @@ $buttonWidth: 47.5%;
   height: 100%;
 }
 
-.mainControls {
-  position: fixed;
-  bottom: 0px;
-  right: 4%;
-  width: 32.5%;
-  height: 40%;
-}
-
 .logoButton {
   @extend .noSelect;
   position: fixed;
@@ -59,137 +38,10 @@ $buttonWidth: 47.5%;
   text-align: center;
   cursor: pointer;
 }
-
-.row {
-  width: 100%;
-  height: 20%;
-}
-
-.button {
-  @extend .noSelect;
-  transition: background .15s linear;
-  height: $buttonHeight;
-  width: $buttonWidth;
-  border-radius: 15px;
-  font-family: "Inter Bold";
-  font-size: 14px;
-  text-align: center;
-  background: #2A2122;
-  color: $pink;
-  cursor: pointer;
-}
-
-.mathButton {
-  @extend .button;
-  float: left;
-  border-radius: 100px;
-  background: $pink;
-  color: $black;
-}
-
-.controlButton {
-  @extend .button;
-  float: right;
-}
-
-.settingsButton {
-  @extend .button;
-  float: right;
-  background: white;
-}
-
-.settingsIcon {
-  margin-top: 22.5%;
-  width: 38.5%;
-}
-
-.activeButton {
-  background: white;
-  color: $black;
-  border: 2px solid $pink;
-  width: calc(#{$buttonWidth} - 4px);
-  height: calc(#{$buttonHeight} - 4px);
-}
-
-.buttonText {
-  padding-top: 34%;
-}
-
-.lineHeightButtonText {
-  padding-top: 20%;
-}
-
-.hideForIphone11 {
-  visibility: hidden;
-  height: 0;
-  width: 0;
-}
-
-.showForIphone11 {
-  visibility: visible;
-}
 // end of iPhone 11
-
-
-// iPhone 8 - 1
-@media only screen
-and (max-width : 375px)
-and (max-height : 667px)
-and (-webkit-device-pixel-ratio : 2) {
-  .button {
-    font-size: 13px;
-  }
-  .settingsButton {
-    float: left;
-  }
-  .settingsIcon {
-    margin-top: 26.5%;
-    width: 40%;
-  }
-  .buttonText {
-    padding-top: 32.5%;
-  }
-  .lineHeightButtonText {
-    padding-top: 18%;
-  }
-  .hideForIphone8 {
-    visibility: hidden;
-    height: 0;
-    width: 0;
-  }
-  .showForIphone8 {
-    visibility: visible;
-    height: $buttonHeight;
-    width: $buttonWidth;
-  }
-  .row {
-    height: 25%;
-  }
-  .mainControls {
-    bottom: 1%;
-    width: 35%;
-  }
-}
-// end of iPhone 8 - 1 css
 
 // iPad Pro 11
 @media only screen and (min-width: 834px) and (max-width: 1194px)  {
-  .button {
-    font-size: 16px;
-  }
-  .buttonText {
-    padding-top: 33%;
-  }
-  .mainControls {
-    bottom: -2.5%;
-    right: 1.5%;
-    width: 14%;
-    height: 50%;
-  }
-  .settingsIcon {
-    margin-top: 7.5%;
-    width: 42.5%;
-  }
   .logoButton {
     bottom: 4.5%;
     left: 2.5%;
@@ -201,19 +53,6 @@ and (-webkit-device-pixel-ratio : 2) {
 
 // iMac
 @media only screen and (min-width : 1280px) and (min-height : 720px) {
-  .button {
-    font-size: 14px;
-  }
-  .mainControls {
-    bottom: -1.5%;
-    right: 1.25%;
-    width: 11%;
-    height: 50%;
-  }
-  .settingsIcon {
-    margin-top: 7.5%;
-    width: 42.5%;
-  }
   .logoButton {
     bottom: 4.5%;
     left: 2.5%;
