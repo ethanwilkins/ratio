@@ -29,11 +29,9 @@
 .logoButton {
   @extend .noSelect;
   position: fixed;
-  bottom: 3.5%;
+  bottom: 4%;
   left: 5%;
   width: 13%;
-  height: 3%;
-  font-size: 24px;
   font-family: "Inter Bold";
   text-align: center;
   cursor: pointer;
@@ -43,10 +41,9 @@
 // iPad Pro 11
 @media only screen and (min-width: 834px) and (max-width: 1194px)  {
   .logoButton {
-    bottom: 4.5%;
-    left: 2.5%;
+    bottom: 4%;
+    left: 3%;
     width: 6%;
-    font-size: 32px;
   }
 }
 // end of iPad Pro 11
@@ -54,9 +51,8 @@
 // iMac
 @media only screen and (min-width : 1280px) and (min-height : 720px) {
   .logoButton {
-    bottom: 4.5%;
+    bottom: 4.25%;
     left: 2.5%;
-    width: 6%;
-    font-size: 30px;
+    width: 5.25%;
   }
 }

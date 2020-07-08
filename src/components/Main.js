@@ -4,6 +4,8 @@ import MainControls from '../components/MainControls';
 import Output from '../components/Output';
 import Settings from '../components/Settings';
 
+import logo from '../images/logo.svg';
+
 import styles from '../styles/Main.module.scss';
 
 class Main extends Component {
@@ -45,9 +47,7 @@ class Main extends Component {
             setActiveControl={this.setActiveControl}
           />
 
-          <div className={styles.logoButton}>
-            ratio
-          </div>
+          <img className={styles.logoButton} src={logo} alt="Logo"/>
         </div>
         
         <Settings toggleSettings={this.toggleSettings} settingsOpen={settingsOpen} />
