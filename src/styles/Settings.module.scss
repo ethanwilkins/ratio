@@ -51,6 +51,7 @@
 }
 
 .container {
+  @extend .noSelect;
   width: 70%;
   margin: 0 auto;
   padding-top: 15%;
