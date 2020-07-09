@@ -17,7 +17,8 @@ class MainControls extends Component {
       screenHeight: window.screen.height,
       availScreenWidth: window.screen.availWidth,
       availScreenHeight: window.screen.availHeight,
-      devicePixelRatio: window.devicePixelRatio
+      devicePixelRatio: window.devicePixelRatio,
+      userAgent: navigator.userAgent
     };
     alert(JSON.stringify(specs));
   };
