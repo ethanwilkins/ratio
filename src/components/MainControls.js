@@ -11,6 +11,17 @@ const cx = classNames.bind(styles);
 
 class MainControls extends Component {
 
+  showSpecs = () => {
+    const specs = {
+      screenWidth: window.screen.width,
+      screenHeight: window.screen.height,
+      availScreenWidth: window.screen.availWidth,
+      availScreenHeight: window.screen.availHeight,
+      devicePixelRatio: window.devicePixelRatio
+    };
+    alert(JSON.stringify(specs));
+  };
+
   render() {
     const { activeControl, toggleSettings, setActiveControl } = this.props;
 
@@ -67,7 +78,7 @@ class MainControls extends Component {
           </div>
         </div>
 
-        <img className={styles.logoButton} src={logo} alt="Logo"/>
+        <img onClick={this.showSpecs} className={styles.logoButton} src={logo} alt="Logo"/>
       </div>
     )
   }
