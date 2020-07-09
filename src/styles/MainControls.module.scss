@@ -122,10 +122,8 @@ $buttonWidth: 64.5px;
 // end of iPhone 11
 
 
-// iPhone 8 - 1
-@media only screen
-and (max-width : 375px)
-and (max-height : 667px) {
+// iPhone 8 - 1, Pixel 2, LG Stylo 5
+@media only screen and (max-width: 412px) and (max-height: 823px) {
   $buttonHeight: 58px;
   $buttonWidth: 64.5px;
   
