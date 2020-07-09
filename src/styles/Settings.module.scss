@@ -1,3 +1,5 @@
+$settingsTopGap: 90px;
+
 @font-face {
   font-family: "Inter";
   src: url("../fonts/Inter.otf") format("truetype");
@@ -30,23 +32,24 @@
   z-index: 10;
   margin: 0 auto;
   max-width: 500px;
-  margin-top: 110vh;
+  margin-top: 100vh;
   background: #FFFFFF;
   color: #2A2122;
   box-shadow: 0px -1px 16px rgba(0, 0, 0, 0.2);
   border-radius: 20px 20px 0px 0px;
-  height: 100vh;
+  height: calc(100vh - #{$settingsTopGap});
 }
 
 .show {
-  margin-top: 10%;
+  margin-top: $settingsTopGap;
 }
 
 .exitButton {
   @extend .noSelect;
   position: absolute;
-  bottom: 20vh;
-  right: 10vw;
+  bottom: 40px;
+  right: 40px;
+  font-size: 20px;
   cursor: pointer;
 }
 
@@ -54,7 +57,7 @@
   @extend .noSelect;
   width: 70%;
   margin: 0 auto;
-  padding-top: 15%;
+  padding-top: 60px;
 }
 
 .row {
@@ -121,3 +124,41 @@
 .chooseFontButtonIcon {
   color: #D1A7AC;
 }
+// end of iPhone 11
+
+// After default, devices should descend from largest to smallest
+
+// iMac
+@media only screen and (min-width: 1280px) and (min-height: 720px) {}
+// end of iMac
+
+// iPad Pro 11
+@media only screen and (min-width: 834px) and (max-width: 1194px)  {}
+// end of iPad Pro 11
+
+// Pixel 2, LG Stylo 5
+@media only screen and (max-width: 412px) and (max-height: 823px) {
+  $settingsTopGap: 70px;
+  
+  .settings {
+    height: calc(100vh - #{$settingsTopGap});
+  }
+  .show {
+    margin-top: $settingsTopGap;
+  }
+}
+// End of Pixel 2
+
+
+// iPhone 8 - 1
+@media only screen and (max-width: 375px) and (max-height: 667px) {
+  $settingsTopGap: 40px;
+  
+  .settings {
+    height: calc(100vh - #{$settingsTopGap});
+  }
+  .show {
+    margin-top: $settingsTopGap;
+  }
+}
+// end of iPhone 8 - 1 css
