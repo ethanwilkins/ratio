@@ -13,16 +13,41 @@ class Main extends Component {
     scale: 2,
     lineHeight: 32,
     font: '',
-    fontWeight: '',
     settingsOpen: false
   }
 
+  // sets which of the main controls are active, or which to increment/decrement by
   setActiveControl = (control) => {
     this.setState({
       activeControl: control
     });
   };
 
+  // increments or decrements active field (baseSize, scale, lineHeight)
+  changeField = (directionIsUp) => { // directionIsUp === increment, otherwise decrement
+    const { activeControl } = this.state;
+
+    if (activeControl === 'baseSize') {
+      const { baseSize } = this.state;
+      this.setState({
+        baseSize: (directionIsUp ? baseSize + 1 : baseSize - 1)
+      });
+    }
+    else if (activeControl === 'scale') {
+      const { scale } = this.state;
+      this.setState({
+        scale: (directionIsUp ? scale + 1 : scale - 1)
+      });
+    }
+    else if (activeControl === 'lineHeight') {
+      const { lineHeight } = this.state;
+      this.setState({
+        lineHeight: (directionIsUp ? lineHeight + 1 : lineHeight - 1)
+      });
+    }
+  };
+
+  // opens and closes settings
   toggleSettings = () => {
     const { settingsOpen } = this.state;
     this.setState({
@@ -31,16 +56,20 @@ class Main extends Component {
   };
 
   render() {
-    const { activeControl, settingsOpen } = this.state;
+    const { activeControl, settingsOpen, lineHeight } = this.state;
 
     return (
       <div>
         <div className={styles.main}>
-          <Output activeControl={activeControl} />
+          <Output
+            activeControl={activeControl}
+            lineHeight={lineHeight}
+          />
 
           <MainControls
             activeControl={activeControl}
             setActiveControl={this.setActiveControl}
+            changeField={this.changeField}
             settingsOpen={settingsOpen}
             toggleSettings={this.toggleSettings}
           />

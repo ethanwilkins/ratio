@@ -10,25 +10,25 @@ const cx = classNames.bind(styles);
 class Output extends Component {
 
   render() {
-    const { activeControl } = this.props;
+    const { activeControl, lineHeight } = this.props;
 
     return (
       <div className={styles.output}>
-        <div style={{fontSize: '128px'}}>128<span className={cx(styles.ratio, {
-          show: activeControl === 'ratio' || activeControl === 'size'
-        })}>/32</span></div>
+        <div style={{fontSize: '128px'}}>128<span className={cx(styles.lineHeight, {
+          show: activeControl === 'ratio' || activeControl === 'baseSize'
+        })}>/{lineHeight}</span></div>
 
-        <div style={{fontSize: '64px'}}>64<span className={cx(styles.ratio, {
-          show: activeControl === 'ratio' || activeControl === 'size'
-        })}>/32</span></div>
+        <div style={{fontSize: '64px'}}>64<span className={cx(styles.lineHeight, {
+          show: activeControl === 'ratio' || activeControl === 'baseSize'
+        })}>/{lineHeight}</span></div>
 
-        <div style={{fontSize: '32px'}}>32<span className={cx(styles.ratio, {
-          show: activeControl === 'ratio' || activeControl === 'size'
-        })}>/32</span></div>
+        <div style={{fontSize: '32px'}}>32<span className={cx(styles.lineHeight, {
+          show: activeControl === 'ratio' || activeControl === 'baseSize'
+        })}>/{lineHeight}</span></div>
 
-        <div style={{fontSize: '16px'}}>16<span className={cx(styles.ratio, {
-          show: activeControl === 'ratio' || activeControl === 'size'
-        })}>/32</span></div>
+        <div style={{fontSize: '16px'}}>16<span className={cx(styles.lineHeight, {
+          show: activeControl === 'ratio' || activeControl === 'baseSize'
+        })}>/{lineHeight}</span></div>
       </div>
     )
 
@@ -36,7 +36,8 @@ class Output extends Component {
 }
 
 Output.propTypes = {
-  activeControl: PropTypes.string.isRequired
+  activeControl: PropTypes.string.isRequired,
+  lineHeight: PropTypes.number.isRequired
 };
 
 export default Output;

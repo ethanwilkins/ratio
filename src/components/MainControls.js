@@ -26,16 +26,16 @@ class MainControls extends Component {
   };
 
   render() {
-    const { activeControl, setActiveControl, toggleSettings, settingsOpen } = this.props;
+    const { activeControl, setActiveControl, changeField, toggleSettings, settingsOpen } = this.props;
 
     return (
       <div className={styles.mainControls}>
         <div className={styles.row}>
-          <div className={styles.mathButton + ' ' + styles.hideForIphone8}>
+          <div onClick={() => {changeField(true)}} className={styles.mathButton + ' ' + styles.hideForIphone8}>
             <div className={styles.buttonText}>+</div>
           </div>
-          <div onClick={() => {setActiveControl('size')}} className={cx(styles.controlButton, {
-            activeButton: activeControl === 'size'
+          <div onClick={() => {setActiveControl('baseSize')}} className={cx(styles.controlButton, {
+            activeButton: activeControl === 'baseSize'
           })}>
             <div className={styles.buttonText}>Size</div>
           </div>
@@ -45,7 +45,7 @@ class MainControls extends Component {
           <div onClick={toggleSettings} className={styles.settingsButton + ' ' + styles.hideForIphone11 + ' ' + styles.showForIphone8} style={settingsOpen ? {pointerEvents: 'none'} : {}}>
             <img className={styles.settingsIcon} src={settingsIcon} alt="Settings Icon"/>
           </div>
-          <div className={styles.mathButton + ' ' + styles.hideForIphone8}>
+          <div onClick={() => {changeField(false)}} className={styles.mathButton + ' ' + styles.hideForIphone8}>
             <div className={styles.buttonText}>-</div>
           </div>
           <div onClick={() => {setActiveControl('ratio')}} className={cx(styles.controlButton, {
@@ -56,7 +56,7 @@ class MainControls extends Component {
         </div>
 
         <div className={styles.row}>
-          <div className={styles.mathButton + ' ' + styles.hideForIphone11 + ' ' + styles.showForIphone8}>
+          <div onClick={() => {changeField(true)}} className={styles.mathButton + ' ' + styles.hideForIphone11 + ' ' + styles.showForIphone8}>
             <div className={styles.buttonText}>+</div>
           </div>
           <div onClick={() => {setActiveControl('lineHeight')}} className={cx(styles.controlButton, {
@@ -67,7 +67,7 @@ class MainControls extends Component {
         </div>
 
         <div className={styles.row}>
-          <div className={styles.mathButton + ' ' + styles.hideForIphone11 + ' ' + styles.showForIphone8}>
+          <div onClick={() => {changeField(false)}} className={styles.mathButton + ' ' + styles.hideForIphone11 + ' ' + styles.showForIphone8}>
             <div className={styles.buttonText}>-</div>
           </div>
           <div onClick={() => {setActiveControl('ratio')}} className={styles.controlButton}>
@@ -88,10 +88,11 @@ class MainControls extends Component {
 }
 
 MainControls.propTypes = {
-  settingsOpen: PropTypes.bool.isRequired,
-  toggleSettings: PropTypes.func.isRequired,
   activeControl: PropTypes.string.isRequired,
-  setActiveControl: PropTypes.func.isRequired
+  setActiveControl: PropTypes.func.isRequired,
+  changeField: PropTypes.func.isRequired,
+  settingsOpen: PropTypes.bool.isRequired,
+  toggleSettings: PropTypes.func.isRequired
 };
 
 export default MainControls;
