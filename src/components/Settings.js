@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import magnifyingGlassIcon from '../images/magnifyingGlassIcon.svg';
+import exitSettingsIcon from '../images/exitSettingsIcon.svg';
+
 import styles from '../styles/Settings.module.scss';
 import classNames from 'classnames/bind';
 
@@ -63,8 +66,9 @@ class Settings extends Component {
               <div className={styles.caption}>Uses Google Fonts</div>
             </div>
             <div className={styles.chooseFontButton}>
+              <img className={styles.chooseFontButtonIcon} src={magnifyingGlassIcon} alt="Choose a font"/>
               <div className={styles.chooseFontButtonText}>
-                <i className={styles.chooseFontButtonIcon + " fa fa-search"}></i> Inter
+                Inter
               </div>
             </div>
           </div>
@@ -72,9 +76,7 @@ class Settings extends Component {
             <div className={styles.textSmall}>Export</div>
           </div>
         </div>
-        <div className={styles.exitButton} onClick={toggleSettings}>
-          <i className="fa fa-times-circle"></i>
-        </div>
+        <img onClick={toggleSettings} className={styles.exitButton} src={exitSettingsIcon} alt="Exit settings"/>
       </div>
     )
   }
