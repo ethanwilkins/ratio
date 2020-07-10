@@ -47,6 +47,15 @@ class Main extends Component {
     }
   };
 
+  reset = () => {
+    this.setState({
+      activeControl: 'ratio',
+      baseSize: 16,
+      scale: 2,
+      lineHeight: 32
+    })
+  };
+
   // opens and closes settings
   toggleSettings = () => {
     const { settingsOpen } = this.state;
@@ -72,6 +81,7 @@ class Main extends Component {
             changeField={this.changeField}
             settingsOpen={settingsOpen}
             toggleSettings={this.toggleSettings}
+            reset={this.reset}
           />
         </div>
         

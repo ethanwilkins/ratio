@@ -26,7 +26,14 @@ class MainControls extends Component {
   };
 
   render() {
-    const { activeControl, setActiveControl, changeField, toggleSettings, settingsOpen } = this.props;
+    const {
+      activeControl,
+      setActiveControl,
+      changeField,
+      toggleSettings,
+      settingsOpen,
+      reset
+    } = this.props;
 
     return (
       <div className={styles.mainControls}>
@@ -70,7 +77,7 @@ class MainControls extends Component {
           <div onClick={() => {changeField(false)}} className={styles.mathButton + ' ' + styles.hideForIphone11 + ' ' + styles.showForIphone8}>
             <div className={styles.buttonText}>-</div>
           </div>
-          <div onClick={() => {setActiveControl('ratio')}} className={styles.controlButton}>
+          <div onClick={reset} className={styles.controlButton}>
             <div className={styles.buttonText}>Reset</div>
           </div>
         </div>
@@ -92,7 +99,8 @@ MainControls.propTypes = {
   setActiveControl: PropTypes.func.isRequired,
   changeField: PropTypes.func.isRequired,
   settingsOpen: PropTypes.bool.isRequired,
-  toggleSettings: PropTypes.func.isRequired
+  toggleSettings: PropTypes.func.isRequired,
+  reset: PropTypes.func.isRequired
 };
 
 export default MainControls;
