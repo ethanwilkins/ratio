@@ -161,7 +161,7 @@ $settingsTopGap: 90px;
 
 // Pixel 2, LG Stylo 5
 @media only screen and (max-width: 412px) and (max-height: 823px) {
-  $settingsTopGap: 70px;
+  $settingsTopGap: 30px;
   
   .settings {
     height: calc(100vh - #{$settingsTopGap});
