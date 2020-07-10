@@ -55,8 +55,8 @@ class MainControls extends Component {
           <div onClick={() => {changeField(false)}} className={styles.mathButton + ' ' + styles.hideForIphone8}>
             <div className={styles.buttonText}>-</div>
           </div>
-          <div onClick={() => {setActiveControl('ratio')}} className={cx(styles.controlButton, {
-            activeButton: activeControl === 'ratio'
+          <div onClick={() => {setActiveControl('scale')}} className={cx(styles.controlButton, {
+            activeButton: activeControl === 'scale'
           })}>
             <div className={styles.buttonText}>ratio</div>
           </div>

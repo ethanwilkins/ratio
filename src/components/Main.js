@@ -8,9 +8,9 @@ import styles from '../styles/Main.module.scss';
 
 class Main extends Component {
   state = {
-    activeControl: 'ratio',
+    activeControl: 'scale',
     baseSize: 16,
-    scale: 2,
+    scale: 2.0,
     lineHeight: 32,
     font: '',
     settingsOpen: false
@@ -38,7 +38,7 @@ class Main extends Component {
       const { scale } = this.state;
       this.setState({
         // directionIsUp === increment, otherwise decrement
-        scale: (directionIsUp ? scale + 1 : scale - 1)
+        scale: (directionIsUp ? scale + 0.1 : scale - 0.1)
       });
     }
     else if (activeControl === 'lineHeight') {
@@ -53,9 +53,9 @@ class Main extends Component {
   // resets all fields to initial values
   reset = () => {
     this.setState({
-      activeControl: 'ratio',
+      activeControl: 'scale',
       baseSize: 16,
-      scale: 2,
+      scale: 2.0,
       lineHeight: 32
     })
   };
