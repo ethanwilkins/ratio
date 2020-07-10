@@ -88,7 +88,7 @@ class MainControls extends Component {
           </div>
         </div>
 
-        <img onClick={this.showSpecs} className={styles.logoButton} src={logo} alt="Logo"/>
+        <img className={styles.logoButton} src={logo} alt="Logo"/>
       </div>
     )
   }
