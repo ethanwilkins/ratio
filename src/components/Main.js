@@ -24,29 +24,33 @@ class Main extends Component {
   };
 
   // increments or decrements active field (baseSize, scale, lineHeight)
-  changeField = (directionIsUp) => { // directionIsUp === increment, otherwise decrement
+  changeField = (directionIsUp) => {
     const { activeControl } = this.state;
 
     if (activeControl === 'baseSize') {
       const { baseSize } = this.state;
       this.setState({
+        // directionIsUp === increment, otherwise decrement
         baseSize: (directionIsUp ? baseSize + 1 : baseSize - 1)
       });
     }
     else if (activeControl === 'scale') {
       const { scale } = this.state;
       this.setState({
+        // directionIsUp === increment, otherwise decrement
         scale: (directionIsUp ? scale + 1 : scale - 1)
       });
     }
     else if (activeControl === 'lineHeight') {
       const { lineHeight } = this.state;
       this.setState({
+        // directionIsUp === increment, otherwise decrement
         lineHeight: (directionIsUp ? lineHeight + 1 : lineHeight - 1)
       });
     }
   };
 
+  // resets all fields to initial values
   reset = () => {
     this.setState({
       activeControl: 'ratio',
@@ -65,13 +69,15 @@ class Main extends Component {
   };
 
   render() {
-    const { activeControl, settingsOpen, lineHeight } = this.state;
+    const { activeControl, settingsOpen, baseSize, scale, lineHeight } = this.state;
 
     return (
       <div>
         <div className={styles.main}>
           <Output
             activeControl={activeControl}
+            baseSize={baseSize}
+            scale={scale}
             lineHeight={lineHeight}
           />
 
