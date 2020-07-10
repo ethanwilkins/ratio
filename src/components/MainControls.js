@@ -26,7 +26,7 @@ class MainControls extends Component {
   };
 
   render() {
-    const { activeControl, toggleSettings, setActiveControl } = this.props;
+    const { activeControl, setActiveControl, toggleSettings, settingsOpen } = this.props;
 
     return (
       <div className={styles.mainControls}>
@@ -42,7 +42,7 @@ class MainControls extends Component {
         </div>
 
         <div className={styles.row}>
-          <div onClick={toggleSettings} className={styles.settingsButton + ' ' + styles.hideForIphone11 + ' ' + styles.showForIphone8}>
+          <div onClick={toggleSettings} className={styles.settingsButton + ' ' + styles.hideForIphone11 + ' ' + styles.showForIphone8} style={settingsOpen ? {pointerEvents: 'none'} : {}}>
             <img className={styles.settingsIcon} src={settingsIcon} alt="Settings Icon"/>
           </div>
           <div className={styles.mathButton + ' ' + styles.hideForIphone8}>
@@ -76,7 +76,7 @@ class MainControls extends Component {
         </div>
 
         <div className={styles.row + ' ' + styles.hideForIphone8}>
-          <div onClick={toggleSettings} className={styles.settingsButton}>
+          <div onClick={toggleSettings} className={styles.settingsButton} style={settingsOpen ? {pointerEvents: 'none'} : {}}>
             <img className={styles.settingsIcon} src={settingsIcon} alt="Settings Icon"/>
           </div>
         </div>
@@ -88,9 +88,9 @@ class MainControls extends Component {
 }
 
 MainControls.propTypes = {
-  activeControl: PropTypes.string.isRequired,
   settingsOpen: PropTypes.bool.isRequired,
   toggleSettings: PropTypes.func.isRequired,
+  activeControl: PropTypes.string.isRequired,
   setActiveControl: PropTypes.func.isRequired
 };
 

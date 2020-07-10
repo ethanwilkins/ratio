@@ -39,10 +39,10 @@ class Main extends Component {
           <Output activeControl={activeControl} />
 
           <MainControls
-            settingsOpen={settingsOpen}
-            toggleSettings={this.toggleSettings}
             activeControl={activeControl}
             setActiveControl={this.setActiveControl}
+            settingsOpen={settingsOpen}
+            toggleSettings={this.toggleSettings}
           />
         </div>
         
