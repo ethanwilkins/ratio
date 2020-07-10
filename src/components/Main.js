@@ -31,7 +31,7 @@ class Main extends Component {
       const { baseSize } = this.state;
       this.setState({
         // directionIsUp === increment, otherwise decrement
-        baseSize: (directionIsUp ? baseSize + 1 : baseSize - 1)
+        baseSize: (directionIsUp ? baseSize + 0.5 : baseSize - 0.5)
       });
     }
     else if (activeControl === 'scale') {
