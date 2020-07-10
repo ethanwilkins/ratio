@@ -12,6 +12,7 @@ class Main extends Component {
     baseSize: 16,
     scale: 2.0,
     lineHeight: 32,
+    lineCount: 4,
     font: '',
     settingsOpen: false
   }
@@ -69,7 +70,14 @@ class Main extends Component {
   };
 
   render() {
-    const { activeControl, settingsOpen, baseSize, scale, lineHeight } = this.state;
+    const {
+      activeControl,
+      settingsOpen,
+      baseSize,
+      scale,
+      lineHeight,
+      lineCount
+    } = this.state;
 
     return (
       <div>
@@ -91,7 +99,13 @@ class Main extends Component {
           />
         </div>
         
-        <Settings toggleSettings={this.toggleSettings} settingsOpen={settingsOpen} />
+        <Settings
+          baseSize={baseSize}
+          scale={scale}
+          lineHeight={lineHeight}
+          lineCount={lineCount}
+          toggleSettings={this.toggleSettings}
+          settingsOpen={settingsOpen} />
       </div>
     );
   }

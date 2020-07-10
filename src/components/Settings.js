@@ -35,7 +35,14 @@ class Settings extends Component {
   };
 
   render() {
-    const { toggleSettings, settingsOpen } = this.props;
+    const {
+      toggleSettings,
+      settingsOpen,
+      baseSize,
+      scale,
+      lineHeight,
+      lineCount
+    } = this.props;
 
     return (
       <div ref={this.settings} className={cx(styles.settings, {
@@ -45,19 +52,19 @@ class Settings extends Component {
           <div className={styles.row}>
             <div className={styles.text}>Size/Line height</div>
             <div className={styles.button}>
-              <div className={styles.buttonText}>16/24</div>
+              <div className={styles.buttonText}>{baseSize}/{lineHeight}</div>
             </div>
           </div>
           <div className={styles.row}>
             <div className={styles.text}>Ratio</div>
             <div className={styles.button}>
-              <div className={styles.buttonText}>2</div>
+              <div className={styles.buttonText}>{scale}</div>
             </div>
           </div>
           <div className={styles.row}>
             <div className={styles.text}>Line Count</div>
             <div className={styles.button}>
-              <div className={styles.buttonText}>4</div>
+              <div className={styles.buttonText}>{lineCount}</div>
             </div>
           </div>
           <div className={styles.row + ' ' + styles.chooseFontRow}>
@@ -84,7 +91,11 @@ class Settings extends Component {
 
 Settings.propTypes = {
   toggleSettings: PropTypes.func.isRequired,
-  settingsOpen: PropTypes.bool.isRequired
+  settingsOpen: PropTypes.bool.isRequired,
+  baseSize: PropTypes.number.isRequired,
+  scale: PropTypes.number.isRequired,
+  lineHeight: PropTypes.number.isRequired,
+  lineCount: PropTypes.number.isRequired
 };
 
 export default Settings;
