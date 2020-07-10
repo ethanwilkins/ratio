@@ -134,11 +134,29 @@ $settingsTopGap: 90px;
 // After default, devices should descend from largest to smallest
 
 // iMac
-@media only screen and (min-width: 1280px) and (min-height: 720px) {}
+@media only screen and (min-width: 1280px) and (min-height: 720px) {
+  $settingsTopGap: 40px;
+  
+  .settings {
+    height: calc(100vh - #{$settingsTopGap});
+  }
+  .show {
+    margin-top: $settingsTopGap;
+  }
+}
 // end of iMac
 
 // iPad Pro 11
-@media only screen and (min-width: 834px) and (max-width: 1194px)  {}
+@media only screen and (min-width: 834px) and (max-width: 1194px)  {
+  $settingsTopGap: 50px;
+  
+  .settings {
+    height: calc(100vh - #{$settingsTopGap});
+  }
+  .show {
+    margin-top: $settingsTopGap;
+  }
+}
 // end of iPad Pro 11
 
 // Pixel 2, LG Stylo 5
@@ -163,6 +181,7 @@ $settingsTopGap: 90px;
   $settingsTopGap: 40px;
   
   .settings {
+    width: 350px;
     height: calc(100vh - #{$settingsTopGap});
   }
   .show {
