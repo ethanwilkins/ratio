@@ -17,6 +17,22 @@ class Main extends Component {
     settingsOpen: false
   }
 
+  componentDidMount(){
+    document.addEventListener("keydown", this.closeSettings);
+  }
+
+  componentWillUnmount(){
+    document.removeEventListener("keydown", this.closeSettings);
+  }
+
+  closeSettings = (event) => {
+    if (event.keyCode === 27) { 
+      this.setState({
+        settingsOpen: false
+      }); 
+    }
+  };
+
   // sets which of the main controls are active, or which to increment/decrement by
   setActiveControl = (control) => {
     this.setState({
