@@ -25,14 +25,6 @@ class Main extends Component {
     document.removeEventListener("keydown", this.closeSettings);
   }
 
-  closeSettings = (event) => {
-    if (event.keyCode === 27) { 
-      this.setState({
-        settingsOpen: false
-      }); 
-    }
-  };
-
   // sets which of the main controls are active, or which to increment/decrement by
   setActiveControl = (control) => {
     this.setState({
@@ -83,6 +75,15 @@ class Main extends Component {
     this.setState({
       settingsOpen: !settingsOpen
     });
+  };
+
+  // closes settings when user hits Escape key
+  closeSettings = (event) => {
+    if (event.keyCode === 27) { 
+      this.setState({
+        settingsOpen: false
+      }); 
+    }
   };
 
   render() {
