@@ -14,27 +14,27 @@ class Output extends Component {
         basePower3 = baseSize * scale * scale * scale;
     
     // cuts off all digits after first two starting after decimal
-    basePower1 = Math.floor(basePower1 * 100) / 100;
-    basePower2 = Math.floor(basePower2 * 100) / 100;
-    basePower3 = Math.floor(basePower3 * 100) / 100;
+    basePower1 = Math.floor(basePower1 * 10) / 10;
+    basePower2 = Math.floor(basePower2 * 10) / 10;
+    basePower3 = Math.floor(basePower3 * 10) / 10;
     
 
     return (
       <div className={styles.output}>
         <div style={{fontSize: basePower3 + 'px'}}>{basePower3}<span className={cx(styles.lineHeight, {
-          show: activeControl === 'scale' || activeControl === 'baseSize'
+          show: true
         })}>/{lineHeight}</span></div>
 
         <div style={{fontSize: basePower2 + 'px'}}>{basePower2}<span className={cx(styles.lineHeight, {
-          show: activeControl === 'scale' || activeControl === 'baseSize'
+          show: true
         })}>/{lineHeight}</span></div>
 
         <div style={{fontSize: basePower1 + 'px'}}>{basePower1}<span className={cx(styles.lineHeight, {
-          show: activeControl === 'scale' || activeControl === 'baseSize'
+          show: true
         })}>/{lineHeight}</span></div>
 
         <div style={{fontSize: baseSize + 'px'}}>{baseSize}<span className={cx(styles.lineHeight, {
-          show: activeControl === 'scale' || activeControl === 'baseSize'
+          show: true
         })}>/{lineHeight}</span></div>
       </div>
     )
