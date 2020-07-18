@@ -1,6 +1,6 @@
 // iPhone 11 is the default, mobile first
 
-$black: rgba(0, 0, 0, 0.8);
+$black: #2A2122;
 $pink: #D1A7AC;
 
 $buttonHeight: 61px;
@@ -53,7 +53,7 @@ $buttonWidth: 64.5px;
   font-family: "Inter Bold";
   font-size: 14px;
   text-align: center;
-  background: #2A2122;
+  background: $black;
   color: $pink;
   cursor: pointer;
 }
