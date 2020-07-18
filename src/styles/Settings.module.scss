@@ -1,4 +1,4 @@
-$settingsTopGap: 90px;
+$settingsTopGap: 65px;
 
 @font-face {
   font-family: "Inter";
@@ -46,7 +46,7 @@ $settingsTopGap: 90px;
 .exitButton {
   @extend .noSelect;
   position: absolute;
-  bottom: 40px;
+  bottom: 100px;
   right: 40px;
   width: 16px;
   cursor: pointer;
