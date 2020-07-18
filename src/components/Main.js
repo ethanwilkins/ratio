@@ -14,6 +14,7 @@ class Main extends Component {
     lineHeight: 32,
     lineCount: 4,
     font: '',
+    text: null,
     settingsOpen: false
   }
 
@@ -24,6 +25,13 @@ class Main extends Component {
   componentWillUnmount(){
     document.removeEventListener("keydown", this.closeSettings);
   }
+  
+  // updates value of textInput within Output
+  updateTextInputValue = (event) => {
+    this.setState({
+      text: event.target.value
+    });
+  };
 
   // sets which of the main controls are active, or which to increment/decrement by
   setActiveControl = (control) => {
@@ -65,7 +73,8 @@ class Main extends Component {
       activeControl: 'scale',
       baseSize: 16,
       scale: 2.0,
-      lineHeight: 32
+      lineHeight: 32,
+      text: null
     })
   };
 
@@ -93,6 +102,7 @@ class Main extends Component {
       baseSize,
       scale,
       lineHeight,
+      text,
       lineCount
     } = this.state;
 
@@ -103,6 +113,8 @@ class Main extends Component {
             baseSize={baseSize}
             scale={scale}
             lineHeight={lineHeight}
+            text={text}
+            updateTextInputValue={this.updateTextInputValue}
           />
 
           <MainControls

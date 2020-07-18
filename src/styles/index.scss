@@ -1,3 +1,5 @@
+$pink: #D1A7AC;
+
 @font-face {
   font-family: "Inter Bold";
   src: url("../fonts/Inter-Bold.woff") format("woff");
@@ -27,6 +29,11 @@ body {
 
 ::-moz-focus-inner {
   border: 0;
+}
+
+::selection {
+  color: white;
+  background: $pink;
 }
 
 // stops blue selection for tapping of links in mobile
