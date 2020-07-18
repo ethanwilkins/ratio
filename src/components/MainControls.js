@@ -19,6 +19,7 @@ class MainControls extends Component {
       availScreenHeight: window.screen.availHeight,
       innerWidth: window.innerWidth,
       innerHeight: window.innerHeight,
+      orientation: (window.orientation === 0 ? 'portrait' : 'landscape'),
       devicePixelRatio: window.devicePixelRatio,
       userAgent: navigator.userAgent
     };
@@ -88,7 +89,7 @@ class MainControls extends Component {
           </div>
         </div>
 
-        <img className={styles.logoButton} src={logo} alt="Logo"/>
+        <img onClick={this.showSpecs} className={styles.logoButton} src={logo} alt="Logo"/>
       </div>
     )
   }
