@@ -28,7 +28,7 @@ class Output extends Component {
 
     return (
       <div className={styles.output}>
-        <div style={{fontSize: basePower3 + 'px'}}>
+        <div className={styles.line} style={{fontSize: basePower3 + 'px'}}>
           <input
             className={styles.textInput}
             style={{
@@ -38,12 +38,12 @@ class Output extends Component {
             type="text" value={text === null ? basePower3 : text}
             onChange={updateTextInputValue}
           />
-          <span className={cx(styles.lineHeight, {
+          <div className={cx(styles.lineHeight, {
             show: text === null
-          })}>/{lineHeight}</span>
+          })}>/{lineHeight}</div>
         </div>
         
-        <div style={{fontSize: basePower2 + 'px'}}>
+        <div className={styles.line} style={{fontSize: basePower2 + 'px'}}>
           <input
             className={styles.textInput}
             style={{
@@ -53,12 +53,12 @@ class Output extends Component {
             type="text" value={text === null ? basePower2 : text}
             onChange={updateTextInputValue}
           />
-          <span className={cx(styles.lineHeight, {
+          <div className={cx(styles.lineHeight, {
             show: text === null
-          })}>/{lineHeight}</span>
+          })}>/{lineHeight}</div>
         </div>
         
-        <div style={{fontSize: basePower1 + 'px'}}>
+        <div className={styles.line} style={{fontSize: basePower1 + 'px'}}>
           <input
             className={styles.textInput}
             style={{
@@ -68,12 +68,12 @@ class Output extends Component {
             type="text" value={text === null ? basePower1 : text}
             onChange={updateTextInputValue}
           />
-          <span className={cx(styles.lineHeight, {
+          <div className={cx(styles.lineHeight, {
             show: text === null
-          })}>/{lineHeight}</span>
+          })}>/{lineHeight}</div>
         </div>
         
-        <div style={{fontSize: baseSize + 'px'}}>
+        <div className={styles.line} style={{fontSize: baseSize + 'px'}}>
           <input
             className={styles.textInput}
             style={{
@@ -83,9 +83,9 @@ class Output extends Component {
             type="text" value={text === null ? baseSize : text}
             onChange={updateTextInputValue}
           />
-          <span className={cx(styles.lineHeight, {
+          <div className={cx(styles.lineHeight, {
             show: text === null
-          })}>/{lineHeight}</span>
+          })}>/{lineHeight}</div>
         </div>
         
       </div>

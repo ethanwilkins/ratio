@@ -3,16 +3,21 @@ $pink: #D1A7AC;
 
 .output {
   position: relative;
-  margin: auto;
+  left: 91px;
   margin-top: 110px;
-  width: 248px;
+  width: calc(100vw * 10);
   height: 248px;
   font-family: "Inter Bold";
+}
+
+.line {
+  overflow: hidden;
 }
 
 .lineHeight {
   transition: color .15s linear;
   color: white;
+  float: left;
 }
 
 .show {
@@ -25,6 +30,7 @@ $pink: #D1A7AC;
   box-shadow: none;
   caret-color: white;
   font-family: "Inter Bold";
+  float: left;
 }
 // end of iPhone 11
 
