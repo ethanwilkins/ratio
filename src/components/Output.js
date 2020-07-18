@@ -98,7 +98,7 @@ Output.propTypes = {
   baseSize: PropTypes.number.isRequired,
   scale: PropTypes.number.isRequired,
   lineHeight: PropTypes.number.isRequired,
-  text: PropTypes.string.isRequired,
+  text: PropTypes.string,
   updateTextInputValue: PropTypes.func.isRequired,
 };
 
