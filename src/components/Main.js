@@ -100,7 +100,6 @@ class Main extends Component {
       <div>
         <div className={styles.main}>
           <Output
-            activeControl={activeControl}
             baseSize={baseSize}
             scale={scale}
             lineHeight={lineHeight}

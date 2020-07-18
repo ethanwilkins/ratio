@@ -8,7 +8,7 @@ const cx = classNames.bind(styles);
 
 class Output extends Component {
   render() {
-    const { activeControl, baseSize, scale, lineHeight } = this.props;
+    const { baseSize, scale, lineHeight } = this.props;
     let basePower1 = baseSize * scale,
         basePower2 = baseSize * scale * scale,
         basePower3 = baseSize * scale * scale * scale;
@@ -43,7 +43,6 @@ class Output extends Component {
 }
 
 Output.propTypes = {
-  activeControl: PropTypes.string.isRequired,
   baseSize: PropTypes.number.isRequired,
   scale: PropTypes.number.isRequired,
   lineHeight: PropTypes.number.isRequired
