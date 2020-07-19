@@ -27,6 +27,7 @@ class Text extends Component {
     
     lineHeight = Math.floor(lineHeight * 10) / 10;
     
+    const lineHeightAdjustment = 3.8;
 
     return (
       <div className={styles.output}>
@@ -35,14 +36,14 @@ class Text extends Component {
             className={styles.textInput}
             style={{
               fontSize: basePower3 + 'px',
-              lineHeight: lineHeight,
+              lineHeight: (lineHeight * lineHeightAdjustment) + '%',
               width: (text === null ? basePower3.toString().length : text.length) + 'ch',
-              height: (basePower3 * lineHeight) + 'px'
+              height: (basePower3 * ((lineHeight * lineHeightAdjustment) / 100)) + 'px'
             }}
             type="text" value={text === null ? basePower3 : text}
             onChange={updateTextInputValue}
           />
-          <div style={{lineHeight: lineHeight}} className={cx(styles.lineHeight, {
+          <div style={{lineHeight: (lineHeight * lineHeightAdjustment) + '%'}} className={cx(styles.lineHeight, {
             show: text === null
           })}>/{lineHeight}</div>
         </div>
@@ -52,14 +53,14 @@ class Text extends Component {
             className={styles.textInput}
             style={{
               fontSize: basePower2 + 'px',
-              lineHeight: lineHeight,
+              lineHeight: (lineHeight * lineHeightAdjustment) + '%',
               width: (text === null ? basePower2.toString().length : text.length) + 'ch',
-              height: (basePower2 * lineHeight) + 'px'
+              height: (basePower2 * ((lineHeight * lineHeightAdjustment) / 100)) + 'px'
             }}
             type="text" value={text === null ? basePower2 : text}
             onChange={updateTextInputValue}
           />
-          <div style={{lineHeight: lineHeight}} className={cx(styles.lineHeight, {
+          <div style={{lineHeight: (lineHeight * lineHeightAdjustment) + '%'}} className={cx(styles.lineHeight, {
             show: text === null
           })}>/{lineHeight}</div>
         </div>
@@ -69,14 +70,14 @@ class Text extends Component {
             className={styles.textInput}
             style={{
               fontSize: basePower1 + 'px',
-              lineHeight: lineHeight,
+              lineHeight: (lineHeight * lineHeightAdjustment) + '%',
               width: (text === null ? basePower1.toString().length : text.length) + 'ch',
-              height: (basePower1 * lineHeight) + 'px'
+              height: (basePower1 * ((lineHeight * lineHeightAdjustment) / 100)) + 'px'
             }}
             type="text" value={text === null ? basePower1 : text}
             onChange={updateTextInputValue}
           />
-          <div style={{lineHeight: lineHeight}} className={cx(styles.lineHeight, {
+          <div style={{lineHeight: (lineHeight * lineHeightAdjustment) + '%'}} className={cx(styles.lineHeight, {
             show: text === null
           })}>/{lineHeight}</div>
         </div>
@@ -86,14 +87,14 @@ class Text extends Component {
             className={styles.textInput}
             style={{
               fontSize: baseSize + 'px',
-              lineHeight: lineHeight,
+              lineHeight: (lineHeight * lineHeightAdjustment) + '%',
               width: (text === null ? baseSize.toString().length : text.length) + 'ch',
-              height: (baseSize * lineHeight) + 'px'
+              height: (baseSize * ((lineHeight * lineHeightAdjustment) / 100)) + 'px'
             }}
             type="text" value={text === null ? baseSize : text}
             onChange={updateTextInputValue}
           />
-          <div style={{lineHeight: lineHeight}} className={cx(styles.lineHeight, {
+          <div style={{lineHeight: (lineHeight * lineHeightAdjustment) + '%'}} className={cx(styles.lineHeight, {
             show: text === null
           })}>/{lineHeight}</div>
         </div>

@@ -11,7 +11,7 @@ class Main extends Component {
     activeControl: 'scale',
     baseSize: 16,
     scale: 2.0,
-    lineHeight: 1.2,
+    lineHeight: 32,
     lineCount: 4,
     font: '',
     text: null,
@@ -62,7 +62,7 @@ class Main extends Component {
       const { lineHeight } = this.state;
       this.setState({
         // directionIsUp === increment, otherwise decrement
-        lineHeight: (directionIsUp ? lineHeight + 0.1 : lineHeight - 0.1)
+        lineHeight: (directionIsUp ? lineHeight + 1 : lineHeight - 1)
       });
     }
   };
@@ -73,7 +73,7 @@ class Main extends Component {
       activeControl: 'scale',
       baseSize: 16,
       scale: 2.0,
-      lineHeight: 1.2,
+      lineHeight: 32,
       text: null
     })
   };
