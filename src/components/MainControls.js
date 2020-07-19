@@ -10,7 +10,6 @@ import classNames from 'classnames/bind';
 const cx = classNames.bind(styles);
 
 class MainControls extends Component {
-
   showSpecs = () => {
     const specs = {
       screenWidth: window.screen.width,
@@ -35,7 +34,7 @@ class MainControls extends Component {
       settingsOpen,
       reset
     } = this.props;
-
+    
     return (
       <div className={styles.mainControls}>
         <div className={styles.row}>
@@ -78,7 +77,7 @@ class MainControls extends Component {
           <div onClick={() => {changeField(false)}} className={styles.mathButton + ' ' + styles.hideForIphone11 + ' ' + styles.showForIphone8}>
             <div className={styles.buttonText}>-</div>
           </div>
-          <div onClick={reset} className={styles.controlButton}>
+          <div onDblClick={reset} className={styles.controlButton}>
             <div className={styles.buttonText}>Reset</div>
           </div>
         </div>
