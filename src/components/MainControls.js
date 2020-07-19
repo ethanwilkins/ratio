@@ -77,7 +77,7 @@ class MainControls extends Component {
           <div onClick={() => {changeField(false)}} className={styles.mathButton + ' ' + styles.hideForIphone11 + ' ' + styles.showForIphone8}>
             <div className={styles.buttonText}>-</div>
           </div>
-          <div onDblClick={reset} className={styles.controlButton}>
+          <div onClick={reset} className={styles.controlButton}>
             <div className={styles.buttonText}>Reset</div>
           </div>
         </div>
