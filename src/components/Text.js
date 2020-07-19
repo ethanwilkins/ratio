@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import styles from '../styles/Output.module.scss';
+import styles from '../styles/Text.module.scss';
 import classNames from 'classnames/bind';
 
 const cx = classNames.bind(styles);
 
-class Output extends Component {
+class Text extends Component {
   render() {
     let {
       baseSize,
@@ -104,7 +104,7 @@ class Output extends Component {
   }
 }
 
-Output.propTypes = {
+Text.propTypes = {
   baseSize: PropTypes.number.isRequired,
   scale: PropTypes.number.isRequired,
   lineHeight: PropTypes.number.isRequired,
@@ -112,4 +112,4 @@ Output.propTypes = {
   updateTextInputValue: PropTypes.func.isRequired,
 };
 
-export default Output;
+export default Text;

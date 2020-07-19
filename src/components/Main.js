@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import MainControls from '../components/MainControls';
-import Output from '../components/Output';
+import Text from '../components/Text';
 import Settings from '../components/Settings';
 
 import styles from '../styles/Main.module.scss';
@@ -26,7 +26,7 @@ class Main extends Component {
     document.removeEventListener("keydown", this.closeSettings);
   }
   
-  // updates value of textInput within Output
+  // updates value of textInput within Text
   updateTextInputValue = (event) => {
     this.setState({
       text: event.target.value
@@ -109,7 +109,7 @@ class Main extends Component {
     return (
       <div>
         <div className={styles.main}>
-          <Output
+          <Text
             baseSize={baseSize}
             scale={scale}
             lineHeight={lineHeight}
