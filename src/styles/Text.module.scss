@@ -1,4 +1,4 @@
-$black: rgba(0, 0, 0, 0.8);
+$black: #2B2022;
 $pink: #D1A7AC;
 
 .output {
@@ -31,7 +31,7 @@ $pink: #D1A7AC;
   box-shadow: none;
   padding: 0;
   margin: none;
-  color: #2B2022;
+  color: $black;
   caret-color: white;
   font-family: "Inter Bold";
   float: left;
