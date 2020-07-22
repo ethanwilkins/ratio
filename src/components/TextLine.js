@@ -10,7 +10,6 @@ class TextLine extends Component {
   render() {
     let {
       base,
-      scale,
       lineHeight,
       text,
       updateTextInputValue
@@ -44,7 +43,6 @@ class TextLine extends Component {
 
 TextLine.propTypes = {
   base: PropTypes.number.isRequired,
-  scale: PropTypes.number.isRequired,
   lineHeight: PropTypes.number.isRequired,
   text: PropTypes.string,
   updateTextInputValue: PropTypes.func.isRequired,

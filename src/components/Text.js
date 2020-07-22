@@ -4,9 +4,6 @@ import PropTypes from 'prop-types';
 import TextLine from '../components/TextLine';
 
 import styles from '../styles/Text.module.scss';
-import classNames from 'classnames/bind';
-
-const cx = classNames.bind(styles);
 
 class Text extends Component {
   render() {
@@ -28,14 +25,11 @@ class Text extends Component {
     basePower3 = Math.floor(basePower3 * 10) / 10;
     
     lineHeight = Math.floor(lineHeight * 10) / 10;
-    
-    const lineHeightAdjustment = 3.8;
 
     return (
       <div className={styles.output}>
         <TextLine
           base={basePower3}
-          scale={scale}
           lineHeight={lineHeight}
           text={text}
           updateTextInputValue={updateTextInputValue}
@@ -43,7 +37,6 @@ class Text extends Component {
         
         <TextLine
           base={basePower2}
-          scale={scale}
           lineHeight={lineHeight}
           text={text}
           updateTextInputValue={updateTextInputValue}
@@ -51,7 +44,6 @@ class Text extends Component {
         
         <TextLine
           base={basePower1}
-          scale={scale}
           lineHeight={lineHeight}
           text={text}
           updateTextInputValue={updateTextInputValue}
@@ -59,7 +51,6 @@ class Text extends Component {
         
         <TextLine
           base={baseSize}
-          scale={scale}
           lineHeight={lineHeight}
           text={text}
           updateTextInputValue={updateTextInputValue}
