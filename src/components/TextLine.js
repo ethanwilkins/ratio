@@ -13,6 +13,7 @@ class TextLine extends Component {
     super(props);
     this.state = { focused: false }
     this.line = React.createRef();
+    this.input = React.createRef();
   }
   
   componentDidMount() {
@@ -37,11 +38,11 @@ class TextLine extends Component {
   // sets focused state to true when input is clicked
   handleClick = () => {
     const { focused } = this.state;
-    
     this.setState({
       focused: true
     });
-    alert("Focused set to true.");
+    // programmatically sets focus on input for this TextLine
+    this.input.current.focus();
   };
   
   render() {
@@ -59,13 +60,14 @@ class TextLine extends Component {
         ref={this.line}
         onClick={this.handleClick}
         className={styles.line}
-        style={{fontSize: base + 'px', background: (this.state.focused ? 'red' : 'black')}}
+        style={{fontSize: base + 'px'}}
       >
         <Carat
           
         />
         
         <input
+          ref={this.input}
           className={styles.textInput}
           style={{
             fontSize: base + 'px',
