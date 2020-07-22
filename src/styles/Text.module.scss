@@ -9,33 +9,6 @@ $pink: #D1A7AC;
   height: 248px;
   font-family: "Inter Bold";
 }
-
-.line {
-  overflow: hidden;
-}
-
-.lineHeight {
-  transition: color .15s linear;
-  color: white;
-  float: left;
-}
-
-// shows lineHeight
-.show {
-  color: rgb(225, 225, 225);
-}
-
-.textInput, .textInput:focus {
-  order: none;
-  border-width: 0;
-  box-shadow: none;
-  padding: 0;
-  margin: none;
-  color: $black;
-  caret-color: white;
-  font-family: "Inter Bold";
-  float: left;
-}
 // end of iPhone 11
 
 // iMac

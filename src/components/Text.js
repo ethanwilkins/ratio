@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import TextLine from '../components/TextLine';
+
 import styles from '../styles/Text.module.scss';
 import classNames from 'classnames/bind';
 
@@ -31,77 +33,39 @@ class Text extends Component {
 
     return (
       <div className={styles.output}>
-        <div className={styles.line} style={{fontSize: basePower3 + 'px'}}>
-          <input
-            className={styles.textInput}
-            style={{
-              fontSize: basePower3 + 'px',
-              lineHeight: (lineHeight * lineHeightAdjustment) + '%',
-              width: (text === null ? basePower3.toString().length : text.length) + 'ch',
-              height: (basePower3 * ((lineHeight * lineHeightAdjustment) / 100)) + 'px'
-            }}
-            type="text" value={text === null ? basePower3 : text}
-            onChange={updateTextInputValue}
-          />
-          <div style={{lineHeight: (lineHeight * lineHeightAdjustment) + '%'}} className={cx(styles.lineHeight, {
-            show: text === null
-          })}>/{lineHeight}</div>
-        </div>
+        <TextLine
+          base={basePower3}
+          scale={scale}
+          lineHeight={lineHeight}
+          text={text}
+          updateTextInputValue={updateTextInputValue}
+        />
         
-        <div className={styles.line} style={{fontSize: basePower2 + 'px'}}>
-          <input
-            className={styles.textInput}
-            style={{
-              fontSize: basePower2 + 'px',
-              lineHeight: (lineHeight * lineHeightAdjustment) + '%',
-              width: (text === null ? basePower2.toString().length : text.length) + 'ch',
-              height: (basePower2 * ((lineHeight * lineHeightAdjustment) / 100)) + 'px'
-            }}
-            type="text" value={text === null ? basePower2 : text}
-            onChange={updateTextInputValue}
-          />
-          <div style={{lineHeight: (lineHeight * lineHeightAdjustment) + '%'}} className={cx(styles.lineHeight, {
-            show: text === null
-          })}>/{lineHeight}</div>
-        </div>
+        <TextLine
+          base={basePower2}
+          scale={scale}
+          lineHeight={lineHeight}
+          text={text}
+          updateTextInputValue={updateTextInputValue}
+        />
         
-        <div className={styles.line} style={{fontSize: basePower1 + 'px'}}>
-          <input
-            className={styles.textInput}
-            style={{
-              fontSize: basePower1 + 'px',
-              lineHeight: (lineHeight * lineHeightAdjustment) + '%',
-              width: (text === null ? basePower1.toString().length : text.length) + 'ch',
-              height: (basePower1 * ((lineHeight * lineHeightAdjustment) / 100)) + 'px'
-            }}
-            type="text" value={text === null ? basePower1 : text}
-            onChange={updateTextInputValue}
-          />
-          <div style={{lineHeight: (lineHeight * lineHeightAdjustment) + '%'}} className={cx(styles.lineHeight, {
-            show: text === null
-          })}>/{lineHeight}</div>
-        </div>
+        <TextLine
+          base={basePower1}
+          scale={scale}
+          lineHeight={lineHeight}
+          text={text}
+          updateTextInputValue={updateTextInputValue}
+        />
         
-        <div className={styles.line} style={{fontSize: baseSize + 'px'}}>
-          <input
-            className={styles.textInput}
-            style={{
-              fontSize: baseSize + 'px',
-              lineHeight: (lineHeight * lineHeightAdjustment) + '%',
-              width: (text === null ? baseSize.toString().length : text.length) + 'ch',
-              height: (baseSize * ((lineHeight * lineHeightAdjustment) / 100)) + 'px'
-            }}
-            type="text" value={text === null ? baseSize : text}
-            onChange={updateTextInputValue}
-          />
-          <div style={{lineHeight: (lineHeight * lineHeightAdjustment) + '%'}} className={cx(styles.lineHeight, {
-            show: text === null
-          })}>/{lineHeight}</div>
-        </div>
-        
+        <TextLine
+          base={baseSize}
+          scale={scale}
+          lineHeight={lineHeight}
+          text={text}
+          updateTextInputValue={updateTextInputValue}
+        />
       </div>
     )
-
   }
 }
 

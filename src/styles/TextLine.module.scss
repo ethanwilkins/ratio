@@ -1,0 +1,28 @@
+$black: #2A2122;
+
+.line {
+  overflow: hidden;
+}
+
+.lineHeight {
+  transition: color .15s linear;
+  color: white;
+  float: left;
+}
+
+// shows lineHeight
+.show {
+  color: rgb(225, 225, 225);
+}
+
+.textInput, .textInput:focus {
+  order: none;
+  border-width: 0;
+  box-shadow: none;
+  padding: 0;
+  margin: none;
+  color: $black;
+  caret-color: white;
+  font-family: "Inter Bold";
+  float: left;
+}
