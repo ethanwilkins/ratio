@@ -33,6 +33,21 @@ class Settings extends Component {
       }
     }
   };
+  
+  showSpecs = () => {
+    const specs = {
+      screenWidth: window.screen.width,
+      screenHeight: window.screen.height,
+      availScreenWidth: window.screen.availWidth,
+      availScreenHeight: window.screen.availHeight,
+      innerWidth: window.innerWidth,
+      innerHeight: window.innerHeight,
+      orientation: (window.orientation === 0 ? 'portrait' : 'landscape'),
+      devicePixelRatio: window.devicePixelRatio,
+      userAgent: navigator.userAgent
+    };
+    alert(JSON.stringify(specs));
+  };
 
   render() {
     const {
@@ -79,7 +94,7 @@ class Settings extends Component {
               </div>
             </div>
           </div>
-          <div className={styles.row}>
+          <div onClick={this.showSpecs} className={styles.row}>
             <div className={styles.textSmall}>Export</div>
           </div>
         </div>

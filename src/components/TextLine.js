@@ -36,6 +36,7 @@ class TextLine extends Component {
     this.setState({
       cursorPosition: this.input.current.selectionStart
     });
+    // unfocuses on escape
     if (event.keyCode === 27) {
       this.setState({
         focused: false

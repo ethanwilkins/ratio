@@ -10,21 +10,6 @@ import classNames from 'classnames/bind';
 const cx = classNames.bind(styles);
 
 class MainControls extends Component {
-  showSpecs = () => {
-    const specs = {
-      screenWidth: window.screen.width,
-      screenHeight: window.screen.height,
-      availScreenWidth: window.screen.availWidth,
-      availScreenHeight: window.screen.availHeight,
-      innerWidth: window.innerWidth,
-      innerHeight: window.innerHeight,
-      orientation: (window.orientation === 0 ? 'portrait' : 'landscape'),
-      devicePixelRatio: window.devicePixelRatio,
-      userAgent: navigator.userAgent
-    };
-    alert(JSON.stringify(specs));
-  };
-
   render() {
     const {
       activeControl,
