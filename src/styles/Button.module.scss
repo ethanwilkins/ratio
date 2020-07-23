@@ -2,6 +2,7 @@
 
 $black: #2A2122;
 $pink: #D1A7AC;
+$pressedPink: #AB8288;
 
 $buttonHeight: 61px;
 $buttonWidth: 64.5px;
@@ -61,7 +62,8 @@ $buttonWidth: 64.5px;
 }
 
 .pressed {
-  background: #AB8288;
+  border-color: $pressedPink;
+  background: $pressedPink;
 }
 
 .buttonText {
