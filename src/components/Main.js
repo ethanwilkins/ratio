@@ -82,7 +82,7 @@ class Main extends Component {
     this.setState({
       baseSize: Math.floor(Math.random() * 20) + 10,
       scale: Math.floor(Math.random() * 2) + 1,
-      lineHeight: Math.floor(Math.random() * 75) + 20
+      lineHeight: Math.floor(Math.random() * 32) + 18
     })
   };
 
