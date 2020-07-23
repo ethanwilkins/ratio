@@ -19,12 +19,10 @@ class TextLine extends Component {
   }
 
   handleClick = () => {
-    this.setState({
-      focused: true,
-      cursorPosition: this.input.current.selectionStart
+    this.setState(state => ({focused: true}), () => {
+      // programmatically sets focus on input for this TextLine
+      this.input.current.focus();    
     });
-    // programmatically sets focus on input for this TextLine
-    this.input.current.focus();
   };
 
   handleBlur = () => {
@@ -34,10 +32,15 @@ class TextLine extends Component {
   };
   
   // moves carat according to keys pressed
-  handleKeyPress = () => {
+  handleKeyPress = (event) => {
     this.setState({
       cursorPosition: this.input.current.selectionStart
     });
+    if (event.keyCode === 27) {
+      this.setState({
+        focused: false
+      });
+    }
   };
   
   render() {
@@ -63,34 +66,51 @@ class TextLine extends Component {
       <div
         onClick={this.handleClick}
         className={styles.line}
-        style={{fontSize: base + 'px'}}
+        style={{
+          fontSize: base + 'px',
+          lineHeight: (lineHeight * lineHeightAdjustment) + '%'
+        }}
       >
-        <Carat
-          cursorPosition={cursorPosition}
-          visible={focused}
-          base={base}
-          text={text}
-        />
+        {false &&
+          <Carat
+            cursorPosition={cursorPosition}
+            visible={focused}
+            base={base}
+            text={text}
+          />
+        }
         
-        <input
-          ref={this.input}
-          className={styles.textInput}
-          style={{
-            fontSize: base + 'px',
-            lineHeight: (lineHeight * lineHeightAdjustment) + '%',
-            width: (text === null ? base.toString().length : text.length) + 'ch',
-            height: (base * ((lineHeight * lineHeightAdjustment) / 100)) + 'px'
-          }}
-          type="text" value={text === null ? base : text}
-          onChange={updateTextInputValue}
-          onBlur={this.handleBlur}
-          onKeyDown={this.handleKeyPress}
-        />
-        <div
-          style={{lineHeight: (lineHeight * lineHeightAdjustment) + '%'}}
+        {focused &&
+          <input
+            ref={this.input}
+            className={styles.textInput}
+            style={{
+              fontSize: base + 'px',
+              lineHeight: (lineHeight * lineHeightAdjustment) + '%',
+              width: (text === null ? base.toString().length : text.length) + 'ch',
+              height: (base * ((lineHeight * lineHeightAdjustment) / 100)) + 'px'
+            }}
+            type="text" value={text === null ? base : text}
+            onChange={updateTextInputValue}
+            onBlur={this.handleBlur}
+            onKeyDown={this.handleKeyPress}
+          />
+        }
+        
+        {!focused && 
+          <span>
+            {text === null ? base : text}
+          </span>
+        }
+        
+        <span
+          style={{}}
           className={cx(styles.lineHeight, {
             show: text === null
-          })}>/{lineHeight}</div>
+          })}
+        >
+          /{lineHeight}
+        </span>
       </div>
     )
 

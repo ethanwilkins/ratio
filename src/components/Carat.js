@@ -30,7 +30,7 @@ class Carat extends Component {
     } = this.props;
     
     // turned off for now
-    return (false && visible) && (
+    return visible && (
       <div
         className={styles.carat + ' ' + styles.blink}
         style={{
