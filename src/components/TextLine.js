@@ -21,7 +21,7 @@ class TextLine extends Component {
   handleClick = () => {
     this.setState(state => ({focused: true}), () => {
       // programmatically sets focus on input for this TextLine
-      this.input.current.focus();    
+      this.input.current.focus();
     });
   };
 
