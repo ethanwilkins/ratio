@@ -81,7 +81,7 @@ class Main extends Component {
   generateRandom = () => {
     this.setState({
       baseSize: Math.floor(Math.random() * 20) + 10,
-      scale: Math.floor(Math.random() * 2) + 0.5,
+      scale: Math.floor(Math.random() * 2) + 1,
       lineHeight: Math.floor(Math.random() * 75) + 20
     })
   };
