@@ -1,4 +1,5 @@
 $black: #2A2122;
+$pink: #D1A7AC;
 
 .line {
   position: relative;
@@ -23,7 +24,7 @@ $black: #2A2122;
   padding: 0;
   margin: none;
   color: $black;
-  caret-color: white;
+  caret-color: $pink;
   font-family: "Inter Bold";
   float: left;
 }

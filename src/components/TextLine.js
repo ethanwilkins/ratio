@@ -34,29 +34,10 @@ class TextLine extends Component {
   };
   
   // moves carat according to keys pressed
-  handleKeyPress = (event) => {
-    const { cursorPosition } = this.state;
-    const charPressed = String.fromCharCode(event.keyCode);
-    // if backspace or left arrow key are pressed, move carat left
-    if ([8, 37].includes(event.keyCode)) {
-      this.setState({
-        cursorPosition: cursorPosition - 1
-      });
-    }
-    // if right arrow key pressed move carat right
-    else if (((event.keyCode === 39 && cursorPosition > event.target.value.length )
-      // if letter pressed
-      || /^[A-Za-z]+$/.test(charPressed)
-      // if number pressed
-      || /\d/.test(charPressed)
-      // if special character pressed
-      || /[ !@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/g.test(charPressed))
-      // and not key up or down
-      && ![38, 40].includes(event.keyCode)) {
-      this.setState({
-        cursorPosition: cursorPosition + 1
-      });
-    }
+  handleKeyPress = () => {
+    this.setState({
+      cursorPosition: this.input.current.selectionStart
+    });
   };
   
   render() {
