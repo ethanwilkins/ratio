@@ -20,15 +20,15 @@ class Carat extends Component {
           top: base * 0.225 + 'px',
           left: `calc(${cursorPosition}ch - ${base * 0.025}px)`}}
       ></div>
-    )
-
+    );
   }
 }
 
 Carat.propTypes = {
   base: PropTypes.number.isRequired,
   visible: PropTypes.bool.isRequired,
-  cursorPosition: PropTypes.number.isRequired
+  cursorPosition: PropTypes.number.isRequired,
+  text: PropTypes.string.isRequired
 };
 
 export default Carat;
