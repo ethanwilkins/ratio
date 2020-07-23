@@ -30,7 +30,7 @@ class Carat extends Component {
     } = this.props;
     
     // turned off for now
-    return false && (
+    return (false && visible) && (
       <div
         className={styles.carat + ' ' + styles.blink}
         style={{
@@ -48,7 +48,7 @@ Carat.propTypes = {
   base: PropTypes.number.isRequired,
   visible: PropTypes.bool.isRequired,
   cursorPosition: PropTypes.number.isRequired,
-  text: PropTypes.string.isRequired
+  text: PropTypes.string
 };
 
 export default Carat;

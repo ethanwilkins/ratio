@@ -91,6 +91,10 @@ $buttonWidth: 64.5px;
   border: 2px solid $pink;
 }
 
+.pressed {
+  background: rgba(42, 33, 34, 0.25);
+}
+
 .buttonText {
   padding-top: 20px;
 }
