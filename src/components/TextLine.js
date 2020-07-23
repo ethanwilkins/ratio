@@ -11,59 +11,68 @@ const cx = classNames.bind(styles);
 class TextLine extends Component {
   constructor(props) {
     super(props);
-    this.state = { focused: false }
-    this.line = React.createRef();
+    this.state = {
+      focused: false,
+      cursorPosition: 0
+    }
     this.input = React.createRef();
   }
-  
-  componentDidMount() {
-    document.addEventListener('mousedown', this.handleClickOutside);
-  }
 
-  componentWillUnmount() {
-    document.removeEventListener('mousedown', this.handleClickOutside);
-  }
-  
-  // determines if input for this TextLine is no longer focused
-  handleClickOutside = (event) => {
-    const { focused } = this.state;
-    
-    if (!this.line.current.contains(event.target)) {
-      this.setState({
-        focused: false
-      });
-    }
-  };
-  
-  // sets focused state to true when input is clicked
   handleClick = () => {
-    const { focused } = this.state;
     this.setState({
-      focused: true
+      focused: true,
+      cursorPosition: this.input.current.selectionStart
     });
     // programmatically sets focus on input for this TextLine
     this.input.current.focus();
   };
+
+  handleBlur = () => {
+    this.setState({
+      focused: false
+    });
+  };
+  
+  handleKeyPress = (event) => {
+    const { cursorPosition } = this.state;
+    if (event.keyCode === 8 || event.keyCode === 37) {
+      this.setState({
+        cursorPosition: cursorPosition - 1
+      });
+    }
+    else if (event.keyCode === 39 || (event.keyCode !== 8 && event.keyCode !== 37)) {
+      this.setState({
+        cursorPosition: cursorPosition + 1
+      });
+    }
+  };
   
   render() {
-    let {
+    const {
+      focused,
+      cursorPosition
+    } = this.state;
+    
+    const {
       base,
       lineHeight,
       text,
       updateTextInputValue
     } = this.props;
     
+    // adjusts to match design spec
     const lineHeightAdjustment = 3.8;
     
     return (
       <div
-        ref={this.line}
         onClick={this.handleClick}
         className={styles.line}
         style={{fontSize: base + 'px'}}
       >
         <Carat
-          
+          cursorPosition={cursorPosition}
+          visible={focused}
+          base={base}
         />
         
         <input
@@ -77,6 +86,8 @@ class TextLine extends Component {
           }}
           type="text" value={text === null ? base : text}
           onChange={updateTextInputValue}
+          onBlur={this.handleBlur}
+          onKeyDown={this.handleKeyPress}
         />
         <div
           style={{lineHeight: (lineHeight * lineHeightAdjustment) + '%'}}
