@@ -77,6 +77,14 @@ class Main extends Component {
       text: null
     })
   };
+  
+  generateRandom = () => {
+    this.setState({
+      baseSize: Math.floor(Math.random() * 20) + 10,
+      scale: Math.floor(Math.random() * 2) + 0.5,
+      lineHeight: Math.floor(Math.random() * 75) + 20
+    })
+  };
 
   // opens and closes settings
   toggleSettings = () => {
@@ -124,6 +132,7 @@ class Main extends Component {
             settingsOpen={settingsOpen}
             toggleSettings={this.toggleSettings}
             reset={this.reset}
+            generateRandom={this.generateRandom}
           />
         </div>
         

@@ -30,6 +30,7 @@ class MainControls extends Component {
       activeControl,
       setActiveControl,
       changeField,
+      generateRandom,
       toggleSettings,
       settingsOpen,
       reset
@@ -106,7 +107,7 @@ class MainControls extends Component {
         </div>
 
         <img
-          onClick={this.showSpecs}
+          onClick={generateRandom}
           className={styles.logoButton}
           src={logo}
           alt="Logo"
@@ -122,7 +123,8 @@ MainControls.propTypes = {
   changeField: PropTypes.func.isRequired,
   settingsOpen: PropTypes.bool.isRequired,
   toggleSettings: PropTypes.func.isRequired,
-  reset: PropTypes.func.isRequired
+  reset: PropTypes.func.isRequired,
+  generateRandom: PropTypes.func.isRequired
 };
 
 export default MainControls;

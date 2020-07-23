@@ -18,13 +18,6 @@ class Text extends Component {
     let basePower1 = baseSize * scale,
         basePower2 = baseSize * scale * scale,
         basePower3 = baseSize * scale * scale * scale;
-    
-    // cuts off all digits after first one starting after decimal
-    basePower1 = Math.floor(basePower1 * 10) / 10;
-    basePower2 = Math.floor(basePower2 * 10) / 10;
-    basePower3 = Math.floor(basePower3 * 10) / 10;
-    
-    lineHeight = Math.floor(lineHeight * 10) / 10;
 
     return (
       <div className={styles.output}>

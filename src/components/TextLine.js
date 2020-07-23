@@ -46,12 +46,15 @@ class TextLine extends Component {
       cursorPosition
     } = this.state;
     
-    const {
+    let {
       base,
       lineHeight,
       text,
       updateTextInputValue
     } = this.props;
+    
+    base = Math.round(base);
+    lineHeight = Math.round(lineHeight);
     
     // adjusts to match design spec
     const lineHeightAdjustment = 3.8;
