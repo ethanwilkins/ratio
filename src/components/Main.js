@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import mobile from 'is-mobile';
 
 import MainControls from '../components/MainControls';
 import Text from '../components/Text';
@@ -89,21 +90,11 @@ class Main extends Component {
   
   updateLineCount = (event) => {
     // sets variable for input from settings
-    let input = String.fromCharCode(event.which);
-    
-    if (!input) {
-      input = event.target.value;
-    }
-    
+    const input = mobile() ? event.target.value : String.fromCharCode(event.which);
     // saves input in state if input is a number
     if (!isNaN(input) && input <= 9) {
       this.setState({
         lineCount: Math.round(input)
-      });
-    }
-    else if (event.keyCode === 8) {
-      this.setState({
-        lineCount: 0
       });
     }
   };
