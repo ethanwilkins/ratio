@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import { isMobileSafari, mobileVendor } from 'react-device-detect';
+import { isMobileSafari } from 'react-device-detect';
 
 import magnifyingGlassIcon from '../images/magnifyingGlassIcon.svg';
 import exitSettingsIcon from '../images/exitSettingsIcon.svg';
@@ -41,6 +41,15 @@ class Settings extends Component {
     this.lineHeightInput.current.focus();
   };
   
+  // determines if iPhone11 and has toolbar and address bar shown
+  isIphone11WithToolbarShown = () => {
+    return isMobileSafari
+      && window.screen.width === 414 && window.screen.height === 896
+      && window.innerHeight === 719
+      && window.devicePixelRatio === 2
+      && window.orientation === 0;
+  }
+  
   showSpecs = () => {
     const specs = {
       screenWidth: window.screen.width,
@@ -52,8 +61,7 @@ class Settings extends Component {
       orientation: (window.orientation === 0 ? 'portrait' : 'landscape'),
       devicePixelRatio: window.devicePixelRatio,
       userAgent: navigator.userAgent,
-      isMobileSafari: isMobileSafari,
-      mobileVendor: mobileVendor
+      isIphone11WithToolbarShown: this.isIphone11WithToolbarShown()
     };
     alert(JSON.stringify(specs));
   };
@@ -115,7 +123,13 @@ class Settings extends Component {
             <div className={styles.textSmall}>Export</div>
           </div>
         </div>
-        <img onClick={toggleSettings} className={styles.exitButton} src={exitSettingsIcon} alt="Exit settings"/>
+        <img
+          style={this.isIphone11WithToolbarShown() ? {bottom: '150px'} : null}
+          onClick={toggleSettings}
+          className={styles.exitButton}
+          src={exitSettingsIcon}
+          alt="Exit settings"
+        />
       </div>
     )
   }
