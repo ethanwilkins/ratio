@@ -89,7 +89,7 @@ class Settings extends Component {
                 ref={this.lineHeightInput}
                 className={styles.lineHeightInput}
                 type="text" value={lineCount}
-                onKeyPress={updateLineCount}
+                onKeyDown={updateLineCount}
                 onBlur={this.handleBlur}
               />
             </div>
