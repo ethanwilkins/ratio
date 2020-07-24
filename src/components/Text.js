@@ -6,45 +6,36 @@ import TextLine from '../components/TextLine';
 import styles from '../styles/Text.module.scss';
 
 class Text extends Component {
+  // builds array of basePowers to loop over within output
+  getBasePowers = (base, scale, lineCount) => {
+    let basePowers = [base];
+    for (let i=0; i < lineCount; i++) {
+      base *= scale;
+      basePowers.push(base);
+    }
+    return basePowers.reverse();
+  };
+  
   render() {
-    let {
+    const {
       baseSize,
       scale,
       lineHeight,
       text,
       updateTextInputValue
     } = this.props;
-    
-    let basePower1 = baseSize * scale,
-        basePower2 = baseSize * scale * scale,
-        basePower3 = baseSize * scale * scale * scale;
 
     return (
       <div className={styles.output}>
-        <TextLine
-          base={basePower3}
-          lineHeight={lineHeight}
-          text={text}
-          updateTextInputValue={updateTextInputValue}
-        />
-        <TextLine
-          base={basePower2}
-          lineHeight={lineHeight}
-          text={text}
-          updateTextInputValue={updateTextInputValue}
-        />
-        <TextLine
-          base={basePower1}
-          lineHeight={lineHeight}
-          text={text}
-          updateTextInputValue={updateTextInputValue}
-        />
-        <TextLine
-          base={baseSize}
-          lineHeight={lineHeight}
-          text={text}
-          updateTextInputValue={updateTextInputValue}
-        />
+        {this.getBasePowers(baseSize, scale, 3).map(function(basePower, i) {
+          return  <TextLine
+                    key={i}
+                    base={basePower}
+                    lineHeight={lineHeight}
+                    text={text}
+                    updateTextInputValue={updateTextInputValue}
+                  />;
+        })}
       </div>
     )
   }
