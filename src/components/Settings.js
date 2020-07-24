@@ -79,7 +79,7 @@ class Settings extends Component {
           <div className={styles.row}>
             <div className={styles.text}>Ratio</div>
             <div className={styles.button}>
-              <div className={styles.buttonText}>{Math.round(scale)}</div>
+              <div className={styles.buttonText}>{Math.floor(scale * 100) / 100}</div>
             </div>
           </div>
           <div className={styles.row}>
