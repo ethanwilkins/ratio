@@ -96,6 +96,11 @@ class Main extends Component {
       this.setState({
         lineCount: Math.round(input)
       });
+      if (input > 4) {
+        this.setState({
+          scale: 1.2
+        })
+      }
     }
   };
 
