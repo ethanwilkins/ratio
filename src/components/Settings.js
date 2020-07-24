@@ -90,6 +90,7 @@ class Settings extends Component {
                 className={styles.lineHeightInput}
                 type="text" value={lineCount}
                 onKeyDown={updateLineCount}
+                onChange={updateLineCount}
                 onBlur={this.handleBlur}
               />
             </div>

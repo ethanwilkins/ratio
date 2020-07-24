@@ -89,12 +89,21 @@ class Main extends Component {
   
   updateLineCount = (event) => {
     // sets variable for input from settings
-    const input = String.fromCharCode(event.which);
+    let input = String.fromCharCode(event.which);
+    
+    if (!input) {
+      input = event.target.value;
+    }
     
     // saves input in state if input is a number
     if (!isNaN(input) && input <= 9) {
       this.setState({
         lineCount: Math.round(input)
+      });
+    }
+    else if (event.keyCode === 8) {
+      this.setState({
+        lineCount: 0
       });
     }
   };
