@@ -6,12 +6,12 @@ import Button from '../components/Button';
 import settingsIcon from '../images/settingsIcon.svg';
 import logo from '../images/logo.svg';
 
-import styles from '../styles/MainControls.module.scss';
+import styles from '../styles/Toolbar.module.scss';
 import classNames from 'classnames/bind';
 
 const cx = classNames.bind(styles);
 
-class MainControls extends Component {
+class Toolbar extends Component {
   render() {
     const {
       activeControl,
@@ -107,7 +107,7 @@ class MainControls extends Component {
   }
 }
 
-MainControls.propTypes = {
+Toolbar.propTypes = {
   activeControl: PropTypes.string.isRequired,
   setActiveControl: PropTypes.func.isRequired,
   changeField: PropTypes.func.isRequired,
@@ -117,4 +117,4 @@ MainControls.propTypes = {
   generateRandom: PropTypes.func.isRequired
 };
 
-export default MainControls;
+export default Toolbar;

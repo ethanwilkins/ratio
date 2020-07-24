@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import mobile from 'is-mobile';
 
-import MainControls from '../components/MainControls';
+import Toolbar from '../components/Toolbar';
 import Text from '../components/Text';
 import Settings from '../components/Settings';
 
@@ -144,7 +144,7 @@ class Main extends Component {
             updateTextInputValue={this.updateTextInputValue}
           />
 
-          <MainControls
+          <Toolbar
             activeControl={activeControl}
             setActiveControl={this.setActiveControl}
             changeField={this.changeField}
