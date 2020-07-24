@@ -74,6 +74,7 @@ class Main extends Component {
       baseSize: 16,
       scale: 2.0,
       lineHeight: 32,
+      lineCount: 4,
       text: null
     })
   };
@@ -84,6 +85,17 @@ class Main extends Component {
       scale: Math.floor(Math.random() * 2) + 1.1,
       lineHeight: Math.floor(Math.random() * 32) + 22
     })
+  };
+  
+  updateLineCount = (event) => {
+    // sets variable for input from settings
+    const input = event.target.value;
+    // saves input in state if input is a number
+    if (!isNaN(input) && input <= 9) {
+      this.setState({
+        lineCount: Math.round(input)
+      });
+    }
   };
 
   // opens and closes settings
@@ -121,6 +133,7 @@ class Main extends Component {
             baseSize={baseSize}
             scale={scale}
             lineHeight={lineHeight}
+            lineCount={lineCount}
             text={text}
             updateTextInputValue={this.updateTextInputValue}
           />
@@ -141,6 +154,7 @@ class Main extends Component {
           scale={scale}
           lineHeight={lineHeight}
           lineCount={lineCount}
+          updateLineCount={this.updateLineCount}
           toggleSettings={this.toggleSettings}
           settingsOpen={settingsOpen} />
       </div>

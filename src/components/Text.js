@@ -21,13 +21,14 @@ class Text extends Component {
       baseSize,
       scale,
       lineHeight,
+      lineCount,
       text,
       updateTextInputValue
     } = this.props;
 
     return (
       <div className={styles.output}>
-        {this.getBasePowers(baseSize, scale, 3).map(function(basePower, i) {
+        {this.getBasePowers(baseSize, scale, lineCount - 1).map(function(basePower, i) {
           return  <TextLine
                     key={i}
                     base={basePower}
@@ -45,6 +46,7 @@ Text.propTypes = {
   baseSize: PropTypes.number.isRequired,
   scale: PropTypes.number.isRequired,
   lineHeight: PropTypes.number.isRequired,
+  lineCount: PropTypes.number.isRequired,
   text: PropTypes.string,
   updateTextInputValue: PropTypes.func.isRequired,
 };

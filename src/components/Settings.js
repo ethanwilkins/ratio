@@ -14,6 +14,7 @@ class Settings extends Component {
   constructor(props) {
     super(props);
     this.settings = React.createRef();
+    this.lineHeightInput = React.createRef();
   }
 
   componentDidMount() {
@@ -32,6 +33,10 @@ class Settings extends Component {
         toggleSettings();
       }
     }
+  };
+  
+  focusLineHeightInput = () => {
+    this.lineHeightInput.current.focus();
   };
   
   showSpecs = () => {
@@ -56,7 +61,8 @@ class Settings extends Component {
       baseSize,
       scale,
       lineHeight,
-      lineCount
+      lineCount,
+      updateLineCount
     } = this.props;
 
     return (
@@ -73,13 +79,19 @@ class Settings extends Component {
           <div className={styles.row}>
             <div className={styles.text}>Ratio</div>
             <div className={styles.button}>
-              <div className={styles.buttonText}>{Math.floor(scale * 100) / 100}</div>
+              <div className={styles.buttonText}>{Math.round(scale)}</div>
             </div>
           </div>
           <div className={styles.row}>
             <div className={styles.text}>Line Count</div>
-            <div className={styles.button}>
-              <div className={styles.buttonText}>{lineCount}</div>
+            <div onClick={this.focusLineHeightInput} className={styles.button}>
+              <input
+                ref={this.lineHeightInput}
+                className={styles.lineHeightInput}
+                type="text" value={lineCount}
+                onChange={updateLineCount}
+                onBlur={this.handleBlur}
+              />
             </div>
           </div>
           <div className={styles.row + ' ' + styles.chooseFontRow}>
@@ -110,7 +122,8 @@ Settings.propTypes = {
   baseSize: PropTypes.number.isRequired,
   scale: PropTypes.number.isRequired,
   lineHeight: PropTypes.number.isRequired,
-  lineCount: PropTypes.number.isRequired
+  lineCount: PropTypes.number.isRequired,
+  updateLineCount: PropTypes.func.isRequired
 };
 
 export default Settings;

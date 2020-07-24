@@ -131,6 +131,23 @@ $settingsTopGap: 65px;
   padding-top: 20px;
   font-size: 10px;
 }
+
+.lineHeightInput, .lineHeightInput:focus {
+  order: none;
+  border-width: 0;
+  box-shadow: none;
+  padding: 0;
+  margin: none;
+  font-family: "Inter Extra Bold";
+  font-size: 10px;
+  color: $black;
+  caret-color: $black;
+  background: $pink;
+  width: 1ch;
+  position: relative;
+  top: calc(50% - 1.7ch);
+  left: calc(50% - 0.5ch);
+}
 // end of iPhone 11 (default)
 
 // After default, devices should descend from largest to smallest
