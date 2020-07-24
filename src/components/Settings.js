@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import { mobileModel } from 'react-device-detect';
+
 import magnifyingGlassIcon from '../images/magnifyingGlassIcon.svg';
 import exitSettingsIcon from '../images/exitSettingsIcon.svg';
 
@@ -49,7 +51,8 @@ class Settings extends Component {
       innerHeight: window.innerHeight,
       orientation: (window.orientation === 0 ? 'portrait' : 'landscape'),
       devicePixelRatio: window.devicePixelRatio,
-      userAgent: navigator.userAgent
+      userAgent: navigator.userAgent,
+      mobileModel: mobileModel
     };
     alert(JSON.stringify(specs));
   };
