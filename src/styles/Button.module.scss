@@ -34,7 +34,7 @@ $buttonWidth: 64.5px;
 
 .button {
   @extend .noSelect;
-  transition: all .15s linear;
+  transition: background .15s ease-out, border-color .15s ease-out;
   height: $buttonHeight;
   width: $buttonWidth;
   border-radius: 15px;
