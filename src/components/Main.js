@@ -89,7 +89,8 @@ class Main extends Component {
   
   updateLineCount = (event) => {
     // sets variable for input from settings
-    const input = event.target.value;
+    const input = String.fromCharCode(event.which);
+    
     // saves input in state if input is a number
     if (!isNaN(input) && input <= 9) {
       this.setState({
