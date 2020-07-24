@@ -7,32 +7,7 @@ import classNames from 'classnames/bind';
 const cx = classNames.bind(styles);
 
 class Button extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { pressed: false }
-    this.button = React.createRef();
-  }
-
   state = { pressed: false }
-  
-  componentDidMount() {
-    document.addEventListener('touchstart', this.onTouchHandler);
-    document.addEventListener('touchend', this.onTouchHandler);
-  }
-
-  componentWillUnmount() {
-    document.removeEventListener('touchstart', this.onTouchHandler);
-    document.removeEventListener('touchend', this.onTouchHandler);
-  }
-
-  onTouchHandler = ({ target }) => {
-    const { pressed } = this.state;
-    if (this.button.current.contains(target)) {
-      this.setState({
-        pressed: !pressed
-      });
-    }
-  };
   
   togglePressed = () => {
     const { pressed } = this.state;
@@ -53,9 +28,10 @@ class Button extends Component {
     
     return (
       <div
-        ref={this.button}
         onMouseDown={this.togglePressed}
         onMouseUp={this.togglePressed}
+        onTouchStart={this.togglePressed}
+        onTouchEnd={this.togglePressed}
         onClick={() => {changeField(changeDirection)}}
         className={cx(styles.mathButton, {
           hideForIphone8: hideForIphone8,
