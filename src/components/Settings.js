@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import mobile from 'is-mobile';
 import { isMobileSafari } from 'react-device-detect';
 
 import magnifyingGlassIcon from '../images/magnifyingGlassIcon.svg';
@@ -78,7 +79,10 @@ class Settings extends Component {
     } = this.props;
 
     return (
-      <div ref={this.settings} className={cx(styles.settings, {
+      <div
+        ref={this.settings}
+        style={mobile() ? null : {position: 'absolute', right: '15px'}}
+        className={cx(styles.settings, {
         show: settingsOpen
       })}>
         <div className={styles.container}>
