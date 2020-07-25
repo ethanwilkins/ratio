@@ -105,6 +105,7 @@ class Settings extends Component {
             <div onClick={this.focusLineCountInput} className={styles.button}>
               {mobile() &&
                 <form
+                  className={styles.lineCountForm}
                   noValidate
                   autoComplete="off"
                   onSubmit={handleLineCountSubmit}
@@ -164,7 +165,7 @@ Settings.propTypes = {
   scale: PropTypes.number.isRequired,
   lineHeight: PropTypes.number.isRequired,
   lineCount: PropTypes.number.isRequired,
-  lineCountInput: PropTypes.number,
+  lineCountInput: PropTypes.number.isRequired,
   updateLineCount: PropTypes.func.isRequired,
   handleLineCountSubmit: PropTypes.func.isRequired
 };

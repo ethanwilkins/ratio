@@ -148,6 +148,10 @@ $settingsTopGap: 65px;
   top: calc(50% - 1.7ch);
   left: calc(50% - 0.5ch);
 }
+
+.lineCountForm {
+  position: relative;
+}
 // end of iPhone 11 (default)
 
 // After default, devices should descend from largest to smallest

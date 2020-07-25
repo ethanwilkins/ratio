@@ -15,7 +15,7 @@ class Main extends Component {
     lineHeight: 32,
     lineCount: 4,
     // used for changing lineCount in mobile
-    lineCountInput: null,
+    lineCountInput: 4,
     font: '',
     text: null,
     settingsOpen: false
