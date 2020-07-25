@@ -14,6 +14,8 @@ class Main extends Component {
     scale: 2.0,
     lineHeight: 32,
     lineCount: 4,
+    // used for changing lineCount in mobile
+    lineCountInput: null,
     font: '',
     text: null,
     settingsOpen: false
@@ -77,7 +79,7 @@ class Main extends Component {
       lineHeight: 32,
       lineCount: 4,
       text: null
-    })
+    });
   };
   
   generateRandom = () => {
@@ -99,24 +101,43 @@ class Main extends Component {
     })(lineCount);
     // sets state for random values within ranges
     this.setState({
-      baseSize: Math.floor(Math.random() * (20 - 8) + 8),
+      baseSize: Math.round(Math.random() * (20 - 8) + 8),
       scale: Math.random() * (scaleMax - 1.1) + 1.1,
-      lineHeight: Math.floor(Math.random() * (32 - 22) + 22)
+      lineHeight: Math.round(Math.random() * (32 - 22) + 22)
     })
   };
   
   updateLineCount = (event) => {
     // sets variable for input from settings
     const input = mobile() ? event.target.value : String.fromCharCode(event.which);
+    // saves input temporarily until user hits enter to submit, for mobile
+    if (mobile()) {
+      this.setState({
+        lineCountInput: input
+      });
+    // saves lineCount directly on key down, without extra input state, for desktop
+    } else {
+      this.setLineCount(input);
+    }
+  };
+  
+  handleLineCountSubmit = (event) => {
+    event.preventDefault();
+    const { lineCountInput } = this.state;
+    this.setLineCount(lineCountInput);
+  };
+  
+  setLineCount = (input) => {
     // saves input in state if input is a number
     if (!isNaN(input) && input <= 9) {
       this.setState({
         lineCount: Math.round(input)
       });
+      // ensures higher line counts fit onto screen with lower scale
       if (input > 4) {
         this.setState({
           scale: 1.2
-        })
+        });
       }
     }
   };
@@ -146,7 +167,8 @@ class Main extends Component {
       scale,
       lineHeight,
       text,
-      lineCount
+      lineCount,
+      lineCountInput
     } = this.state;
 
     return (
@@ -177,7 +199,9 @@ class Main extends Component {
           scale={scale}
           lineHeight={lineHeight}
           lineCount={lineCount}
+          lineCountInput={lineCountInput}
           updateLineCount={this.updateLineCount}
+          handleLineCountSubmit={this.handleLineCountSubmit}
           toggleSettings={this.toggleSettings}
           settingsOpen={settingsOpen} />
       </div>

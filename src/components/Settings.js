@@ -17,7 +17,7 @@ class Settings extends Component {
   constructor(props) {
     super(props);
     this.settings = React.createRef();
-    this.lineHeightInput = React.createRef();
+    this.lineCountInput = React.createRef();
   }
 
   componentDidMount() {
@@ -38,8 +38,8 @@ class Settings extends Component {
     }
   };
   
-  focusLineHeightInput = () => {
-    this.lineHeightInput.current.focus();
+  focusLineCountInput = () => {
+    this.lineCountInput.current.focus();
   };
   
   // determines if iPhone11 and has toolbar and address bar shown
@@ -75,7 +75,9 @@ class Settings extends Component {
       scale,
       lineHeight,
       lineCount,
-      updateLineCount
+      lineCountInput,
+      updateLineCount,
+      handleLineCountSubmit
     } = this.props;
 
     return (
@@ -100,15 +102,31 @@ class Settings extends Component {
           </div>
           <div className={styles.row}>
             <div className={styles.text}>Line Count</div>
-            <div onClick={this.focusLineHeightInput} className={styles.button}>
-              <input
-                ref={this.lineHeightInput}
-                className={styles.lineHeightInput}
-                type="text" value={lineCount}
-                onKeyDown={updateLineCount}
-                onChange={updateLineCount}
-                onBlur={this.handleBlur}
-              />
+            <div onClick={this.focusLineCountInput} className={styles.button}>
+              {mobile() &&
+                <form
+                  noValidate
+                  autoComplete="off"
+                  onSubmit={handleLineCountSubmit}
+                >
+                  <input
+                    ref={this.lineCountInput}
+                    className={styles.lineCountInput}
+                    type="text" value={lineCountInput}
+                    onChange={updateLineCount}
+                    onBlur={this.handleBlur}
+                  />
+                </form>
+              }
+              {!mobile() &&
+                <input
+                  ref={this.lineCountInput}
+                  className={styles.lineCountInput}
+                  type="text" defaultValue={lineCount}
+                  onKeyDown={updateLineCount}
+                  onBlur={this.handleBlur}
+                />
+              }
             </div>
           </div>
           <div className={styles.row + ' ' + styles.chooseFontRow}>
@@ -146,7 +164,9 @@ Settings.propTypes = {
   scale: PropTypes.number.isRequired,
   lineHeight: PropTypes.number.isRequired,
   lineCount: PropTypes.number.isRequired,
-  updateLineCount: PropTypes.func.isRequired
+  lineCountInput: PropTypes.number,
+  updateLineCount: PropTypes.func.isRequired,
+  handleLineCountSubmit: PropTypes.func.isRequired
 };
 
 export default Settings;
