@@ -81,10 +81,27 @@ class Main extends Component {
   };
   
   generateRandom = () => {
+    const { lineCount } = this.state;
+    // gets maximum scale for each possible lineCount so text stays on screen
+    const scaleMax = (function(lineCount) {
+      switch(true) {
+        case (lineCount > 8):
+          return 1.3;
+        case (lineCount > 7):
+          return 1.4;
+        case (lineCount > 6):
+          return 1.6;
+        case (lineCount > 5):
+          return 1.8;
+        default:
+          return 2;
+      }
+    })(lineCount);
+    // sets state for random values within ranges
     this.setState({
-      baseSize: Math.floor(Math.random() * 20) + 8,
-      scale: Math.floor(Math.random() * 2) + 1.1,
-      lineHeight: Math.floor(Math.random() * 32) + 22
+      baseSize: Math.floor(Math.random() * (20 - 8) + 8),
+      scale: Math.random() * (scaleMax - 1.1) + 1.1,
+      lineHeight: Math.floor(Math.random() * (32 - 22) + 22)
     })
   };
   
