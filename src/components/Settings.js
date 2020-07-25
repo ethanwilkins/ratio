@@ -74,7 +74,6 @@ class Settings extends Component {
       baseSize,
       scale,
       lineHeight,
-      lineCount,
       lineCountInput,
       updateLineCount,
       handleLineCountSubmit
@@ -123,8 +122,9 @@ class Settings extends Component {
                 <input
                   ref={this.lineCountInput}
                   className={styles.lineCountInput}
-                  type="text" defaultValue={lineCount}
+                  type="text" value={lineCountInput}
                   onKeyDown={updateLineCount}
+                  onChange={updateLineCount}
                   onBlur={this.handleBlur}
                 />
               }
@@ -164,7 +164,6 @@ Settings.propTypes = {
   baseSize: PropTypes.number.isRequired,
   scale: PropTypes.number.isRequired,
   lineHeight: PropTypes.number.isRequired,
-  lineCount: PropTypes.number.isRequired,
   lineCountInput: PropTypes.number.isRequired,
   updateLineCount: PropTypes.func.isRequired,
   handleLineCountSubmit: PropTypes.func.isRequired

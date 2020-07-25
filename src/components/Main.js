@@ -117,7 +117,10 @@ class Main extends Component {
       });
     // saves lineCount directly on key down, without extra input state, for desktop
     } else {
-      this.setLineCount(input);
+      // ignores enter key press, for desktop
+      if (![13].includes(event.keyCode)) {
+        this.setLineCount(input);
+      }
     }
   };
   
@@ -128,10 +131,12 @@ class Main extends Component {
   };
   
   setLineCount = (input) => {
+    input = Math.round(input);
     // saves input in state if input is a number
     if (!isNaN(input) && input <= 9) {
       this.setState({
-        lineCount: Math.round(input)
+        lineCount: input,
+        lineCountInput: input
       });
       // ensures higher line counts fit onto screen with lower scale
       if (input > 4) {
@@ -198,7 +203,6 @@ class Main extends Component {
           baseSize={baseSize}
           scale={scale}
           lineHeight={lineHeight}
-          lineCount={lineCount}
           lineCountInput={lineCountInput}
           updateLineCount={this.updateLineCount}
           handleLineCountSubmit={this.handleLineCountSubmit}
