@@ -7,7 +7,23 @@ import classNames from 'classnames/bind';
 const cx = classNames.bind(styles);
 
 class Button extends Component {
-  state = { pressed: false }
+  state = {
+    pressed: false,
+    longPressed: false
+  }
+  
+  handleButtonPress = () => {
+    this.togglePressed();
+    this.buttonPressTimer = setTimeout(() => {
+      this.toggleLongPressed();
+    }, 1500);
+  };
+  
+  handleButtonRelease = () => {
+    this.togglePressed();
+    this.toggleLongPressed();
+    clearTimeout(this.buttonPressTimer);
+  };
   
   togglePressed = () => {
     const { pressed } = this.state;
@@ -16,8 +32,15 @@ class Button extends Component {
     });
   };
   
+  toggleLongPressed = () => {
+    const { longPressed } = this.state;
+    this.setState({
+      longPressed: !longPressed
+    });
+  };
+  
   render() {
-    const { pressed } = this.state;
+    const { pressed, longPressed } = this.state;
     
     const {
       text,
@@ -28,10 +51,10 @@ class Button extends Component {
     
     return (
       <div
-        onMouseDown={this.togglePressed}
-        onMouseUp={this.togglePressed}
-        onTouchStart={this.togglePressed}
-        onTouchEnd={this.togglePressed}
+        onMouseDown={this.handleButtonPress}
+        onMouseUp={this.handleButtonRelease}
+        onTouchStart={this.handleButtonPress}
+        onTouchEnd={this.handleButtonRelease}
         onClick={() => {changeField(changeDirection)}}
         className={cx(styles.mathButton, {
           hideForIphone8: hideForIphone8,
@@ -39,6 +62,7 @@ class Button extends Component {
           showForIphone8: !hideForIphone8,
           pressed: pressed
         })}
+        style={longPressed ? {background: 'red'} : null}
       >
         <div className={styles.buttonText}>{text}</div>
       </div>
