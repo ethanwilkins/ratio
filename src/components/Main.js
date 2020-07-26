@@ -23,6 +23,7 @@ class Main extends Component {
 
   componentDidMount(){
     document.addEventListener("keydown", this.closeSettings);
+    // prevents long press or right click from opening contextmenu
     window.addEventListener("contextmenu", function(e) { e.preventDefault(); });
   }
 

@@ -21,6 +21,7 @@ class Button extends Component {
       }
     }, 125);
   }
+  
   componentWillUnmount() {
     clearInterval(this.callChangeFieldInterval);
   }
