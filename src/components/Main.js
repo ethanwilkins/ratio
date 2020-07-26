@@ -23,10 +23,12 @@ class Main extends Component {
 
   componentDidMount(){
     document.addEventListener("keydown", this.closeSettings);
+    window.addEventListener("contextmenu", function(e) { e.preventDefault(); });
   }
 
   componentWillUnmount(){
     document.removeEventListener("keydown", this.closeSettings);
+    window.removeEventListener("contextmenu", function(e) { e.preventDefault(); });
   }
   
   // updates value of textInput within Text

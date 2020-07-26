@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "ratio",
+  "name": "A typeographic scale built with elegance and ease of use in mind.",
   "icons": [
     {
       "src": "favicon.ico",

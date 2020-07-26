@@ -12,11 +12,24 @@ class Button extends Component {
     longPressed: false
   }
   
+  componentDidMount() {
+    const { changeField, changeDirection } = this.props;
+    this.callChangeFieldInterval = setInterval(() => {
+      const { longPressed } = this.state;
+      if (longPressed) {
+        changeField(changeDirection);
+      }
+    }, 125);
+  }
+  componentWillUnmount() {
+    clearInterval(this.callChangeFieldInterval);
+  }
+  
   handleButtonPress = () => {
     this.togglePressed();
     this.buttonPressTimer = setTimeout(() => {
       this.toggleLongPressed();
-    }, 1500);
+    }, 500);
   };
   
   handleButtonRelease = () => {
@@ -40,7 +53,7 @@ class Button extends Component {
   };
   
   render() {
-    const { pressed, longPressed } = this.state;
+    const { pressed } = this.state;
     
     const {
       text,
@@ -62,7 +75,6 @@ class Button extends Component {
           showForIphone8: !hideForIphone8,
           pressed: pressed
         })}
-        style={longPressed ? {background: 'red'} : null}
       >
         <div className={styles.buttonText}>{text}</div>
       </div>
