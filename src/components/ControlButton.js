@@ -50,8 +50,8 @@ class ControlButton extends Component {
 
 ControlButton.propTypes = {
   text: PropTypes.string.isRequired,
-  activeControl: PropTypes.string.isRequired,
-  controlType: PropTypes.string.isRequired,
+  activeControl: PropTypes.string,
+  controlType: PropTypes.string,
   setActiveControl: PropTypes.func,
   reset: PropTypes.func
 };

@@ -8,9 +8,6 @@ import settingsIcon from '../images/settingsIcon.svg';
 import logo from '../images/logo.svg';
 
 import styles from '../styles/Toolbar.module.scss';
-import classNames from 'classnames/bind';
-
-const cx = classNames.bind(styles);
 
 class Toolbar extends Component {
   render() {
