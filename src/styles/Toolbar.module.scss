@@ -31,7 +31,7 @@ $buttonWidth: 64.5px;
   -webkit-tap-highlight-color: transparent;
 }
 
-.mainControls {
+.toolbar {
   position: fixed;
   bottom: 5px;
   right: 15px;
@@ -70,24 +70,6 @@ $buttonWidth: 64.5px;
   width: 25.5px;
 }
 
-.activeButton {
-  background: white;
-  color: $black;
-  border: 2px solid $pink;
-}
-
-.pressed {
-  background: rgba(42, 33, 34, 0.25);
-}
-
-.buttonText {
-  padding-top: 20px;
-}
-
-.lineHeightButtonText {
-  padding-top: 12px;
-}
-
 .hideForIphone11 {
   visibility: hidden;
   height: 0;
@@ -115,7 +97,7 @@ $buttonWidth: 64.5px;
   .button {
     font-size: 14px;
   }
-  .mainControls {
+  .toolbar {
     bottom: -14px;
     right: 15px;
     width: 145px;
@@ -148,13 +130,7 @@ $buttonWidth: 64.5px;
     height: 0;
     width: 0;
   }
-  .buttonText {
-    padding-top: 25px;
-  }
-  .lineHeightButtonText {
-    padding-top: 14px;
-  }
-  .mainControls {
+  .toolbar {
     bottom: -20px;
     right: 20px;
     width: 170px;
@@ -190,12 +166,6 @@ $buttonWidth: 64.5px;
     margin-left: 4px;
     width: 26px;
   }
-  .buttonText {
-    padding-top: 21px;
-  }
-  .lineHeightButtonText {
-    padding-top: 18%;
-  }
   .hideForIphone8 {
     visibility: hidden;
     height: 0;
@@ -209,7 +179,7 @@ $buttonWidth: 64.5px;
   .row {
     height: 25%;
   }
-  .mainControls {
+  .toolbar {
     bottom: 1%;
     width: 144px;
     height: 280px;

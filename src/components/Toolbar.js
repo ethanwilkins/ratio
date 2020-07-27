@@ -25,7 +25,7 @@ class Toolbar extends Component {
     } = this.props;
     
     return (
-      <div className={styles.mainControls}>
+      <div className={styles.toolbar}>
         <div className={styles.row}> 
           <MathButton
             text="+"
