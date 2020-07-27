@@ -17,7 +17,7 @@ class Button extends Component {
     this.callChangeFieldInterval = setInterval(() => {
       const { longPressed } = this.state;
       // temporarily disabled until bug fix
-      if (longPressed) {
+      if (false && longPressed) {
         changeField(changeDirection);
       }
     }, 125);
@@ -31,7 +31,7 @@ class Button extends Component {
     this.togglePressed();
     this.buttonPressTimer = setTimeout(() => {
       this.toggleLongPressed();
-    }, 500);
+    }, 1000);
   };
   
   handleButtonRelease = () => {
