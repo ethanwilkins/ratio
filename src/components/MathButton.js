@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import styles from '../styles/Button.module.scss';
+import styles from '../styles/MathButton.module.scss';
 import classNames from 'classnames/bind';
 
 const cx = classNames.bind(styles);
 
-class Button extends Component {
+class MathButton extends Component {
   state = {
     pressed: false,
     longPressed: false
@@ -31,7 +31,7 @@ class Button extends Component {
     this.togglePressed();
     this.buttonPressTimer = setTimeout(() => {
       this.toggleLongPressed();
-    }, 1000);
+    }, 500);
   };
   
   handleButtonRelease = () => {
@@ -84,11 +84,11 @@ class Button extends Component {
   }
 }
 
-Button.propTypes = {
+MathButton.propTypes = {
   text: PropTypes.string.isRequired,
   changeField: PropTypes.func.isRequired,
   changeDirection: PropTypes.bool.isRequired,
   hideForIphone8: PropTypes.bool.isRequired
 };
 
-export default Button;
+export default MathButton;

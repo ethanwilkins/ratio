@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import Button from '../components/Button';
+import MathButton from '../components/MathButton';
+import ControlButton from '../components/ControlButton';
 
 import settingsIcon from '../images/settingsIcon.svg';
 import logo from '../images/logo.svg';
@@ -26,17 +27,18 @@ class Toolbar extends Component {
     return (
       <div className={styles.mainControls}>
         <div className={styles.row}> 
-          <Button
+          <MathButton
             text="+"
             changeField={changeField}
             changeDirection={true}
             hideForIphone8={true}
           />
-          <div onClick={() => {setActiveControl('baseSize')}} className={cx(styles.controlButton, {
-            activeButton: activeControl === 'baseSize'
-          })}>
-            <div className={styles.buttonText}>Size</div>
-          </div>
+          <ControlButton
+            text="Size"
+            activeControl={activeControl}
+            controlType='baseSize'
+            setActiveControl={setActiveControl}
+          />
         </div>
 
         <div className={styles.row}>
@@ -47,43 +49,46 @@ class Toolbar extends Component {
           >
             <img className={styles.settingsIcon} src={settingsIcon} alt="Settings Icon"/>
           </div>
-          <Button
+          <MathButton
             text="-"
             changeField={changeField}
             changeDirection={false}
             hideForIphone8={true}
           />
-          <div onClick={() => {setActiveControl('scale')}} className={cx(styles.controlButton, {
-            activeButton: activeControl === 'scale'
-          })}>
-            <div className={styles.buttonText}>ratio</div>
-          </div>
+          <ControlButton
+            text="ratio"
+            activeControl={activeControl}
+            controlType='scale'
+            setActiveControl={setActiveControl}
+          />
         </div>
 
         <div className={styles.row}>
-          <Button
+          <MathButton
             text="+"
             changeField={changeField}
             changeDirection={true}
             hideForIphone8={false}
           />
-          <div onClick={() => {setActiveControl('lineHeight')}} className={cx(styles.controlButton, {
-            activeButton: activeControl === 'lineHeight'
-          })}>
-            <div className={styles.lineHeightButtonText}>Line Height</div>
-          </div>
+          <ControlButton
+            text="Line Height"
+            activeControl={activeControl}
+            controlType='lineHeight'
+            setActiveControl={setActiveControl}
+          />
         </div>
 
         <div className={styles.row}>
-          <Button
+          <MathButton
             text="-"
             changeField={changeField}
             changeDirection={false}
             hideForIphone8={false}
           />
-          <div onClick={reset} className={styles.controlButton}>
-            <div className={styles.buttonText}>Reset</div>
-          </div>
+          <ControlButton
+            text="Reset"
+            reset={reset}
+          />
         </div>
 
         <div className={styles.row + ' ' + styles.hideForIphone8}>
