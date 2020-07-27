@@ -16,7 +16,8 @@ class Button extends Component {
     const { changeField, changeDirection } = this.props;
     this.callChangeFieldInterval = setInterval(() => {
       const { longPressed } = this.state;
-      if (longPressed) {
+      // temporarily disabled until bug fix
+      if (false && longPressed) {
         changeField(changeDirection);
       }
     }, 125);
