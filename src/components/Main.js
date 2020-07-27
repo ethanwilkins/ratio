@@ -22,15 +22,28 @@ class Main extends Component {
   }
 
   componentDidMount(){
-    document.addEventListener("keydown", this.closeSettings);
+    document.addEventListener("keydown", this.handleKeyDown);
     // prevents long press or right click from opening contextmenu
     window.addEventListener("contextmenu", function(e) { e.preventDefault(); });
   }
 
   componentWillUnmount(){
-    document.removeEventListener("keydown", this.closeSettings);
+    document.removeEventListener("keydown", this.handleKeyDown);
     window.removeEventListener("contextmenu", function(e) { e.preventDefault(); });
   }
+  
+  handleKeyDown = (event) => {
+    // closes settings when user hits Escape key
+    if (event.keyCode === 27) { 
+      this.setState({
+        settingsOpen: false
+      }); 
+    }
+    // space bar generates random
+    else if (event.keyCode === 32) {
+      this.generateRandom();
+    }
+  };
   
   // updates value of textInput within Text
   updateTextInputValue = (event) => {
@@ -156,15 +169,6 @@ class Main extends Component {
     this.setState({
       settingsOpen: !settingsOpen
     });
-  };
-
-  // closes settings when user hits Escape key
-  closeSettings = (event) => {
-    if (event.keyCode === 27) { 
-      this.setState({
-        settingsOpen: false
-      }); 
-    }
   };
 
   render() {
