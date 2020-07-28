@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import mobile from 'is-mobile';
 
+import { isAndroid } from 'react-device-detect';
+
 import Toolbar from '../components/Toolbar';
 import Text from '../components/Text';
 import Settings from '../components/Settings';
@@ -120,7 +122,12 @@ class Main extends Component {
       baseSize: Math.round(Math.random() * (20 - 8) + 8),
       scale: Math.random() * (scaleMax - 1.1) + 1.1,
       lineHeight: Math.round(Math.random() * (32 - 22) + 22)
-    })
+    });
+    
+    // haptic feedback for android
+    if (isAndroid) {
+      window.navigator.vibrate(1);
+    }
   };
   
   updateLineCount = (event) => {
@@ -169,6 +176,10 @@ class Main extends Component {
     this.setState({
       settingsOpen: !settingsOpen
     });
+    // haptic feedback for android
+    if (isAndroid) {
+      window.navigator.vibrate(1);
+    }
   };
 
   render() {
