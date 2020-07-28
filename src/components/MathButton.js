@@ -34,16 +34,21 @@ class MathButton extends Component {
     this.buttonPressTimer = setTimeout(() => {
       this.toggleLongPressed();
     }, 500);
-    // haptic feedback for android
-    if (isAndroid) {
-      window.navigator.vibrate(1);
-    }
   };
   
   handleButtonRelease = () => {
     this.togglePressed();
     this.toggleLongPressed();
     clearTimeout(this.buttonPressTimer);
+  };
+  
+  // to ensure vibrate is only called once per press
+  handleTouchStart = () => {
+    this.togglePressed();
+    // haptic feedback for android
+    if (isAndroid) {
+      window.navigator.vibrate(1);
+    }
   };
   
   togglePressed = () => {
@@ -74,7 +79,7 @@ class MathButton extends Component {
       <div
         onMouseDown={this.handleButtonPress}
         onMouseUp={this.handleButtonRelease}
-        onTouchStart={this.handleButtonPress}
+        onTouchStart={this.handleTouchStart}
         onTouchEnd={this.handleButtonRelease}
         onClick={() => {changeField(changeDirection)}}
         className={cx(styles.mathButton, {
