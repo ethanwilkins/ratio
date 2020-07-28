@@ -154,7 +154,7 @@ class Settings extends Component {
               </div>
             </div>
           </div>
-          <div onClick={this.showSpecs} className={styles.row}>
+          <div className={styles.row}>
             <div className={styles.textSmall}>Export</div>
           </div>
         </div>
