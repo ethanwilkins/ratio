@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import { isAndroid } from 'react-device-detect';
+
 import styles from '../styles/ControlButton.module.scss';
 import classNames from 'classnames/bind';
 
@@ -18,6 +20,14 @@ class ControlButton extends Component {
     });
   };
   
+  handleTouchStart = () => {
+    this.togglePressed();
+    // haptic feedback for android
+    if (isAndroid) {
+      window.navigator.vibrate(1);
+    }
+  };
+  
   render() {
     const { pressed } = this.state;
     
@@ -33,7 +43,7 @@ class ControlButton extends Component {
       <div
         onMouseDown={this.togglePressed}
         onMouseUp={this.togglePressed}
-        onTouchStart={this.togglePressed}
+        onTouchStart={this.handleTouchStart}
         onTouchEnd={this.togglePressed}
         onClick={reset ? reset : () => setActiveControl(controlType)}
         className={cx(styles.controlButton, {

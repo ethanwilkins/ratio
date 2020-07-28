@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import { isAndroid } from 'react-device-detect';
+
 import styles from '../styles/MathButton.module.scss';
 import classNames from 'classnames/bind';
 
@@ -32,6 +34,10 @@ class MathButton extends Component {
     this.buttonPressTimer = setTimeout(() => {
       this.toggleLongPressed();
     }, 500);
+    // haptic feedback for android
+    if (isAndroid) {
+      window.navigator.vibrate(1);
+    }
   };
   
   handleButtonRelease = () => {
