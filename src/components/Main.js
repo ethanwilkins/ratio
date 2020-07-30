@@ -227,7 +227,6 @@ class Main extends Component {
           toggleSettings={this.toggleSettings}
           settingsOpen={settingsOpen} />
           
-        <Onboarding />
       </div>
     );
   }
