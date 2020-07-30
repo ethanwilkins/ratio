@@ -2,7 +2,7 @@ server {
     listen 80;
     listen [::]:80;
     root /home/node/ratio/build;
-    server_name socialmaya.com;
+    server_name typeratio.com;
     index index.html index.htm;
     location / {
     }
@@ -13,14 +13,14 @@ server {
     ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
 
     listen 443 ssl;
-    ssl_certificate /etc/letsencrypt/live/socialmaya.com-0002/fullchain.pem;
-    ssl_certificate_key /etc/letsencrypt/live/socialmaya.com-0002/privkey.pem;
+    ssl_certificate /etc/letsencrypt/live/typeratio.com/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/typeratio.com/privkey.pem;
 
     if ($scheme != "https") {
         return 301 https://$host$request_uri;
     }
 
     if ($host = $server_addr) {
-        return 301 https://socialmaya.com$request_uri;
+        return 301 https://typeratio.com$request_uri;
     } # to fix redirection from IP
 }

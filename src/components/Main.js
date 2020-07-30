@@ -3,9 +3,10 @@ import mobile from 'is-mobile';
 
 import { isAndroid } from 'react-device-detect';
 
-import Toolbar from '../components/Toolbar';
 import Text from '../components/Text';
+import Toolbar from '../components/Toolbar';
 import Settings from '../components/Settings';
+import Onboarding from '../components/Onboarding';
 
 import styles from '../styles/Main.module.scss';
 
@@ -225,6 +226,8 @@ class Main extends Component {
           handleLineCountSubmit={this.handleLineCountSubmit}
           toggleSettings={this.toggleSettings}
           settingsOpen={settingsOpen} />
+          
+        <Onboarding />
       </div>
     );
   }

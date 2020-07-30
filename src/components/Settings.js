@@ -5,13 +5,12 @@ import mobile from 'is-mobile';
 import { isMobileSafari } from 'react-device-detect';
 
 import magnifyingGlassIcon from '../images/magnifyingGlassIcon.svg';
-import exitSettingsIcon from '../images/exitSettingsIcon.svg';
+import exitSettingsIcon from '../images/exitIcon.svg';
 
 import styles from '../styles/Settings.module.scss';
 import classNames from 'classnames/bind';
 
 const cx = classNames.bind(styles);
-
 
 class Settings extends Component {
   constructor(props) {

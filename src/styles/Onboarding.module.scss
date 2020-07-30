@@ -1,0 +1,18 @@
+$black: #2A2122;
+$pink: #D1A7AC;
+
+$topGap: 25vh;
+
+.onboarding {
+  transition: margin-top .3s linear;
+  position: relative;
+  width: 382px;
+  height: 355px;
+  z-index: 10;
+  margin: 0 auto;
+  margin-top: $topGap;
+  background: white;
+  color: $black;
+  box-shadow: 0px 1px 16px rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
+}
