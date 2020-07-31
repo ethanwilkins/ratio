@@ -19,6 +19,7 @@ class TextLine extends Component {
   }
 
   handleClick = () => {
+    this.props.toggleCurrentlyInputtingText(true);
     this.setState(state => ({focused: true}), () => {
       // programmatically sets focus on input for this TextLine
       this.input.current.focus();
@@ -29,6 +30,7 @@ class TextLine extends Component {
     this.setState({
       focused: false
     });
+    this.props.toggleCurrentlyInputtingText(false);
   };
   
   // moves carat according to keys pressed
@@ -41,6 +43,7 @@ class TextLine extends Component {
       this.setState({
         focused: false
       });
+      this.props.toggleCurrentlyInputtingText(false);
     }
   };
   
@@ -123,6 +126,7 @@ TextLine.propTypes = {
   lineHeight: PropTypes.number.isRequired,
   text: PropTypes.string,
   updateTextInputValue: PropTypes.func.isRequired,
+  toggleCurrentlyInputtingText: PropTypes.func.isRequired
 };
 
 export default TextLine;

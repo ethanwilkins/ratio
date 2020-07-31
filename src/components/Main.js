@@ -40,6 +40,7 @@ class Main extends Component {
   }
   
   handleKeyDown = (event) => {
+    const { currentlyInputtingText } = this.state;
     // closes settings when user hits Escape key
     if (event.keyCode === 27) { 
       this.setState({
@@ -47,7 +48,7 @@ class Main extends Component {
       }); 
     }
     // space bar generates random
-    else if (event.keyCode === 32) {
+    else if (event.keyCode === 32 && !currentlyInputtingText) {
       this.generateRandom();
     }
   };
@@ -59,10 +60,9 @@ class Main extends Component {
     });
   };
   
-  toggleCurrentlyInputtingText = () => {
-    const { currentlyInputtingText } = this.state;
+  toggleCurrentlyInputtingText = (bool) => {
     this.setState({
-      currentlyInputtingText: !currentlyInputtingText
+      currentlyInputtingText: bool
     });
   };
 
@@ -132,6 +132,7 @@ class Main extends Component {
     // sets state for random values within ranges
     this.setState({
       baseSize: Math.round(Math.random() * (20 - 8) + 8),
+      // does not round, as scale only goes between 2 and 1.1
       scale: Math.random() * (scaleMax - 1.1) + 1.1,
       lineHeight: Math.round(Math.random() * (32 - 22) + 22)
     });

@@ -23,7 +23,8 @@ class Text extends Component {
       lineHeight,
       lineCount,
       text,
-      updateTextInputValue
+      updateTextInputValue,
+      toggleCurrentlyInputtingText
     } = this.props;
 
     return (
@@ -35,6 +36,7 @@ class Text extends Component {
                     lineHeight={lineHeight}
                     text={text}
                     updateTextInputValue={updateTextInputValue}
+                    toggleCurrentlyInputtingText={toggleCurrentlyInputtingText}
                   />;
         })}
       </div>
@@ -49,6 +51,7 @@ Text.propTypes = {
   lineCount: PropTypes.number.isRequired,
   text: PropTypes.string,
   updateTextInputValue: PropTypes.func.isRequired,
+  toggleCurrentlyInputtingText: PropTypes.func.isRequired
 };
 
 export default Text;
