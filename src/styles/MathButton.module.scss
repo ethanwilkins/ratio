@@ -67,7 +67,7 @@ $buttonWidth: 64.5px;
 }
 
 .buttonText {
-  padding-top: 20px;
+  padding-top: 21px;
 }
 
 .hideForIphone11 {
@@ -105,7 +105,7 @@ $buttonWidth: 64.5px;
     width: 0;
   }
   .buttonText {
-    padding-top: 25px;
+    padding-top: 26px;
   }
 }
 // end of iPad Pro 11
@@ -119,9 +119,6 @@ $buttonWidth: 64.5px;
     font-size: 13px;
     width: $buttonWidth;
     height: $buttonHeight;
-  }
-  .buttonText {
-    padding-top: 21px;
   }
   .hideForIphone8 {
     visibility: hidden;

@@ -1,7 +1,15 @@
 $black: #2A2122;
-$pink: #D1A7AC;
+$rose: #D1A7AC;
 
 $topGap: 25vh;
+
+
+@font-face {
+  font-family: "Inter";
+  src: url("../fonts/Inter.otf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
 
 .onboarding {
   transition: margin-top .3s linear;
@@ -15,4 +23,66 @@ $topGap: 25vh;
   color: $black;
   box-shadow: 0px 1px 16px rgba(0, 0, 0, 0.2);
   border-radius: 20px;
+}
+
+.exitIcon {
+  position: absolute;
+  top: 24px;
+  right: 31px;
+  width: 16px;
+}
+
+.logo {
+  position: absolute;
+  top: 88px;
+  left: 155px;
+  width: 72px;
+  padding: 10px 0px;
+}
+
+.text {
+  position: absolute;
+  top: 155px;
+  left: 57px;
+  color: $rose;
+  font-size: 18px;
+  font-family: "Inter";
+  width: 278px;
+  text-align: center;
+}
+
+.nextButton {
+  position: absolute;
+  top: 230px;
+  left: 159px;
+  width: 65px;
+  height: 39px;
+  border: 1.5px solid $rose;
+  border-radius: 7px;
+}
+
+.nextButtonText {
+  font-size: 12px;
+  text-align: center;
+  margin-top: 11px;
+}
+
+.ellipseButtons {
+  position: absolute;
+  top: 290px;
+  left: 108px;
+}
+
+.ellipseButton {
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  border: 1px solid $rose;
+  border-radius: 50%;
+  background: white;
+  margin-right: 16px;
+}
+
+.ellipseButtonActive {
+  background: $rose;
 }
