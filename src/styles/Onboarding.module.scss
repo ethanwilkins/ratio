@@ -3,12 +3,22 @@ $rose: #D1A7AC;
 
 $topGap: 25vh;
 
-
 @font-face {
   font-family: "Inter";
   src: url("../fonts/Inter.otf") format("truetype");
   font-weight: normal;
   font-style: normal;
+}
+
+// stops selection for tapping of buttons in mobile
+.noSelect {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .onboarding {
@@ -26,10 +36,12 @@ $topGap: 25vh;
 }
 
 .exitIcon {
+  @extend .noSelect;
   position: absolute;
   top: 24px;
   right: 31px;
   width: 16px;
+  cursor: pointer;
 }
 
 .logo {
@@ -52,6 +64,7 @@ $topGap: 25vh;
 }
 
 .nextButton {
+  @extend .noSelect;
   position: absolute;
   top: 230px;
   left: 159px;
@@ -59,6 +72,7 @@ $topGap: 25vh;
   height: 39px;
   border: 1.5px solid $rose;
   border-radius: 7px;
+  cursor: pointer;
 }
 
 .nextButtonText {
@@ -74,6 +88,7 @@ $topGap: 25vh;
 }
 
 .ellipseButton {
+  @extend .noSelect;
   display: inline-block;
   width: 9px;
   height: 9px;
@@ -81,6 +96,7 @@ $topGap: 25vh;
   border-radius: 50%;
   background: white;
   margin-right: 16px;
+  cursor: pointer;
 }
 
 .ellipseButtonActive {

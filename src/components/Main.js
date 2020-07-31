@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import mobile from 'is-mobile';
 
+import cookies from 'js-cookie';
+
+import mobile from 'is-mobile';
 import { isAndroid } from 'react-device-detect';
 
 import Text from '../components/Text';
@@ -22,7 +24,7 @@ class Main extends Component {
     font: '',
     text: null,
     settingsOpen: false,
-    onboardingOpen: true
+    onboardingClosed: false
   }
 
   componentDidMount(){
@@ -185,8 +187,11 @@ class Main extends Component {
   
   // called by onboarding exit button
   closeOnboarding = () => {
+    // saves cookie for next visit
+    cookies.set('onboardingClosed', 'true', { expires: 30 });
+    // sets state for immediate visual feedback
     this.setState({
-      onboardingOpen: false
+      onboardingClosed: true
     });
     // haptic feedback for android
     if (isAndroid) {
@@ -198,7 +203,7 @@ class Main extends Component {
     const {
       activeControl,
       settingsOpen,
-      onboardingOpen,
+      onboardingClosed,
       baseSize,
       scale,
       lineHeight,
@@ -240,7 +245,7 @@ class Main extends Component {
           toggleSettings={this.toggleSettings}
           settingsOpen={settingsOpen} />
           
-        {onboardingOpen &&
+        {!(cookies.get('onboardingClosed') === 'true' || onboardingClosed) &&
           <Onboarding closeOnboarding={this.closeOnboarding}/>
         }
       </div>
