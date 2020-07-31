@@ -23,6 +23,7 @@ class Main extends Component {
     lineCountInput: 4,
     font: '',
     text: null,
+    currentlyInputtingText: false,
     settingsOpen: false,
     onboardingClosed: false
   }
@@ -55,6 +56,13 @@ class Main extends Component {
   updateTextInputValue = (event) => {
     this.setState({
       text: event.target.value
+    });
+  };
+  
+  toggleCurrentlyInputtingText = () => {
+    const { currentlyInputtingText } = this.state;
+    this.setState({
+      currentlyInputtingText: !currentlyInputtingText
     });
   };
 
@@ -222,6 +230,7 @@ class Main extends Component {
             lineCount={lineCount}
             text={text}
             updateTextInputValue={this.updateTextInputValue}
+            toggleCurrentlyInputtingText={this.toggleCurrentlyInputtingText}
           />
 
           <Toolbar
