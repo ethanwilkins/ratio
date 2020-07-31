@@ -11,13 +11,13 @@ import classNames from 'classnames/bind';
 const cx = classNames.bind(styles);
 
 class Onboarding extends Component {
-
   render() {
-    const {} = this.props;
+    const { closeOnboarding } = this.props;
 
     return (
       <div className={styles.onboarding}>
         <img
+          onClick={closeOnboarding}
           className={styles.exitIcon}
           src={exitIcon}
           alt="Exit icon"
@@ -52,6 +52,7 @@ class Onboarding extends Component {
 }
 
 Onboarding.propTypes = {
+  closeOnboarding: PropTypes.func.isRequired
 };
 
 export default Onboarding;

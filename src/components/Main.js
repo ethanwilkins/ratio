@@ -21,7 +21,8 @@ class Main extends Component {
     lineCountInput: 4,
     font: '',
     text: null,
-    settingsOpen: false
+    settingsOpen: false,
+    onboardingOpen: true
   }
 
   componentDidMount(){
@@ -181,11 +182,23 @@ class Main extends Component {
       window.navigator.vibrate(1);
     }
   };
+  
+  // called by onboarding exit button
+  closeOnboarding = () => {
+    this.setState({
+      onboardingOpen: false
+    });
+    // haptic feedback for android
+    if (isAndroid) {
+      window.navigator.vibrate(1);
+    }
+  };
 
   render() {
     const {
       activeControl,
       settingsOpen,
+      onboardingOpen,
       baseSize,
       scale,
       lineHeight,
@@ -227,7 +240,9 @@ class Main extends Component {
           toggleSettings={this.toggleSettings}
           settingsOpen={settingsOpen} />
           
-        <Onboarding />
+        {onboardingOpen &&
+          <Onboarding closeOnboarding={this.closeOnboarding}/>
+        }
       </div>
     );
   }
