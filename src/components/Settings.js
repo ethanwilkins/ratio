@@ -160,7 +160,7 @@ class Settings extends Component {
               </div>
             </div>
           </div>
-          <div className={styles.row}>
+          <div onClick={this.showSpecs} className={styles.row}>
             <div className={styles.textSmall}>Export</div>
           </div>
           <div className={styles.resetOnboardingButton}>
