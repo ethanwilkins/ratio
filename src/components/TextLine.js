@@ -63,16 +63,13 @@ class TextLine extends Component {
     base = Math.round(base);
     lineHeight = Math.round(lineHeight);
     
-    // adjusts to match design spec
-    const lineHeightAdjustment = 3.8;
-    
     return (
       <div
         onClick={this.handleClick}
         className={styles.line}
         style={{
           fontSize: base + 'px',
-          lineHeight: (lineHeight * lineHeightAdjustment) + '%'
+          lineHeight: lineHeight + '%'
         }}
       >
         {false &&
@@ -90,9 +87,9 @@ class TextLine extends Component {
             className={styles.textInput}
             style={{
               fontSize: base + 'px',
-              lineHeight: (lineHeight * lineHeightAdjustment) + '%',
+              lineHeight: lineHeight + '%',
               width: (text === null ? base.toString().length : text.length) + 'ch',
-              height: (base * ((lineHeight * lineHeightAdjustment) / 100)) + 'px'
+              height: (base * (lineHeight / 100)) + 'px'
             }}
             type="text" value={text === null ? base : text}
             onChange={updateTextInputValue}
@@ -113,7 +110,7 @@ class TextLine extends Component {
             show: text === null
           })}
         >
-          /{lineHeight}
+          /{Math.round(lineHeight / 100 * base)}
         </span>
       </div>
     )

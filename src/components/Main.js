@@ -17,7 +17,7 @@ class Main extends Component {
     activeControl: 'scale',
     baseSize: 16,
     scale: 2.0,
-    lineHeight: 32,
+    lineHeight: 125,
     lineCount: 4,
     // used for changing lineCount in mobile
     lineCountInput: 4,
