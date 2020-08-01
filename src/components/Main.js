@@ -109,7 +109,7 @@ class Main extends Component {
       activeControl: 'scale',
       baseSize: 16,
       scale: 2.0,
-      lineHeight: 32,
+      lineHeight: 125,
       lineCount: 4,
       text: null
     });
@@ -137,7 +137,7 @@ class Main extends Component {
       baseSize: Math.round(Math.random() * (20 - 8) + 8),
       // does not round, as scale only goes between 2 and 1.1
       scale: Math.random() * (scaleMax - 1.1) + 1.1,
-      lineHeight: Math.round(Math.random() * (32 - 22) + 22)
+      lineHeight: Math.round(Math.random() * (200 - 100) + 100)
     });
     // haptic feedback for android
     if (isAndroid) {
@@ -193,7 +193,7 @@ class Main extends Component {
       this.setState({
         baseSizeInput: input
       });
-    // saves lineCount directly on key down, without extra input state, for desktop
+    // saves baseSize directly on key down, without extra input state, for desktop
     } else {
       // ignores enter key press, for desktop
       if (![13].includes(event.keyCode)) {
@@ -215,6 +215,39 @@ class Main extends Component {
       this.setState({
         baseSize: input,
         baseSizeInput: input
+      });
+    }
+  };
+  
+  updateScale = (event) => {
+    // sets variable for input from settings
+    const input = mobile() ? event.target.value : String.fromCharCode(event.which);
+    // saves input temporarily until user hits enter to submit, for mobile
+    if (mobile()) {
+      this.setState({
+        scaleInput: input
+      });
+    // saves scale directly on key down, without extra input state, for desktop
+    } else {
+      // ignores enter key press, for desktop
+      if (![13].includes(event.keyCode)) {
+        this.setScale(input);
+      }
+    }
+  };
+  
+  handleScaleSubmit = (event) => {
+    event.preventDefault();
+    const { scaleInput } = this.state;
+    this.setScale(scaleInput);
+  };
+  
+  setScale = (input) => {
+    // saves input in state if input is a number
+    if (!isNaN(input)) {
+      this.setState({
+        scale: input,
+        scaleInput: input
       });
     }
   };
@@ -262,6 +295,7 @@ class Main extends Component {
       baseSize,
       baseSizeInput,
       scale,
+      scaleInput,
       lineHeight,
       text,
       lineCount,
@@ -296,11 +330,13 @@ class Main extends Component {
           baseSizeInput={baseSizeInput}
           updateBaseSize={this.updateBaseSize}
           handleBaseSizeSubmit={this.handleBaseSizeSubmit}
-          scale={scale}
           lineHeight={lineHeight}
           lineCountInput={lineCountInput}
           updateLineCount={this.updateLineCount}
           handleLineCountSubmit={this.handleLineCountSubmit}
+          scaleInput={scaleInput}
+          updateScale={this.updateScale}
+          handleScaleSubmit={this.handleScaleSubmit}
           toggleSettings={this.toggleSettings}
           settingsOpen={settingsOpen}
           resetOnboarding={this.resetOnboarding}

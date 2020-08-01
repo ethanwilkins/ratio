@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import mobile from 'is-mobile';
 import { isMobileSafari } from 'react-device-detect';
 
+import SettingsInput from '../components/SettingsInput';
+
 import magnifyingGlassIcon from '../images/magnifyingGlassIcon.svg';
 import exitSettingsIcon from '../images/exitIcon.svg';
 
@@ -16,7 +18,6 @@ class Settings extends Component {
   constructor(props) {
     super(props);
     this.settings = React.createRef();
-    this.lineCountInput = React.createRef();
   }
   
   componentDidMount() {
@@ -35,10 +36,6 @@ class Settings extends Component {
         toggleSettings();
       }
     }
-  };
-  
-  focusLineCountInput = () => {
-    this.lineCountInput.current.focus();
   };
   
   // sets to true if iPhone11 and has toolbar and address bar shown
@@ -73,7 +70,9 @@ class Settings extends Component {
       baseSizeInput,
       updateBaseSize,
       handleBaseSizeSubmit,
-      scale,
+      scaleInput,
+      updateScale,
+      handleScaleSubmit,
       lineHeight,
       lineCountInput,
       updateLineCount,
@@ -91,15 +90,19 @@ class Settings extends Component {
         <div className={styles.container}>
           <div className={styles.row}>
             <div className={styles.text}>Size</div>
-            <div className={styles.button}>
-              <div className={styles.buttonText}>{baseSizeInput}</div>
-            </div>
+            <SettingsInput
+              input={baseSizeInput}
+              handleInputChange={updateBaseSize}
+              handleFormSubmit={handleBaseSizeSubmit}
+            />
           </div>
           <div className={styles.row}>
             <div className={styles.text}>Ratio</div>
-            <div className={styles.button}>
-              <div className={styles.buttonText}>{Math.floor(scale * 100) / 100}</div>
-            </div>
+            <SettingsInput
+              input={scaleInput}
+              handleInputChange={updateScale}
+              handleFormSubmit={handleScaleSubmit}
+            />
           </div>
           <div className={styles.row}>
             <div className={styles.text}>Line height</div>
@@ -108,35 +111,12 @@ class Settings extends Component {
             </div>
           </div>
           <div className={styles.row}>
-            <div className={styles.text}>Line Count</div>
-            <div onClick={this.focusLineCountInput} className={styles.button}>
-              {mobile() &&
-                <form
-                  className={styles.lineCountForm}
-                  noValidate
-                  autoComplete="off"
-                  onSubmit={handleLineCountSubmit}
-                >
-                  <input
-                    ref={this.lineCountInput}
-                    className={styles.lineCountInput}
-                    type="text" value={lineCountInput}
-                    onChange={updateLineCount}
-                    onBlur={this.handleBlur}
-                  />
-                </form>
-              }
-              {!mobile() &&
-                <input
-                  ref={this.lineCountInput}
-                  className={styles.lineCountInput}
-                  type="text" value={lineCountInput}
-                  onKeyDown={updateLineCount}
-                  onChange={updateLineCount}
-                  onBlur={this.handleBlur}
-                />
-              }
-            </div>
+            <div className={styles.text}>Line Count</div>            
+            <SettingsInput
+              input={lineCountInput}
+              handleInputChange={updateLineCount}
+              handleFormSubmit={handleLineCountSubmit}
+            />
           </div>
           <div className={styles.row + ' ' + styles.chooseFontRow}>
             <div className={styles.chooseFontText}>
@@ -180,7 +160,9 @@ Settings.propTypes = {
   baseSizeInput: PropTypes.number.isRequired,
   updateBaseSize: PropTypes.func.isRequired,
   handleBaseSizeSubmit: PropTypes.func.isRequired,
-  scale: PropTypes.number.isRequired,
+  scaleInput: PropTypes.number.isRequired,
+  updateScale: PropTypes.func.isRequired,
+  handleScaleSubmit: PropTypes.func.isRequired,
   lineHeight: PropTypes.number.isRequired,
   lineCountInput: PropTypes.number.isRequired,
   updateLineCount: PropTypes.func.isRequired,
