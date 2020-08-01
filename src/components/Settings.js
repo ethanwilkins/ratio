@@ -67,16 +67,23 @@ class Settings extends Component {
     const {
       toggleSettings,
       settingsOpen,
+      
       baseSizeInput,
       updateBaseSize,
       handleBaseSizeSubmit,
+      
       scaleInput,
       updateScale,
       handleScaleSubmit,
-      lineHeight,
+      
+      lineHeightInput,
+      updateLineHeight,
+      handleLineHeightSubmit,
+      
       lineCountInput,
       updateLineCount,
       handleLineCountSubmit,
+      
       resetOnboarding
     } = this.props;
 
@@ -94,6 +101,7 @@ class Settings extends Component {
               input={baseSizeInput}
               handleInputChange={updateBaseSize}
               handleFormSubmit={handleBaseSizeSubmit}
+              inputType="baseSize"
             />
           </div>
           <div className={styles.row}>
@@ -102,13 +110,17 @@ class Settings extends Component {
               input={scaleInput}
               handleInputChange={updateScale}
               handleFormSubmit={handleScaleSubmit}
+              inputType="scale"
             />
           </div>
           <div className={styles.row}>
             <div className={styles.text}>Line height</div>
-            <div className={styles.button}>
-              <div className={styles.buttonText}>{lineHeight}%</div>
-            </div>
+            <SettingsInput
+              input={lineHeightInput}
+              handleInputChange={updateLineHeight}
+              handleFormSubmit={handleLineHeightSubmit}
+              inputType="lineHeight"
+            />
           </div>
           <div className={styles.row}>
             <div className={styles.text}>Line Count</div>            
@@ -116,6 +128,7 @@ class Settings extends Component {
               input={lineCountInput}
               handleInputChange={updateLineCount}
               handleFormSubmit={handleLineCountSubmit}
+              inputType="lineCount"
             />
           </div>
           <div className={styles.row + ' ' + styles.chooseFontRow}>
@@ -157,16 +170,23 @@ class Settings extends Component {
 Settings.propTypes = {
   toggleSettings: PropTypes.func.isRequired,
   settingsOpen: PropTypes.bool.isRequired,
+  
   baseSizeInput: PropTypes.number.isRequired,
   updateBaseSize: PropTypes.func.isRequired,
   handleBaseSizeSubmit: PropTypes.func.isRequired,
+  
   scaleInput: PropTypes.number.isRequired,
   updateScale: PropTypes.func.isRequired,
   handleScaleSubmit: PropTypes.func.isRequired,
+  
   lineHeight: PropTypes.number.isRequired,
+  updateLineHeight: PropTypes.func.isRequired,
+  handleLineHeightSubmit: PropTypes.func.isRequired,
+  
   lineCountInput: PropTypes.number.isRequired,
   updateLineCount: PropTypes.func.isRequired,
   handleLineCountSubmit: PropTypes.func.isRequired,
+  
   resetOnboarding: PropTypes.func.isRequired
 };
 

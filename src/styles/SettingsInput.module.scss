@@ -1,6 +1,13 @@
 $black: #2A2122;
 $rose: #D1A7AC;
 
+@font-face {
+  font-family: "Inter Extra Bold";
+  src: url("../fonts/Inter-ExtraBold.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
 .button {
   float: right;
   background: $rose;
@@ -26,7 +33,6 @@ $rose: #D1A7AC;
   color: $black;
   caret-color: $black;
   background: $rose;
-  width: 1ch;
   position: relative;
   top: calc(50% - 1.7ch);
   left: calc(50% - 0.5ch);

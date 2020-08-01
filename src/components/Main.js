@@ -252,6 +252,39 @@ class Main extends Component {
     }
   };
   
+  updateLineHeight = (event) => {
+    // sets variable for input from settings
+    const input = mobile() ? event.target.value : String.fromCharCode(event.which);
+    // saves input temporarily until user hits enter to submit, for mobile
+    if (mobile()) {
+      this.setState({
+        lineHeightInput: input
+      });
+    // saves lineHeight directly on key down, without extra input state, for desktop
+    } else {
+      // ignores enter key press, for desktop
+      if (![13].includes(event.keyCode)) {
+        this.setLineHeight(input);
+      }
+    }
+  };
+  
+  handleLineHeightSubmit = (event) => {
+    event.preventDefault();
+    const { lineHeightInput } = this.state;
+    this.setLineHeight(lineHeightInput);
+  };
+  
+  setLineHeight = (input) => {
+    // saves input in state if input is a number
+    if (!isNaN(input)) {
+      this.setState({
+        lineHeight: input,
+        lineHeightInput: input
+      });
+    }
+  };
+  
   // opens and closes settings
   toggleSettings = () => {
     const { settingsOpen } = this.state;
@@ -297,6 +330,7 @@ class Main extends Component {
       scale,
       scaleInput,
       lineHeight,
+      lineHeightInput,
       text,
       lineCount,
       lineCountInput
@@ -330,13 +364,20 @@ class Main extends Component {
           baseSizeInput={baseSizeInput}
           updateBaseSize={this.updateBaseSize}
           handleBaseSizeSubmit={this.handleBaseSizeSubmit}
-          lineHeight={lineHeight}
-          lineCountInput={lineCountInput}
-          updateLineCount={this.updateLineCount}
-          handleLineCountSubmit={this.handleLineCountSubmit}
+          
           scaleInput={scaleInput}
           updateScale={this.updateScale}
           handleScaleSubmit={this.handleScaleSubmit}
+          
+          
+          lineHeightInput={lineHeightInput}
+          updateLineHeight={this.updateLineHeight}
+          handleLineHeightSubmit={this.handleLineHeightSubmit}
+          
+          lineCountInput={lineCountInput}
+          updateLineCount={this.updateLineCount}
+          handleLineCountSubmit={this.handleLineCountSubmit}
+          
           toggleSettings={this.toggleSettings}
           settingsOpen={settingsOpen}
           resetOnboarding={this.resetOnboarding}

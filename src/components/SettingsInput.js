@@ -22,7 +22,8 @@ class SettingsInput extends Component {
     const {
       input,
       handleInputChange,
-      handleFormSubmit
+      handleFormSubmit,
+      inputType
     } = this.props;
 
     return (
@@ -46,6 +47,7 @@ class SettingsInput extends Component {
           <input
             ref={this.input}
             className={styles.input}
+            style={{width: input.toString().length + 'ch', left: `calc(50% - ${input.toString().length * 0.4}ch)`}}
             type="text" value={input}
             onKeyDown={handleInputChange}
             onChange={handleInputChange}
@@ -59,7 +61,8 @@ class SettingsInput extends Component {
 SettingsInput.propTypes = {
   input: PropTypes.number.isRequired,
   handleInputChange: PropTypes.func.isRequired,
-  handleFormSubmit: PropTypes.func.isRequired
+  handleFormSubmit: PropTypes.func.isRequired,
+  inputType: PropTypes.string.isRequired
 };
 
 export default SettingsInput;
