@@ -16,8 +16,11 @@ class Main extends Component {
   state = {
     activeControl: 'scale',
     baseSize: 16,
+    baseSizeInput: 16,
     scale: 2.0,
+    scaleInput: 2.0,
     lineHeight: 125,
+    lineHeightInput: 125,
     lineCount: 4,
     // used for changing lineCount in mobile
     lineCountInput: 4,
@@ -181,7 +184,41 @@ class Main extends Component {
       }
     }
   };
-
+  
+  updateBaseSize = (event) => {
+    // sets variable for input from settings
+    const input = mobile() ? event.target.value : String.fromCharCode(event.which);
+    // saves input temporarily until user hits enter to submit, for mobile
+    if (mobile()) {
+      this.setState({
+        baseSizeInput: input
+      });
+    // saves lineCount directly on key down, without extra input state, for desktop
+    } else {
+      // ignores enter key press, for desktop
+      if (![13].includes(event.keyCode)) {
+        this.setBaseSize(input);
+      }
+    }
+  };
+  
+  handleBaseSizeSubmit = (event) => {
+    event.preventDefault();
+    const { baseSizeInput } = this.state;
+    this.setBaseSize(baseSizeInput);
+  };
+  
+  setBaseSize = (input) => {
+    input = Math.round(input);
+    // saves input in state if input is a number
+    if (!isNaN(input)) {
+      this.setState({
+        baseSize: input,
+        baseSizeInput: input
+      });
+    }
+  };
+  
   // opens and closes settings
   toggleSettings = () => {
     const { settingsOpen } = this.state;
@@ -223,6 +260,7 @@ class Main extends Component {
       settingsOpen,
       onboardingClosed,
       baseSize,
+      baseSizeInput,
       scale,
       lineHeight,
       text,
@@ -255,7 +293,9 @@ class Main extends Component {
         </div>
         
         <Settings
-          baseSize={baseSize}
+          baseSizeInput={baseSizeInput}
+          updateBaseSize={this.updateBaseSize}
+          handleBaseSizeSubmit={this.handleBaseSizeSubmit}
           scale={scale}
           lineHeight={lineHeight}
           lineCountInput={lineCountInput}

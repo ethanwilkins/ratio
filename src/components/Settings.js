@@ -70,7 +70,9 @@ class Settings extends Component {
     const {
       toggleSettings,
       settingsOpen,
-      baseSize,
+      baseSizeInput,
+      updateBaseSize,
+      handleBaseSizeSubmit,
       scale,
       lineHeight,
       lineCountInput,
@@ -90,7 +92,7 @@ class Settings extends Component {
           <div className={styles.row}>
             <div className={styles.text}>Size</div>
             <div className={styles.button}>
-              <div className={styles.buttonText}>{baseSize}</div>
+              <div className={styles.buttonText}>{baseSizeInput}</div>
             </div>
           </div>
           <div className={styles.row}>
@@ -175,7 +177,9 @@ class Settings extends Component {
 Settings.propTypes = {
   toggleSettings: PropTypes.func.isRequired,
   settingsOpen: PropTypes.bool.isRequired,
-  baseSize: PropTypes.number.isRequired,
+  baseSizeInput: PropTypes.number.isRequired,
+  updateBaseSize: PropTypes.func.isRequired,
+  handleBaseSizeSubmit: PropTypes.func.isRequired,
   scale: PropTypes.number.isRequired,
   lineHeight: PropTypes.number.isRequired,
   lineCountInput: PropTypes.number.isRequired,
