@@ -210,7 +210,7 @@ class Main extends Component {
   
   // brings Onboarding back up, from settings, also closes settings
   resetOnboarding = () => {
-    cookies.remove('onboardingClosed');
+    cookies.set('onboardingClosed', 'false');
     this.setState({
       onboardingClosed: false
     });
