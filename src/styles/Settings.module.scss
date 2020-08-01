@@ -197,6 +197,12 @@ $settingsTopGap: 65px;
   .show {
     margin-top: $settingsTopGap;
   }
+  .exitButton {
+    bottom: 30px;
+  }
+  .chooseFontRow {
+    padding-top: 20px;
+  }
 }
 // end of iMac
 
@@ -209,6 +215,9 @@ $settingsTopGap: 65px;
   }
   .show {
     margin-top: $settingsTopGap;
+  }
+  .exitButton {
+    bottom: 50px;
   }
 }
 // end of iPad Pro 11
