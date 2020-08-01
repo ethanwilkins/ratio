@@ -114,7 +114,7 @@ class Settings extends Component {
           <div className={styles.row}>
             <div className={styles.text}>Line height</div>
             <div className={styles.button}>
-              <div className={styles.buttonText}>{lineHeight}</div>
+              <div className={styles.buttonText}>{lineHeight}%</div>
             </div>
           </div>
           <div className={styles.row}>
