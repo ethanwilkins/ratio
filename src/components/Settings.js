@@ -17,19 +17,14 @@ class Settings extends Component {
     super(props);
     this.settings = React.createRef();
     this.lineCountInput = React.createRef();
-    this.state = { isIphone11WithToolbarShown: false };
   }
   
   componentDidMount() {
     document.addEventListener('mousedown', this.handleClickOutside);
-    // determines whether isIphone11WithToolbarShown on window resize
-    window.addEventListener('resize', this.setIphone11WithToolbarShown);
-    this.setIphone11WithToolbarShown();
   }
 
   componentWillUnmount() {
     document.removeEventListener('mousedown', this.handleClickOutside);
-    window.removeEventListener('resize', this.setIphone11WithToolbarShown);
   }
 
   // exits settings if user clicks anywhere outside of settings
@@ -47,20 +42,15 @@ class Settings extends Component {
   };
   
   // sets to true if iPhone11 and has toolbar and address bar shown
-  setIphone11WithToolbarShown = () => {
-    if (isMobileSafari
-      && window.screen.width === 414 && window.screen.height === 896
-      && window.innerHeight === 719
-      && window.devicePixelRatio === 2
-      && window.orientation === 0) {
-      this.setState({
-        isIphone11WithToolbarShown: true
-      });
-    }
+  isIphone11WithToolbarShown = () => {
+    return isMobileSafari
+        && window.screen.width === 414 && window.screen.height === 896
+        && window.innerHeight === 719
+        && window.devicePixelRatio === 2
+        && window.orientation === 0;
   }
   
   showSpecs = () => {
-    const { isIphone11WithToolbarShown } = this.state;
     const specs = {
       screenWidth: window.screen.width,
       screenHeight: window.screen.height,
@@ -71,7 +61,7 @@ class Settings extends Component {
       orientation: (window.orientation === 0 ? 'portrait' : 'landscape'),
       devicePixelRatio: window.devicePixelRatio,
       userAgent: navigator.userAgent,
-      isIphone11WithToolbarShown: isIphone11WithToolbarShown
+      isIphone11WithToolbarShown: this.isIphone11WithToolbarShown()
     };
     alert(JSON.stringify(specs));
   };
@@ -88,8 +78,6 @@ class Settings extends Component {
       handleLineCountSubmit,
       resetOnboarding
     } = this.props;
-    
-    const { isIphone11WithToolbarShown } = this.state;
 
     return (
       <div
@@ -173,7 +161,7 @@ class Settings extends Component {
           </div>
         </div>
         <img
-          style={isIphone11WithToolbarShown ? {bottom: '150px'} : null}
+          style={this.isIphone11WithToolbarShown() ? {bottom: '150px'} : null}
           onClick={toggleSettings}
           className={styles.exitButton}
           src={exitSettingsIcon}

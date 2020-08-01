@@ -187,6 +187,24 @@ $settingsTopGap: 65px;
 
 // After default, devices should descend from largest to smallest
 
+// Asus laptop 13 inch
+@media only screen and (min-width: 1366px) and (min-height: 640px) {
+  $settingsTopGap: 20px;
+  
+  .settings {
+    height: calc(100vh - #{$settingsTopGap});
+  }
+  .show {
+    margin-top: $settingsTopGap;
+  }
+  .exitButton {
+    bottom: 20px;
+  }
+  .chooseFontRow {
+    padding-top: 5px;
+  }
+}
+
 // iMac
 @media only screen and (min-width: 1280px) and (min-height: 720px) {
   $settingsTopGap: 40px;
