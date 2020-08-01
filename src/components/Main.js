@@ -197,7 +197,7 @@ class Main extends Component {
   // called by onboarding exit button
   closeOnboarding = () => {
     // saves cookie for next visit
-    cookies.set('onboardingClosed', 'true', { expires: 30 });
+    cookies.set('onboardingClosed', 'true', { expires: 365 });
     // sets state for immediate visual feedback
     this.setState({
       onboardingClosed: true
@@ -206,6 +206,15 @@ class Main extends Component {
     if (isAndroid) {
       window.navigator.vibrate(1);
     }
+  };
+  
+  // brings Onboarding back up, from settings, also closes settings
+  resetOnboarding = () => {
+    cookies.remove('onboardingClosed');
+    this.setState({
+      onboardingClosed: false
+    });
+    this.toggleSettings();
   };
 
   render() {
@@ -253,7 +262,9 @@ class Main extends Component {
           updateLineCount={this.updateLineCount}
           handleLineCountSubmit={this.handleLineCountSubmit}
           toggleSettings={this.toggleSettings}
-          settingsOpen={settingsOpen} />
+          settingsOpen={settingsOpen}
+          resetOnboarding={this.resetOnboarding}
+        />
           
         {!(cookies.get('onboardingClosed') === 'true' || onboardingClosed) &&
           <Onboarding closeOnboarding={this.closeOnboarding}/>

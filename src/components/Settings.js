@@ -85,7 +85,8 @@ class Settings extends Component {
       lineHeight,
       lineCountInput,
       updateLineCount,
-      handleLineCountSubmit
+      handleLineCountSubmit,
+      resetOnboarding
     } = this.props;
     
     const { isIphone11WithToolbarShown } = this.state;
@@ -99,15 +100,21 @@ class Settings extends Component {
       })}>
         <div className={styles.container}>
           <div className={styles.row}>
-            <div className={styles.text}>Size/Line height</div>
+            <div className={styles.text}>Size</div>
             <div className={styles.button}>
-              <div className={styles.buttonText}>{baseSize}/{lineHeight}</div>
+              <div className={styles.buttonText}>{baseSize}</div>
             </div>
           </div>
           <div className={styles.row}>
             <div className={styles.text}>Ratio</div>
             <div className={styles.button}>
               <div className={styles.buttonText}>{Math.floor(scale * 100) / 100}</div>
+            </div>
+          </div>
+          <div className={styles.row}>
+            <div className={styles.text}>Line height</div>
+            <div className={styles.button}>
+              <div className={styles.buttonText}>{lineHeight}</div>
             </div>
           </div>
           <div className={styles.row}>
@@ -156,6 +163,14 @@ class Settings extends Component {
           <div className={styles.row}>
             <div className={styles.textSmall}>Export</div>
           </div>
+          <div className={styles.resetOnboardingButton}>
+            <div
+              onClick={resetOnboarding}
+              className={styles.resetOnboardingButtonText}
+            >
+              Reset Onboarding
+            </div>
+          </div>
         </div>
         <img
           style={isIphone11WithToolbarShown ? {bottom: '150px'} : null}
@@ -177,7 +192,8 @@ Settings.propTypes = {
   lineHeight: PropTypes.number.isRequired,
   lineCountInput: PropTypes.number.isRequired,
   updateLineCount: PropTypes.func.isRequired,
-  handleLineCountSubmit: PropTypes.func.isRequired
+  handleLineCountSubmit: PropTypes.func.isRequired,
+  resetOnboarding: PropTypes.func.isRequired
 };
 
 export default Settings;
