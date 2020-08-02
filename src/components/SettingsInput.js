@@ -33,7 +33,7 @@ class SettingsInput extends Component {
   };
 
   render() {
-    const {
+    let {
       input,
       handleInputChange,
       handleFormSubmit,
@@ -41,6 +41,9 @@ class SettingsInput extends Component {
     } = this.props;
     
     const { focused } = this.state;
+    
+    // strips all digits starting at first number after decimal
+    input = inputType === 'scale' ? (Math.floor(input * 10) / 10) : input;
 
     return (
       <div onClick={this.handleClick} className={styles.button}>

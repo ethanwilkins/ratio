@@ -53,6 +53,10 @@ class Main extends Component {
     else if (event.keyCode === 32 && !currentlyInputtingText) {
       this.generateRandom();
     }
+    // brings up settings with 's' key
+    else if (event.keyCode === 83 && !currentlyInputtingText) {
+      this.toggleSettings();
+    }
   };
   
   // updates value of textInput within Text
@@ -83,21 +87,24 @@ class Main extends Component {
       const { baseSize } = this.state;
       this.setState({
         // directionIsUp === increment, otherwise decrement
-        baseSize: (directionIsUp ? baseSize + 0.5 : baseSize - 0.5)
+        baseSize: (directionIsUp ? baseSize + 0.5 : baseSize - 0.5),
+        baseSizeInput: (directionIsUp ? baseSize + 0.5 : baseSize - 0.5)
       });
     }
     else if (activeControl === 'scale') {
       const { scale } = this.state;
       this.setState({
         // directionIsUp === increment, otherwise decrement
-        scale: (directionIsUp ? scale + 0.1 : scale - 0.1)
+        scale: (directionIsUp ? scale + 0.1 : scale - 0.1),
+        scaleInput: (directionIsUp ? scale + 0.1 : scale - 0.1)
       });
     }
     else if (activeControl === 'lineHeight') {
       const { lineHeight } = this.state;
       this.setState({
         // directionIsUp === increment, otherwise decrement
-        lineHeight: (directionIsUp ? lineHeight + 1 : lineHeight - 1)
+        lineHeight: (directionIsUp ? lineHeight + 1 : lineHeight - 1),
+        lineHeightInput: (directionIsUp ? lineHeight + 1 : lineHeight - 1)
       });
     }
   };
@@ -107,9 +114,13 @@ class Main extends Component {
     this.setState({
       activeControl: 'scale',
       baseSize: 16,
+      baseSizeInput: 16,
       scale: 2.0,
+      scaleInput: 2.0,
       lineHeight: 125,
+      lineHeightInput: 125,
       lineCount: 4,
+      lineCountInput: 4,
       text: null
     });
   };
@@ -134,9 +145,12 @@ class Main extends Component {
     // sets state for random values within ranges
     this.setState({
       baseSize: Math.round(Math.random() * (20 - 8) + 8),
+      baseSizeInput: Math.round(Math.random() * (20 - 8) + 8),
       // does not round, as scale only goes between 2 and 1.1
       scale: Math.random() * (scaleMax - 1.1) + 1.1,
-      lineHeight: Math.round(Math.random() * (200 - 100) + 100)
+      scaleInput: Math.random() * (scaleMax - 1.1) + 1.1,
+      lineHeight: Math.round(Math.random() * (200 - 100) + 100),
+      lineHeightInput: Math.round(Math.random() * (200 - 100) + 100)
     });
     // haptic feedback for android
     if (isAndroid) {
