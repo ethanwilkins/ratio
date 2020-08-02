@@ -99,10 +99,13 @@ class Main extends Component {
     }
     else if (activeControl === 'scale') {
       const { scale } = this.state;
+      // floor to strip all digits starting 1 after decimal
+      const scaleUp = Math.floor((scale + 0.1 ) * 10) / 10;
+      const scaleDown = Math.floor((scale - 0.1 ) * 10) / 10;
       this.setState({
         // directionIsUp === increment, otherwise decrement
-        scale: (directionIsUp ? scale + 0.1 : scale - 0.1),
-        scaleInput: (directionIsUp ? scale + 0.1 : scale - 0.1)
+        scale: (directionIsUp ? scaleUp : scaleDown),
+        scaleInput: (directionIsUp ? scaleUp : scaleDown)
       });
     }
     else if (activeControl === 'lineHeight') {
@@ -154,7 +157,7 @@ class Main extends Component {
       baseSizeInput: Math.round(Math.random() * (20 - 8) + 8),
       // does not round, as scale only goes between 2 and 1.1. floor to strip all digits starting 1 after decimal
       scale: Math.floor((Math.random() * (scaleMax - 1.1) + 1.1) * 10) / 10,
-      scaleInput: Math.random() * (scaleMax - 1.1) + 1.1,
+      scaleInput: Math.floor((Math.random() * (scaleMax - 1.1) + 1.1) * 10) / 10,
       lineHeight: Math.round(Math.random() * (200 - 100) + 100),
       lineHeightInput: Math.round(Math.random() * (200 - 100) + 100)
     });
