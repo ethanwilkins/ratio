@@ -179,7 +179,7 @@ Settings.propTypes = {
   updateScale: PropTypes.func.isRequired,
   handleScaleSubmit: PropTypes.func.isRequired,
   
-  lineHeight: PropTypes.number.isRequired,
+  lineHeightInput: PropTypes.number.isRequired,
   updateLineHeight: PropTypes.func.isRequired,
   handleLineHeightSubmit: PropTypes.func.isRequired,
   

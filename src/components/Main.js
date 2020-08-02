@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 
 import cookies from 'js-cookie';
 
-import mobile from 'is-mobile';
 import { isAndroid } from 'react-device-detect';
 
 import Text from '../components/Text';
@@ -147,19 +146,11 @@ class Main extends Component {
   
   updateLineCount = (event) => {
     // sets variable for input from settings
-    const input = mobile() ? event.target.value : String.fromCharCode(event.which);
-    // saves input temporarily until user hits enter to submit, for mobile
-    if (mobile()) {
-      this.setState({
-        lineCountInput: input
-      });
-    // saves lineCount directly on key down, without extra input state, for desktop
-    } else {
-      // ignores enter key press, for desktop
-      if (![13].includes(event.keyCode)) {
-        this.setLineCount(input);
-      }
-    }
+    const input = event.target.value;
+    // saves input temporarily until user hits enter to submit
+    this.setState({
+      lineCountInput: (parseInt(input) ? parseInt(input) : 0)
+    });
   };
   
   handleLineCountSubmit = (event) => {
@@ -187,19 +178,11 @@ class Main extends Component {
   
   updateBaseSize = (event) => {
     // sets variable for input from settings
-    const input = mobile() ? event.target.value : String.fromCharCode(event.which);
-    // saves input temporarily until user hits enter to submit, for mobile
-    if (mobile()) {
-      this.setState({
-        baseSizeInput: input
-      });
-    // saves baseSize directly on key down, without extra input state, for desktop
-    } else {
-      // ignores enter key press, for desktop
-      if (![13].includes(event.keyCode)) {
-        this.setBaseSize(input);
-      }
-    }
+    const input = event.target.value;
+    // saves input temporarily until user hits enter to submit
+    this.setState({
+      baseSizeInput: (parseInt(input) ? parseInt(input) : 0)
+    });
   };
   
   handleBaseSizeSubmit = (event) => {
@@ -221,19 +204,11 @@ class Main extends Component {
   
   updateScale = (event) => {
     // sets variable for input from settings
-    const input = mobile() ? event.target.value : String.fromCharCode(event.which);
-    // saves input temporarily until user hits enter to submit, for mobile
-    if (mobile()) {
-      this.setState({
-        scaleInput: input
-      });
-    // saves scale directly on key down, without extra input state, for desktop
-    } else {
-      // ignores enter key press, for desktop
-      if (![13].includes(event.keyCode)) {
-        this.setScale(input);
-      }
-    }
+    const input = event.target.value;
+    // saves input temporarily until user hits enter to submit
+    this.setState({
+      scaleInput: (parseInt(input) ? parseInt(input) : 0)
+    });
   };
   
   handleScaleSubmit = (event) => {
@@ -254,19 +229,11 @@ class Main extends Component {
   
   updateLineHeight = (event) => {
     // sets variable for input from settings
-    const input = mobile() ? event.target.value : String.fromCharCode(event.which);
-    // saves input temporarily until user hits enter to submit, for mobile
-    if (mobile()) {
-      this.setState({
-        lineHeightInput: input
-      });
-    // saves lineHeight directly on key down, without extra input state, for desktop
-    } else {
-      // ignores enter key press, for desktop
-      if (![13].includes(event.keyCode)) {
-        this.setLineHeight(input);
-      }
-    }
+    const input = event.target.value;
+    // saves input temporarily until user hits enter to submit
+    this.setState({
+      lineHeightInput: (parseInt(input) ? parseInt(input) : 0)
+    });
   };
   
   handleLineHeightSubmit = (event) => {
@@ -383,9 +350,10 @@ class Main extends Component {
           resetOnboarding={this.resetOnboarding}
         />
           
-        {!(cookies.get('onboardingClosed') === 'true' || onboardingClosed) &&
-          <Onboarding closeOnboarding={this.closeOnboarding}/>
-        }
+        <Onboarding
+          onboardingClosed={onboardingClosed}
+          closeOnboarding={this.closeOnboarding}
+        />
       </div>
     );
   }

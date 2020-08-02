@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import cookies from 'js-cookie';
 import _ from 'lodash';
 
 import exitIcon from '../images/exitIcon.svg';
@@ -12,9 +13,9 @@ const cx = classNames.bind(styles);
 
 class Onboarding extends Component {
   render() {
-    const { closeOnboarding } = this.props;
+    const { onboardingClosed, closeOnboarding } = this.props;
 
-    return (
+    return !(cookies.get('onboardingClosed') === 'true' || onboardingClosed) && (
       <div className={styles.onboarding}>
         <img
           onClick={closeOnboarding}
@@ -47,11 +48,12 @@ class Onboarding extends Component {
           })}
         </div>
       </div>
-    )
+    );
   }
 }
 
 Onboarding.propTypes = {
+  onboardingClosed: PropTypes.bool.isRequired,
   closeOnboarding: PropTypes.func.isRequired
 };
 

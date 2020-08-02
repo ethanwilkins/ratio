@@ -14,7 +14,7 @@ class TextLine extends Component {
     this.state = {
       focused: false,
       cursorPosition: 0
-    }
+    };
     this.input = React.createRef();
   }
 
