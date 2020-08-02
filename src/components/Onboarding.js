@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import cookies from 'js-cookie';
 import _ from 'lodash';
+import { CookieStorage } from 'cookie-storage';
 
 import exitIcon from '../images/exitIcon.svg';
 import logo from '../images/logo.svg';
@@ -10,12 +10,18 @@ import styles from '../styles/Onboarding.module.scss';
 import classNames from 'classnames/bind';
 
 const cx = classNames.bind(styles);
+ 
+// Use default cookie options
+const cookies = new CookieStorage({
+  // sets to expire one year from now
+  expires: new Date(new Date().setFullYear(new Date().getFullYear() + 1))
+});
 
 class Onboarding extends Component {
   render() {
     const { onboardingClosed, closeOnboarding } = this.props;
 
-    return !(cookies.get('onboardingClosed', {expires: 365, path: ''}) === 'true' || onboardingClosed) && (
+    return !(cookies.getItem('onboardingClosed', {expires: 365, path: ''}) === 'true' || onboardingClosed) && (
       <div className={styles.onboarding}>
         <img
           onClick={closeOnboarding}

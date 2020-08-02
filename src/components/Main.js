@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 
-import cookies from 'js-cookie';
-
 import { isAndroid } from 'react-device-detect';
 
 import Text from '../components/Text';
@@ -10,6 +8,14 @@ import Settings from '../components/Settings';
 import Onboarding from '../components/Onboarding';
 
 import styles from '../styles/Main.module.scss';
+
+import { CookieStorage } from 'cookie-storage';
+ 
+// Use default cookie options
+const cookies = new CookieStorage({
+  // sets to expire one year from now
+  expires: new Date(new Date().setFullYear(new Date().getFullYear() + 1))
+});
 
 class Main extends Component {
   state = {
@@ -27,7 +33,7 @@ class Main extends Component {
     text: null,
     currentlyInputtingText: false,
     settingsOpen: false,
-    onboardingClosed: !(cookies.get('onboardingClosed', {expires: 365, path: ''}) === 'false')
+    onboardingClosed: (cookies.getItem('onboardingClosed') === 'true')
   }
 
   componentDidMount(){
@@ -292,7 +298,7 @@ class Main extends Component {
   // called by onboarding exit button
   closeOnboarding = () => {
     // saves cookie for next visit
-    cookies.set('onboardingClosed', 'true', { expires: 365, path: '' });
+    cookies.setItem('onboardingClosed', 'true');
     // sets state for immediate visual feedback
     this.setState({
       onboardingClosed: true
@@ -305,7 +311,7 @@ class Main extends Component {
   
   // brings Onboarding back up, from settings, also closes settings
   resetOnboarding = () => {
-    cookies.set('onboardingClosed', 'false', {expires: 365, path: ''});
+    cookies.setItem('onboardingClosed', 'false');
     this.setState({
       onboardingClosed: false
     });
