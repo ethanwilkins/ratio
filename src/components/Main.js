@@ -27,7 +27,7 @@ class Main extends Component {
     text: null,
     currentlyInputtingText: false,
     settingsOpen: false,
-    onboardingClosed: !(cookies.get('onboardingClosed') === 'false')
+    onboardingClosed: !(cookies.get('onboardingClosed', {expires: 365}) === 'false')
   }
 
   componentDidMount(){
@@ -307,7 +307,7 @@ class Main extends Component {
   
   // brings Onboarding back up, from settings, also closes settings
   resetOnboarding = () => {
-    cookies.set('onboardingClosed', 'false');
+    cookies.set('onboardingClosed', 'false', {expires: 365});
     this.setState({
       onboardingClosed: false
     });
