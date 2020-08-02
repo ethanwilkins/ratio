@@ -79,7 +79,10 @@ class SettingsInput extends Component {
 }
 
 SettingsInput.propTypes = {
-  input: PropTypes.number.isRequired,
+  input: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number
+  ]).isRequired,
   handleInputChange: PropTypes.func.isRequired,
   handleFormSubmit: PropTypes.func.isRequired,
   inputType: PropTypes.string.isRequired

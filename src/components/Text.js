@@ -46,7 +46,10 @@ class Text extends Component {
 
 Text.propTypes = {
   baseSize: PropTypes.number.isRequired,
-  scale: PropTypes.number.isRequired,
+  scale: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number
+  ]).isRequired,
   lineHeight: PropTypes.number.isRequired,
   lineCount: PropTypes.number.isRequired,
   text: PropTypes.string,

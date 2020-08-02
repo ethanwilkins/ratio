@@ -146,11 +146,11 @@ class Settings extends Component {
           <div onClick={this.showSpecs} className={styles.row}>
             <div className={styles.textSmall}>Export</div>
           </div>
-          <div className={styles.resetOnboardingButton}>
-            <div
-              onClick={resetOnboarding}
-              className={styles.resetOnboardingButtonText}
-            >
+          <div 
+            onClick={resetOnboarding}
+            className={styles.resetOnboardingButton}
+          >
+            <div className={styles.resetOnboardingButtonText}>
               Reset Onboarding
             </div>
           </div>
@@ -171,19 +171,31 @@ Settings.propTypes = {
   toggleSettings: PropTypes.func.isRequired,
   settingsOpen: PropTypes.bool.isRequired,
   
-  baseSizeInput: PropTypes.number.isRequired,
+  baseSizeInput: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number
+  ]).isRequired,
   updateBaseSize: PropTypes.func.isRequired,
   handleBaseSizeSubmit: PropTypes.func.isRequired,
   
-  scaleInput: PropTypes.number.isRequired,
+  scaleInput: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number
+  ]).isRequired,
   updateScale: PropTypes.func.isRequired,
   handleScaleSubmit: PropTypes.func.isRequired,
   
-  lineHeightInput: PropTypes.number.isRequired,
+  lineHeightInput: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number
+  ]).isRequired,
   updateLineHeight: PropTypes.func.isRequired,
   handleLineHeightSubmit: PropTypes.func.isRequired,
   
-  lineCountInput: PropTypes.number.isRequired,
+  lineCountInput: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number
+  ]).isRequired,
   updateLineCount: PropTypes.func.isRequired,
   handleLineCountSubmit: PropTypes.func.isRequired,
   

@@ -27,7 +27,7 @@ class Main extends Component {
     text: null,
     currentlyInputtingText: false,
     settingsOpen: false,
-    onboardingClosed: false
+    onboardingClosed: (cookies.get('onboardingClosed') === 'true')
   }
 
   componentDidMount(){
@@ -163,7 +163,7 @@ class Main extends Component {
     const input = event.target.value;
     // saves input temporarily until user hits enter to submit
     this.setState({
-      lineCountInput: (parseInt(input) ? parseInt(input) : 0)
+      lineCountInput: input
     });
   };
   
@@ -199,7 +199,7 @@ class Main extends Component {
     const input = event.target.value;
     // saves input temporarily until user hits enter to submit
     this.setState({
-      baseSizeInput: (parseInt(input) ? parseInt(input) : 0)
+      baseSizeInput: input
     });
   };
   
@@ -229,27 +229,22 @@ class Main extends Component {
     const input = event.target.value;
     // saves input temporarily until user hits enter to submit
     this.setState({
-      scaleInput: (parseInt(input) ? parseInt(input) : 0)
+      scaleInput: input
     });
   };
   
   handleScaleSubmit = (event) => {
     event.preventDefault();
     const { scaleInput } = this.state;
-    this.setScale(scaleInput);
+    // saves input in state if input is a number
+    if (!isNaN(scaleInput) && scaleInput <= 2.0) {
+      this.setState({
+        scale: scaleInput
+      });
+    }
     // haptic feedback for android
     if (isAndroid) {
       window.navigator.vibrate(1);
-    }
-  };
-  
-  setScale = (input) => {
-    // saves input in state if input is a number
-    if (!isNaN(input)) {
-      this.setState({
-        scale: input,
-        scaleInput: input
-      });
     }
   };
   
@@ -258,7 +253,7 @@ class Main extends Component {
     const input = event.target.value;
     // saves input temporarily until user hits enter to submit
     this.setState({
-      lineHeightInput: (parseInt(input) ? parseInt(input) : 0)
+      lineHeightInput: input
     });
   };
   
@@ -284,10 +279,12 @@ class Main extends Component {
   
   // opens and closes settings
   toggleSettings = () => {
-    const { settingsOpen } = this.state;
-    this.setState({
-      settingsOpen: !settingsOpen
-    });
+    const { settingsOpen, onboardingClosed } = this.state;
+    if (onboardingClosed) {
+      this.setState({
+        settingsOpen: !settingsOpen
+      });
+    }
     // haptic feedback for android
     if (isAndroid) {
       window.navigator.vibrate(1);
