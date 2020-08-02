@@ -280,11 +280,9 @@ class Main extends Component {
   // opens and closes settings
   toggleSettings = () => {
     const { settingsOpen, onboardingClosed } = this.state;
-    if (onboardingClosed) {
-      this.setState({
-        settingsOpen: !settingsOpen
-      });
-    }
+    this.setState({
+      settingsOpen: !settingsOpen
+    });
     // haptic feedback for android
     if (isAndroid) {
       window.navigator.vibrate(1);
