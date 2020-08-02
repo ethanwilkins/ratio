@@ -171,6 +171,10 @@ class Main extends Component {
     event.preventDefault();
     const { lineCountInput } = this.state;
     this.setLineCount(lineCountInput);
+    // haptic feedback for android
+    if (isAndroid) {
+      window.navigator.vibrate(1);
+    }
   };
   
   setLineCount = (input) => {
@@ -203,6 +207,10 @@ class Main extends Component {
     event.preventDefault();
     const { baseSizeInput } = this.state;
     this.setBaseSize(baseSizeInput);
+    // haptic feedback for android
+    if (isAndroid) {
+      window.navigator.vibrate(1);
+    }
   };
   
   setBaseSize = (input) => {
@@ -229,6 +237,10 @@ class Main extends Component {
     event.preventDefault();
     const { scaleInput } = this.state;
     this.setScale(scaleInput);
+    // haptic feedback for android
+    if (isAndroid) {
+      window.navigator.vibrate(1);
+    }
   };
   
   setScale = (input) => {
@@ -254,6 +266,10 @@ class Main extends Component {
     event.preventDefault();
     const { lineHeightInput } = this.state;
     this.setLineHeight(lineHeightInput);
+    // haptic feedback for android
+    if (isAndroid) {
+      window.navigator.vibrate(1);
+    }
   };
   
   setLineHeight = (input) => {
