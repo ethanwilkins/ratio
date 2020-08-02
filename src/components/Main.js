@@ -27,7 +27,7 @@ class Main extends Component {
     text: null,
     currentlyInputtingText: false,
     settingsOpen: false,
-    onboardingClosed: (cookies.get('onboardingClosed') === 'true')
+    onboardingClosed: !(cookies.get('onboardingClosed') === 'false')
   }
 
   componentDidMount(){
