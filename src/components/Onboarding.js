@@ -15,7 +15,7 @@ class Onboarding extends Component {
   render() {
     const { onboardingClosed, closeOnboarding } = this.props;
 
-    return !(cookies.get('onboardingClosed', {expires: 365}) === 'true' || onboardingClosed) && (
+    return !(cookies.get('onboardingClosed', {expires: 365, path: ''}) === 'true' || onboardingClosed) && (
       <div className={styles.onboarding}>
         <img
           onClick={closeOnboarding}

@@ -27,7 +27,7 @@ class Main extends Component {
     text: null,
     currentlyInputtingText: false,
     settingsOpen: false,
-    onboardingClosed: !(cookies.get('onboardingClosed', {expires: 365}) === 'false')
+    onboardingClosed: !(cookies.get('onboardingClosed', {expires: 365, path: ''}) === 'false')
   }
 
   componentDidMount(){
@@ -279,7 +279,7 @@ class Main extends Component {
   
   // opens and closes settings
   toggleSettings = () => {
-    const { settingsOpen, onboardingClosed } = this.state;
+    const { settingsOpen } = this.state;
     this.setState({
       settingsOpen: !settingsOpen
     });
@@ -292,7 +292,7 @@ class Main extends Component {
   // called by onboarding exit button
   closeOnboarding = () => {
     // saves cookie for next visit
-    cookies.set('onboardingClosed', 'true', { expires: 365 });
+    cookies.set('onboardingClosed', 'true', { expires: 365, path: '' });
     // sets state for immediate visual feedback
     this.setState({
       onboardingClosed: true
@@ -305,7 +305,7 @@ class Main extends Component {
   
   // brings Onboarding back up, from settings, also closes settings
   resetOnboarding = () => {
-    cookies.set('onboardingClosed', 'false', {expires: 365});
+    cookies.set('onboardingClosed', 'false', {expires: 365, path: ''});
     this.setState({
       onboardingClosed: false
     });
