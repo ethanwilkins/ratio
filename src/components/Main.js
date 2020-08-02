@@ -152,8 +152,8 @@ class Main extends Component {
     this.setState({
       baseSize: Math.round(Math.random() * (20 - 8) + 8),
       baseSizeInput: Math.round(Math.random() * (20 - 8) + 8),
-      // does not round, as scale only goes between 2 and 1.1
-      scale: Math.random() * (scaleMax - 1.1) + 1.1,
+      // does not round, as scale only goes between 2 and 1.1. floor to strip all digits starting 1 after decimal
+      scale: Math.floor((Math.random() * (scaleMax - 1.1) + 1.1) * 10) / 10,
       scaleInput: Math.random() * (scaleMax - 1.1) + 1.1,
       lineHeight: Math.round(Math.random() * (200 - 100) + 100),
       lineHeightInput: Math.round(Math.random() * (200 - 100) + 100)
@@ -177,6 +177,8 @@ class Main extends Component {
     event.preventDefault();
     const { lineCountInput } = this.state;
     this.setLineCount(lineCountInput);
+    // unfocuses all input
+    this.blurAll();
     // haptic feedback for android
     if (isAndroid) {
       window.navigator.vibrate(1);
@@ -213,6 +215,8 @@ class Main extends Component {
     event.preventDefault();
     const { baseSizeInput } = this.state;
     this.setBaseSize(baseSizeInput);
+    // unfocuses all input
+    this.blurAll();
     // haptic feedback for android
     if (isAndroid) {
       window.navigator.vibrate(1);
@@ -245,9 +249,12 @@ class Main extends Component {
     // saves input in state if input is a number
     if (!isNaN(scaleInput) && scaleInput <= 2.0) {
       this.setState({
-        scale: scaleInput
+        // strips digits starting 1 digit after decimal
+        scale: Math.floor(scaleInput * 10) / 10
       });
     }
+    // unfocuses all input
+    this.blurAll();
     // haptic feedback for android
     if (isAndroid) {
       window.navigator.vibrate(1);
@@ -267,6 +274,8 @@ class Main extends Component {
     event.preventDefault();
     const { lineHeightInput } = this.state;
     this.setLineHeight(lineHeightInput);
+    // unfocuses all input
+    this.blurAll();
     // haptic feedback for android
     if (isAndroid) {
       window.navigator.vibrate(1);
@@ -316,6 +325,13 @@ class Main extends Component {
       onboardingClosed: false
     });
     this.toggleSettings();
+  };
+  
+  blurAll = () => {
+    const tmp = document.createElement("input");
+    document.body.appendChild(tmp);
+    tmp.focus();
+    document.body.removeChild(tmp);
   };
 
   render() {

@@ -16,15 +16,6 @@ class SettingsInput extends Component {
       this.input.current.focus();
     });
   };
-  
-  handleKeyDown = (event) => {
-    // blurs input when user hits enter
-    if ([13].includes(event.keyCode)) {
-      this.setState({
-        focused: false
-      });
-    }
-  };
 
   handleBlur = () => {
     this.setState({
@@ -41,9 +32,6 @@ class SettingsInput extends Component {
     } = this.props;
     
     const { focused } = this.state;
-    
-    // strips all digits starting at first number after decimal
-    input = inputType === 'scale' ? (Math.floor(input * 10) / 10) : input;
 
     return (
       <div onClick={this.handleClick} className={styles.button}>
@@ -68,7 +56,6 @@ class SettingsInput extends Component {
               style={{width: input.toString().length + 'ch', left: `calc(50% - ${input.toString().length * 0.4}ch)`}}
               type="text" value={input}
               onChange={handleInputChange}
-              onKeyDown={this.handleKeyDown}
               onBlur={this.handleBlur}
             />
           </form>
