@@ -9,14 +9,6 @@ import Onboarding from '../components/Onboarding';
 
 import styles from '../styles/Main.module.scss';
 
-import { CookieStorage } from 'cookie-storage';
- 
-// Use default cookie options
-const cookies = new CookieStorage({
-  // sets to expire one year from now
-  expires: new Date(new Date().setFullYear(new Date().getFullYear() + 1))
-});
-
 class Main extends Component {
   state = {
     activeControl: 'scale',
@@ -33,16 +25,16 @@ class Main extends Component {
     text: null,
     currentlyInputtingText: false,
     settingsOpen: false,
-    onboardingClosed: (cookies.getItem('onboardingClosed') === 'true')
+    onboardingClosed: localStorage.onboardingClosed
   }
 
-  componentDidMount(){
+  componentDidMount() {
     document.addEventListener("keydown", this.handleKeyDown);
     // prevents long press or right click from opening contextmenu
     window.addEventListener("contextmenu", function(e) { e.preventDefault(); });
   }
 
-  componentWillUnmount(){
+  componentWillUnmount() {
     document.removeEventListener("keydown", this.handleKeyDown);
     window.removeEventListener("contextmenu", function(e) { e.preventDefault(); });
   }
@@ -309,8 +301,8 @@ class Main extends Component {
   
   // called by onboarding exit button
   closeOnboarding = () => {
-    // saves cookie for next visit
-    cookies.setItem('onboardingClosed', 'true');
+    // saves for next visit
+    localStorage.setItem('onboardingClosed', true);
     // sets state for immediate visual feedback
     this.setState({
       onboardingClosed: true
@@ -323,7 +315,7 @@ class Main extends Component {
   
   // brings Onboarding back up, from settings, also closes settings
   resetOnboarding = () => {
-    cookies.clear();
+    localStorage.clear();
     this.setState({
       onboardingClosed: false
     });
