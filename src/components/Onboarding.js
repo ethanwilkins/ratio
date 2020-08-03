@@ -134,9 +134,21 @@ class Onboarding extends Component {
           </div>
         }
         
-        <div onClick={this.handleNextButtonClick} className={styles.nextButton}>
+        {slideIndex === 6 &&
+          <div>
+            <div className={styles.customizBodyText}>
+              Tap reset to start from scratch.
+            </div>
+          </div>
+        }
+        
+        <div
+          onClick={slideIndex === 6 ? closeOnboarding : this.handleNextButtonClick}
+          className={styles.nextButton}
+          style={slideIndex === 6 ? {width: '112px', left: '135px'} : null}
+        >
           <div className={styles.nextButtonText}>
-            Next
+            {slideIndex === 6 ? 'Get Started!' : 'Next'}
           </div>
         </div>
         
@@ -153,7 +165,7 @@ class Onboarding extends Component {
 }
 
 Onboarding.propTypes = {
-  onboardingClosed: PropTypes.string.isRequired,
+  onboardingClosed: PropTypes.string,
   closeOnboarding: PropTypes.func.isRequired
 };
 
