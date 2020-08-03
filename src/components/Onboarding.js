@@ -11,14 +11,10 @@ import classNames from 'classnames/bind';
 const cx = classNames.bind(styles);
  
 class Onboarding extends Component {
-  componentDidMount() {
-    alert("Onboarding mounted.");
-  }
-  
   render() {
     const { onboardingClosed, closeOnboarding } = this.props;
 
-    return (
+    return (onboardingClosed === undefined || localStorage.onboardingClosed === undefined) && (
       <div className={styles.onboarding}>
         <img
           onClick={closeOnboarding}
