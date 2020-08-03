@@ -126,6 +126,14 @@ class Onboarding extends Component {
           </div>
         }
         
+        {slideIndex === 5 &&
+          <div>
+            <div className={styles.customizBodyText}>
+              If you’re feeling lucky tap <img src={logo} className={styles.inTextLogo} alt="ratio"/>.
+            </div>
+          </div>
+        }
+        
         <div onClick={this.handleNextButtonClick} className={styles.nextButton}>
           <div className={styles.nextButtonText}>
             Next
