@@ -127,6 +127,52 @@ $rose: #D1A7AC;
   top: 145px;
 }
 
+.customizTextContainer {
+  position: absolute;
+  top: 88px;
+  left: 117px;
+}
+
+.customizText {
+  float: left;
+  font-size: 32.6px;
+  font-family: "Inter Extra Bold";
+}
+
+.customizTextCarat {
+  float: left;
+  width: 2px;
+  height: 34px;
+  border-radius: 26px;
+  background: $rose;
+  margin-left: -1px;
+  position: relative;
+  top: 2px;
+}
+
+.customizBodyText {
+  @extend .text;
+  top: 145px;
+  line-height: 22px;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0.0;
+  }
+}
+
+@-webkit-keyframes blink {
+  50% {
+    opacity: 0.0;
+  }
+}
+
+.blink {
+  animation: blink 1s step-start 0s infinite;
+  -webkit-animation: blink 1s step-start 0s infinite;
+}
+
 .nextButton {
   position: absolute;
   top: 230px;

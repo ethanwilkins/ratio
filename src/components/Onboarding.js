@@ -112,6 +112,20 @@ class Onboarding extends Component {
           </div>
         }
         
+        {slideIndex === 4 &&
+          <div>
+            <div className={styles.customizTextContainer}>
+              <div className={styles.customizText}>
+                Customiz
+              </div>
+              <div className={styles.customizTextCarat + ' ' + styles.blink}></div>
+            </div>
+            <div className={styles.customizBodyText}>
+              If you want to customize the preview text, select it!
+            </div>
+          </div>
+        }
+        
         <div onClick={this.handleNextButtonClick} className={styles.nextButton}>
           <div className={styles.nextButtonText}>
             Next
