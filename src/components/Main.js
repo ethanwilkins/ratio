@@ -346,7 +346,12 @@ class Main extends Component {
     } = this.state;
 
     return (
-      <div>
+      <div>  
+        <Onboarding
+          onboardingClosed={onboardingClosed}
+          closeOnboarding={this.closeOnboarding}
+        />
+        
         <div className={styles.main}>
           <Text
             baseSize={baseSize}
@@ -390,11 +395,6 @@ class Main extends Component {
           toggleSettings={this.toggleSettings}
           settingsOpen={settingsOpen}
           resetOnboarding={this.resetOnboarding}
-        />
-          
-        <Onboarding
-          onboardingClosed={onboardingClosed}
-          closeOnboarding={this.closeOnboarding}
         />
       </div>
     );
