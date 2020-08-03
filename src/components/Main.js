@@ -37,7 +37,6 @@ class Main extends Component {
   }
 
   componentDidMount(){
-    cookies.clear();
     document.addEventListener("keydown", this.handleKeyDown);
     // prevents long press or right click from opening contextmenu
     window.addEventListener("contextmenu", function(e) { e.preventDefault(); });
@@ -324,7 +323,7 @@ class Main extends Component {
   
   // brings Onboarding back up, from settings, also closes settings
   resetOnboarding = () => {
-    cookies.setItem('onboardingClosed', 'false');
+    cookies.clear();
     this.setState({
       onboardingClosed: false
     });
