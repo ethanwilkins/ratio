@@ -11,6 +11,10 @@ import classNames from 'classnames/bind';
 const cx = classNames.bind(styles);
  
 class Onboarding extends Component {
+  componentDidMount() {
+    alert("Onboarding mounted.");
+  }
+  
   render() {
     const { onboardingClosed, closeOnboarding } = this.props;
 
