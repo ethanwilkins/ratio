@@ -14,7 +14,7 @@ class Onboarding extends Component {
   render() {
     const { onboardingClosed, closeOnboarding } = this.props;
 
-    return true && (
+    return (
       <div className={styles.onboarding}>
         <img
           onClick={closeOnboarding}
@@ -52,7 +52,7 @@ class Onboarding extends Component {
 }
 
 Onboarding.propTypes = {
-  onboardingClosed: PropTypes.bool.isRequired,
+  onboardingClosed: PropTypes.string.isRequired,
   closeOnboarding: PropTypes.func.isRequired
 };
 
