@@ -37,6 +37,7 @@ class Main extends Component {
   }
 
   componentDidMount(){
+    cookieStorage.clear();
     document.addEventListener("keydown", this.handleKeyDown);
     // prevents long press or right click from opening contextmenu
     window.addEventListener("contextmenu", function(e) { e.preventDefault(); });
