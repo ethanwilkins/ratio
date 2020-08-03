@@ -4,6 +4,7 @@ import _ from 'lodash';
 
 import miniToolbar from '../images/miniToolbar.svg';
 import exitIcon from '../images/exitIcon.svg';
+import settingsIcon from '../images/settingsIcon.svg';
 import logo from '../images/logo.svg';
 
 import styles from '../styles/Onboarding.module.scss';
@@ -63,6 +64,44 @@ class Onboarding extends Component {
               style={{paddingTop: '10px'}}
             >
               Select the attribute you want to modify from the tool bar
+            </div>
+          </div>
+        }
+        
+        {slideIndex === 2 &&
+          <div>
+            <div className={styles.mathButtonsContainer}>
+              <div
+                className={styles.mathButton}
+                style={{marginRight: '4px'}}
+              >
+                <div className={styles.mathButtonText}>
+                  +
+                </div>
+              </div>
+              <div className={styles.mathButton}>
+                <div className={styles.mathButtonText}>
+                  -
+                </div>
+              </div>
+            </div>
+            
+            <div
+              className={styles.text}
+              style={{paddingTop: '10px'}}
+            >
+              Tap <span className={styles.blackText}>+</span> & <span className={styles.blackText}>-</span> to increase or decrease the attribute’s value
+            </div>
+          </div>
+        }
+        
+        {slideIndex === 3 &&
+          <div>
+            <div className={styles.increaseLineCountText}>
+              Increase Line Count?
+            </div>
+            <div className={styles.increaseLineCountBodyText}>
+              Want to increase or decrease the number of lines? Tap <img src={settingsIcon} alt="Settings icon" className={styles.settingsIcon} /> and enter your desired number of lines
             </div>
           </div>
         }
