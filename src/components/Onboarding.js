@@ -30,6 +30,16 @@ class Onboarding extends Component {
     }
   };
   
+  handleEllipseButtonClick = (slideIndex) => {
+    this.setState({
+      slideIndex: slideIndex
+    });
+    // haptic feedback for android
+    if (isAndroid) {
+      window.navigator.vibrate(1);
+    }
+  };
+  
   render() {
     const { slideIndex } = this.state;
     const { onboardingClosed, closeOnboarding } = this.props;
@@ -154,9 +164,12 @@ class Onboarding extends Component {
         
         <div className={styles.ellipseButtons}>
           {_.times(7, (i) => {
-            return  <span key={i} className={cx(styles.ellipseButton, {
-                      ellipseButtonActive: i === slideIndex
-                    })}></span>;
+            return  <span
+                      key={i}
+                      onClick={() => this.handleEllipseButtonClick(i)}
+                      className={cx(styles.ellipseButton, {
+                        ellipseButtonActive: i === slideIndex
+                      })}></span>;
           })}
         </div>
       </div>
@@ -165,7 +178,10 @@ class Onboarding extends Component {
 }
 
 Onboarding.propTypes = {
-  onboardingClosed: PropTypes.string,
+  onboardingClosed: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.bool
+  ]),
   closeOnboarding: PropTypes.func.isRequired
 };
 
