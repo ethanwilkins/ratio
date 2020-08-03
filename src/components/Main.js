@@ -29,6 +29,8 @@ class Main extends Component {
   }
 
   componentDidMount() {
+    alert(localStorage);
+    alert(localStorage.onboardingClosed);
     document.addEventListener("keydown", this.handleKeyDown);
     // prevents long press or right click from opening contextmenu
     window.addEventListener("contextmenu", function(e) { e.preventDefault(); });
@@ -315,7 +317,9 @@ class Main extends Component {
   
   // brings Onboarding back up, from settings, also closes settings
   resetOnboarding = () => {
+    alert(localStorage.onboardingClosed);
     localStorage.clear();
+    alert(localStorage.onboardingClosed);
     this.setState({
       onboardingClosed: false
     });
