@@ -318,7 +318,6 @@ class Main extends Component {
     const {
       activeControl,
       settingsOpen,
-      onboardingClosed,
       baseSize,
       baseSizeInput,
       scale,
