@@ -14,7 +14,7 @@ class Onboarding extends Component {
   render() {
     const { onboardingClosed, closeOnboarding } = this.props;
 
-    return (onboardingClosed === undefined || localStorage.onboardingClosed === undefined) && (
+    return true && (
       <div className={styles.onboarding}>
         <img
           onClick={closeOnboarding}
