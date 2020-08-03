@@ -112,8 +112,8 @@ class Main extends Component {
       const { lineHeight } = this.state;
       this.setState({
         // directionIsUp === increment, otherwise decrement
-        lineHeight: (directionIsUp ? lineHeight + 1 : lineHeight - 1),
-        lineHeightInput: (directionIsUp ? lineHeight + 1 : lineHeight - 1)
+        lineHeight: (directionIsUp ? lineHeight + 5 : lineHeight - 5),
+        lineHeightInput: (directionIsUp ? lineHeight + 5 : lineHeight - 5)
       });
     }
   };
