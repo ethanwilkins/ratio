@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import _ from 'lodash';
 
 import { isAndroid } from 'react-device-detect';
@@ -16,7 +15,8 @@ const cx = classNames.bind(styles);
  
 class Onboarding extends Component {
   state = {
-    slideIndex: 0
+    slideIndex: 0,
+    closed: localStorage.onboardingClosed
   };
   
   handleNextButtonClick = () => {
@@ -40,14 +40,30 @@ class Onboarding extends Component {
     }
   };
   
+  
+  
+  // called by onboarding exit button
+  close = () => {
+    // saves for next visit
+    localStorage.setItem('onboardingClosed', true);
+    // sets state for immediate visual feedback
+    this.setState({
+      closed: true,
+      slideIndex: 0
+    });
+    // haptic feedback for android
+    if (isAndroid) {
+      window.navigator.vibrate(1);
+    }
+  };
+  
   render() {
-    const { slideIndex } = this.state;
-    const { onboardingClosed, closeOnboarding } = this.props;
+    const { closed, slideIndex } = this.state;
 
-    return (onboardingClosed === undefined || localStorage.onboardingClosed === undefined) && (
+    return (closed === undefined || localStorage.onboardingClosed === undefined) && (
       <div className={styles.onboarding}>
         <img
-          onClick={closeOnboarding}
+          onClick={this.close}
           className={styles.exitIcon}
           src={exitIcon}
           alt="Exit icon"
@@ -153,7 +169,7 @@ class Onboarding extends Component {
         }
         
         <div
-          onClick={slideIndex === 6 ? closeOnboarding : this.handleNextButtonClick}
+          onClick={slideIndex === 6 ? this.close : this.handleNextButtonClick}
           className={styles.nextButton}
           style={slideIndex === 6 ? {width: '112px', left: '135px'} : null}
         >
@@ -176,13 +192,5 @@ class Onboarding extends Component {
     );
   }
 }
-
-Onboarding.propTypes = {
-  onboardingClosed: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.bool
-  ]),
-  closeOnboarding: PropTypes.func.isRequired
-};
 
 export default Onboarding;
