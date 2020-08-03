@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
 
+import { isAndroid } from 'react-device-detect';
+
 import miniToolbar from '../images/miniToolbar.svg';
 import exitIcon from '../images/exitIcon.svg';
 import settingsIcon from '../images/settingsIcon.svg';
@@ -22,6 +24,10 @@ class Onboarding extends Component {
     this.setState({
       slideIndex: (slideIndex > 5 ? 0 : slideIndex + 1)
     });
+    // haptic feedback for android
+    if (isAndroid) {
+      window.navigator.vibrate(1);
+    }
   };
   
   render() {
