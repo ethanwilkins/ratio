@@ -57,6 +57,7 @@ class SettingsInput extends Component {
               type="text" value={input}
               onChange={handleInputChange}
               onBlur={this.handleBlur}
+              onFocus={() => this.value = input}
             />
           </form>
         }
