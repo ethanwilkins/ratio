@@ -95,8 +95,8 @@ class Main extends Component {
       const scaleDown = Math.floor((scale - 0.1 ) * 10) / 10;
       this.setState({
         // directionIsUp === increment, otherwise decrement (if scale is above 0.1)
-        scale: (directionIsUp ? scaleUp : (scale > 1.1 ? scaleDown : scale)),
-        scaleInput: (directionIsUp ? scaleUp : (scale > 1.1 ? scaleDown : scale))
+        scale: (directionIsUp ? scaleUp : (scale > 1.15 ? scaleDown : scale)),
+        scaleInput: (directionIsUp ? scaleUp : (scale > 1.15 ? scaleDown : scale))
       });
     }
     else if (activeControl === 'lineHeight') {
@@ -143,14 +143,17 @@ class Main extends Component {
       }
     })(lineCount);
     // sets state for random values within ranges
+    const baseSize = Math.round(Math.random() * (20 - 8) + 8);
+    const scale = Math.floor((Math.random() * (scaleMax - 1.1) + 1.1) * 10) / 10;
+    const lineHeight = Math.round(Math.random() * (200 - 100) + 100);
     this.setState({
-      baseSize: Math.round(Math.random() * (20 - 8) + 8),
-      baseSizeInput: Math.round(Math.random() * (20 - 8) + 8),
+      baseSize: baseSize,
+      baseSizeInput: baseSize,
       // does not round, as scale only goes between 2 and 1.1. floor to strip all digits starting 1 after decimal
-      scale: Math.floor((Math.random() * (scaleMax - 1.1) + 1.1) * 10) / 10,
-      scaleInput: Math.floor((Math.random() * (scaleMax - 1.1) + 1.1) * 10) / 10,
-      lineHeight: Math.round(Math.random() * (200 - 100) + 100),
-      lineHeightInput: Math.round(Math.random() * (200 - 100) + 100)
+      scale: scale,
+      scaleInput: scale,
+      lineHeight: lineHeight,
+      lineHeightInput: lineHeight
     });
     // haptic feedback for android
     if (isAndroid) {
