@@ -38,7 +38,6 @@ class SettingsInput extends Component {
       submitted: false
     });
   };
-  
 
   handleBlur = () => {
     this.setState({
@@ -50,7 +49,6 @@ class SettingsInput extends Component {
     let {
       input,
       handleInputChange,
-      handleFormSubmit,
       inputType
     } = this.props;
     
