@@ -1,5 +1,6 @@
 $black: #2A2122;
 $rose: #D1A7AC;
+$submittedRose: #AB8288;
 
 @font-face {
   font-family: "Inter Extra Bold";
@@ -9,6 +10,7 @@ $rose: #D1A7AC;
 }
 
 .button {
+  transition: background .15s ease-in-out;
   float: right;
   background: $rose;
   width: 60px;
@@ -23,6 +25,7 @@ $rose: #D1A7AC;
 }
 
 .input, .input:focus {
+  transition: background .15s ease-in-out;
   order: none;
   border-width: 0;
   box-shadow: none;
@@ -44,6 +47,10 @@ $rose: #D1A7AC;
   position: relative;
   top: 0px;
   left: 0px;
+}
+
+.submitted {
+  background: $submittedRose;
 }
 
 .lineHeightText {

@@ -2,11 +2,17 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import styles from '../styles/SettingsInput.module.scss';
+import classNames from 'classnames/bind';
+
+const cx = classNames.bind(styles);
 
 class SettingsInput extends Component {
   constructor(props) {
     super(props);
-    this.state = { focused: false };
+    this.state = {
+      focused: false,
+      submitted: false
+    };
     this.input = React.createRef();
   }
   
@@ -16,6 +22,23 @@ class SettingsInput extends Component {
       this.input.current.focus();
     });
   };
+  
+  handleFormSubmit = (event) => {
+    event.preventDefault();
+    // calls handleFormSubmit passed originally from Main.js first
+    this.props.handleFormSubmit();
+    // sets state for submit animation
+    this.setState({
+      submitted: true
+    });
+  };
+  
+  handleTransitionEnd = () => {
+    this.setState({
+      submitted: false
+    });
+  };
+  
 
   handleBlur = () => {
     this.setState({
@@ -31,10 +54,19 @@ class SettingsInput extends Component {
       inputType
     } = this.props;
     
-    const { focused } = this.state;
+    const {
+      focused,
+      submitted
+    } = this.state;
 
     return (
-      <div onClick={this.handleClick} className={styles.button}>
+      <div
+        onClick={this.handleClick}
+        className={cx(styles.button, {
+          submitted: submitted
+        })}
+        onTransitionEnd={this.handleTransitionEnd}
+      >
         {inputType === 'lineHeight' && !focused &&
           <div
             className={styles.lineHeightText}
@@ -48,16 +80,17 @@ class SettingsInput extends Component {
             className={styles.form}
             noValidate
             autoComplete="off"
-            onSubmit={handleFormSubmit}
+            onSubmit={this.handleFormSubmit}
           >
             <input
               ref={this.input}
-              className={styles.input}
-              style={{width: input.toString().length + 'ch', left: `calc(50% - ${input.toString().length * 0.4}ch)`}}
               type="text" value={input}
               onChange={handleInputChange}
               onBlur={this.handleBlur}
-              onFocus={() => this.value = input}
+              className={cx(styles.input, {
+                submitted: submitted
+              })}
+              style={{width: input.toString().length + 'ch', left: `calc(50% - ${input.toString().length * 0.4}ch)`}}
             />
           </form>
         }

@@ -95,8 +95,8 @@ class Main extends Component {
       const scaleDown = Math.floor((scale - 0.1 ) * 10) / 10;
       this.setState({
         // directionIsUp === increment, otherwise decrement (if scale is above 0.1)
-        scale: (directionIsUp ? scaleUp : (scale > 1.15 ? scaleDown : scale)),
-        scaleInput: (directionIsUp ? scaleUp : (scale > 1.15 ? scaleDown : scale))
+        scale: (directionIsUp ? scaleUp : (scale > 1 ? scaleDown : scale)),
+        scaleInput: (directionIsUp ? scaleUp : (scale > 1 ? scaleDown : scale))
       });
     }
     else if (activeControl === 'lineHeight') {
@@ -170,8 +170,7 @@ class Main extends Component {
     });
   };
   
-  handleLineCountSubmit = (event) => {
-    event.preventDefault();
+  handleLineCountSubmit = () => {
     const { lineCountInput } = this.state;
     this.setLineCount(lineCountInput);
     // unfocuses all input
@@ -208,8 +207,7 @@ class Main extends Component {
     });
   };
   
-  handleBaseSizeSubmit = (event) => {
-    event.preventDefault();
+  handleBaseSizeSubmit = () => {
     const { baseSizeInput } = this.state;
     this.setBaseSize(baseSizeInput);
     // unfocuses all input
@@ -240,8 +238,7 @@ class Main extends Component {
     });
   };
   
-  handleScaleSubmit = (event) => {
-    event.preventDefault();
+  handleScaleSubmit = () => {
     const { scaleInput } = this.state;
     // saves input in state if input is a number
     if (!isNaN(scaleInput) && scaleInput <= 2.0) {
@@ -267,8 +264,7 @@ class Main extends Component {
     });
   };
   
-  handleLineHeightSubmit = (event) => {
-    event.preventDefault();
+  handleLineHeightSubmit = () => {
     const { lineHeightInput } = this.state;
     this.setLineHeight(lineHeightInput);
     // unfocuses all input
@@ -310,6 +306,7 @@ class Main extends Component {
     this.toggleSettings();
   };
   
+  // blurs for any currently focused input
   blurAll = () => {
     const tmp = document.createElement("input");
     document.body.appendChild(tmp);
