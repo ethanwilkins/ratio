@@ -21,6 +21,7 @@ class Main extends Component {
     lineCount: 4,
     // used for changing lineCount in mobile
     lineCountInput: 4,
+    inputError: '',
     font: '',
     text: null,
     currentlyInputtingText: false,
@@ -184,10 +185,11 @@ class Main extends Component {
   setLineCount = (input) => {
     input = Math.round(input);
     // saves input in state if input is a number
-    if (!isNaN(input) && input <= 9) {
+    if (!isNaN(input) && input >= 2 && input <= 9) {
       this.setState({
         lineCount: input,
-        lineCountInput: input
+        lineCountInput: input,
+        inputError: ''
       });
       // ensures higher line counts fit onto screen with lower scale
       if (input > 4) {
@@ -195,6 +197,16 @@ class Main extends Component {
           scale: 1.2
         });
       }
+    }
+    else if (input <= 1) {
+      this.setState({
+        inputError: 'lineCountTooLow'
+      });
+    }
+    else if (input >= 10) {
+      this.setState({
+        inputError: 'lineCountTooHigh'
+      });
     }
   };
   
@@ -221,10 +233,21 @@ class Main extends Component {
   setBaseSize = (input) => {
     input = Math.round(input);
     // saves input in state if input is a number
-    if (!isNaN(input)) {
+    if (!isNaN(input) && input >= 8 && input <= 25) {
       this.setState({
         baseSize: input,
-        baseSizeInput: input
+        baseSizeInput: input,
+        inputError: ''
+      });
+    }
+    else if (input <= 8) {
+      this.setState({
+        inputError: 'baseSizeTooLow'
+      });
+    }
+    else if (input >= 25) {
+      this.setState({
+        inputError: 'baseSizeTooHigh'
       });
     }
   };
@@ -240,18 +263,33 @@ class Main extends Component {
   
   handleScaleSubmit = () => {
     const { scaleInput } = this.state;
-    // saves input in state if input is a number
-    if (!isNaN(scaleInput) && scaleInput <= 2.0) {
-      this.setState({
-        // strips digits starting 1 digit after decimal
-        scale: Math.floor(scaleInput * 10) / 10
-      });
-    }
+    this.setScale(scaleInput);
     // unfocuses all input
     this.blurAll();
     // haptic feedback for android
     if (isAndroid) {
       window.navigator.vibrate(1);
+    }
+  };
+  
+  setScale = (input) => {
+    // saves input in state if input is a number
+    if (!isNaN(input) && input >= 1.1 && input <= 2) {
+      this.setState({
+        // strips digits starting 1 digit after decimal
+        scale: Math.floor(input * 10) / 10,
+        inputError: ''
+      });
+    }
+    else if (input <= 1.1) {
+      this.setState({
+        inputError: 'scaleTooLow'
+      });
+    }
+    else if (input >= 2) {
+      this.setState({
+        inputError: 'scaleTooHigh'
+      });
     }
   };
   
@@ -277,10 +315,21 @@ class Main extends Component {
   
   setLineHeight = (input) => {
     // saves input in state if input is a number
-    if (!isNaN(input)) {
+    if (!isNaN(input) && input >= 100 && input <= 200) {
       this.setState({
         lineHeight: input,
-        lineHeightInput: input
+        lineHeightInput: input,
+        inputError: ''
+      });
+    }
+    else if (input <= 100) {
+      this.setState({
+        inputError: 'lineHeightTooLow'
+      });
+    }
+    else if (input >= 200) {
+      this.setState({
+        inputError: 'lineHeightTooHigh'
       });
     }
   };
@@ -326,7 +375,8 @@ class Main extends Component {
       lineHeightInput,
       text,
       lineCount,
-      lineCountInput
+      lineCountInput,
+      inputError
     } = this.state;
 
     return (
@@ -373,6 +423,7 @@ class Main extends Component {
           updateLineCount={this.updateLineCount}
           handleLineCountSubmit={this.handleLineCountSubmit}
           
+          inputError={inputError}
           toggleSettings={this.toggleSettings}
           settingsOpen={settingsOpen}
           resetOnboarding={this.resetOnboarding}

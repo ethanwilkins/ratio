@@ -67,6 +67,8 @@ class Settings extends Component {
     const {
       toggleSettings,
       settingsOpen,
+      resetOnboarding,
+      inputError,
       
       baseSizeInput,
       updateBaseSize,
@@ -82,9 +84,7 @@ class Settings extends Component {
       
       lineCountInput,
       updateLineCount,
-      handleLineCountSubmit,
-      
-      resetOnboarding
+      handleLineCountSubmit
     } = this.props;
 
     return (
@@ -97,6 +97,16 @@ class Settings extends Component {
         <div className={styles.container}>
           <div className={styles.row}>
             <div className={styles.text}>Size</div>
+            {inputError === 'baseSizeTooLow' &&
+              <div className={styles.inputError}>
+                Oops! Try something greater than 8.
+              </div>
+            }
+            {inputError === 'baseSizeTooHigh' &&
+              <div className={styles.inputError}>
+                Oops! Try something less than 25.
+              </div>
+            }
             <SettingsInput
               input={baseSizeInput}
               handleInputChange={updateBaseSize}
@@ -106,6 +116,16 @@ class Settings extends Component {
           </div>
           <div className={styles.row}>
             <div className={styles.text}>Ratio</div>
+            {inputError === 'scaleTooLow' &&
+              <div className={styles.inputError}>
+                Oops! Try something greater than 1.1.
+              </div>
+            }
+            {inputError === 'scaleTooHigh' &&
+              <div className={styles.inputError}>
+                Oops! Try something less than 2.
+              </div>
+            }
             <SettingsInput
               input={scaleInput}
               handleInputChange={updateScale}
@@ -115,6 +135,16 @@ class Settings extends Component {
           </div>
           <div className={styles.row}>
             <div className={styles.text}>Line height</div>
+            {inputError === 'lineHeightTooLow' &&
+              <div className={styles.inputError}>
+                Oops! Try something greater than 100.
+              </div>
+            }
+            {inputError === 'lineHeightTooHigh' &&
+              <div className={styles.inputError}>
+                Oops! Try something less than 200.
+              </div>
+            }
             <SettingsInput
               input={lineHeightInput}
               handleInputChange={updateLineHeight}
@@ -123,7 +153,17 @@ class Settings extends Component {
             />
           </div>
           <div className={styles.row}>
-            <div className={styles.text}>Line Count</div>            
+            <div className={styles.text}>Line Count</div>
+            {inputError === 'lineCountTooLow' &&
+              <div className={styles.inputError}>
+                Oops! Try something greater than 1.
+              </div>
+            }
+            {inputError === 'lineCountTooHigh' &&
+              <div className={styles.inputError}>
+                Oops! Try something less than 10.
+              </div>
+            }
             <SettingsInput
               input={lineCountInput}
               handleInputChange={updateLineCount}
@@ -170,6 +210,8 @@ class Settings extends Component {
 Settings.propTypes = {
   toggleSettings: PropTypes.func.isRequired,
   settingsOpen: PropTypes.bool.isRequired,
+  resetOnboarding: PropTypes.func.isRequired,
+  inputError: PropTypes.string.isRequired,
   
   baseSizeInput: PropTypes.oneOfType([
     PropTypes.string,
@@ -197,9 +239,7 @@ Settings.propTypes = {
     PropTypes.number
   ]).isRequired,
   updateLineCount: PropTypes.func.isRequired,
-  handleLineCountSubmit: PropTypes.func.isRequired,
-  
-  resetOnboarding: PropTypes.func.isRequired
+  handleLineCountSubmit: PropTypes.func.isRequired
 };
 
 export default Settings;
