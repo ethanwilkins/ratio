@@ -162,61 +162,6 @@ class Main extends Component {
     }
   };
   
-  updateLineCount = (event) => {
-    // sets variable for input from settings
-    const input = event.target.value;
-    // saves input temporarily until user hits enter to submit
-    this.setState({
-      lineCountInput: input
-    });
-  };
-  
-  handleLineCountSubmit = () => {
-    const { lineCountInput } = this.state;
-    this.setLineCount(lineCountInput);
-    // unfocuses all input
-    this.blurAll();
-    // haptic feedback for android
-    if (isAndroid) {
-      window.navigator.vibrate(1);
-    }
-  };
-  
-  setLineCount = (input) => {
-    input = Math.round(input);
-    // saves input in state if input is a number
-    if (!isNaN(input) && input >= 2 && input <= 9) {
-      this.setState({
-        lineCount: input,
-        lineCountInput: input,
-        inputError: ''
-      });
-      // ensures higher line counts fit onto screen with lower scale
-      if (input > 4) {
-        this.setState({
-          scale: 1.2
-        });
-      }
-    }
-    else if (input <= 1) {
-      this.setState({
-        inputError: 'lineCountTooLow'
-      });
-    }
-    else if (input >= 10) {
-      this.setState({
-        inputError: 'lineCountTooHigh'
-      });
-    }
-    // to ensure input reverts back to actual value on invalid input
-    const { inputError, lineCount } = this.state;
-    if (inputError) {
-      this.setState({
-        lineCountInput: lineCount
-      });
-    }
-  };
-  
   updateBaseSize = (event) => {
     // sets variable for input from settings
     const input = event.target.value;
@@ -250,15 +195,21 @@ class Main extends Component {
     else if (input <= 8) {
       this.setState({
         inputError: 'baseSizeTooLow'
+      }, () => {
+        this.revertOnInvalidBaseSizeInput();
       });
     }
     else if (input >= 25) {
       this.setState({
         inputError: 'baseSizeTooHigh'
+      }, () => {
+        this.revertOnInvalidBaseSizeInput();
       });
     }
-    // to ensure input reverts back to actual value on invalid input
-    const { inputError, baseSize } = this.state;
+  };
+  
+  revertOnInvalidBaseSizeInput = () => {
+    const { baseSize, inputError } = this.state;
     if (inputError) {
       this.setState({
         baseSizeInput: baseSize
@@ -298,15 +249,21 @@ class Main extends Component {
     else if (input <= 1.1) {
       this.setState({
         inputError: 'scaleTooLow'
+      }, () => {
+        this.revertOnInvalidScaleInput();
       });
     }
     else if (input >= 2) {
       this.setState({
         inputError: 'scaleTooHigh'
+      }, () => {
+        this.revertOnInvalidScaleInput();
       });
     }
-    // to ensure input reverts back to actual value on invalid input
-    const { inputError, scale } = this.state;
+  };
+  
+  revertOnInvalidScaleInput = () => {
+    const { scale, inputError } = this.state;
     if (inputError) {
       this.setState({
         scaleInput: scale
@@ -346,18 +303,86 @@ class Main extends Component {
     else if (input <= 100) {
       this.setState({
         inputError: 'lineHeightTooLow'
+      }, () => {
+        this.revertOnInvalidLineHeightInput();
       });
     }
     else if (input >= 200) {
       this.setState({
         inputError: 'lineHeightTooHigh'
+      }, () => {
+        this.revertOnInvalidLineHeightInput();
       });
     }
-    // to ensure input reverts back to actual value on invalid input
-    const { inputError, lineHeight } = this.state;
+  };
+  
+  // to ensure input reverts back to actual value on invalid input
+  revertOnInvalidLineHeightInput = () => {
+    const { lineHeight, inputError } = this.state;
     if (inputError) {
       this.setState({
         lineHeightInput: lineHeight
+      });
+    }
+  };
+  
+  updateLineCount = (event) => {
+    // sets variable for input from settings
+    const input = event.target.value;
+    // saves input temporarily until user hits enter to submit
+    this.setState({
+      lineCountInput: input
+    });
+  };
+  
+  handleLineCountSubmit = () => {
+    const { lineCountInput } = this.state;
+    this.setLineCount(lineCountInput);
+    // unfocuses all input
+    this.blurAll();
+    // haptic feedback for android
+    if (isAndroid) {
+      window.navigator.vibrate(1);
+    }
+  };
+  
+  setLineCount = (input) => {
+    input = Math.round(input);
+    // saves input in state if input is a number
+    if (!isNaN(input) && input >= 2 && input <= 9) {
+      this.setState({
+        lineCount: input,
+        lineCountInput: input,
+        inputError: ''
+      });
+      // ensures higher line counts fit onto screen with lower scale
+      if (input > 4) {
+        this.setState({
+          scale: 1.2
+        });
+      }
+    }
+    else if (input <= 1) {
+      this.setState({
+        inputError: 'lineCountTooLow'
+      }, () => {
+        this.revertOnInvalidLineCountInput();
+      });
+    }
+    else if (input >= 10) {
+      this.setState({
+        inputError: 'lineCountTooHigh'
+      }, () => {
+        this.revertOnInvalidLineCountInput();
+      });
+    }
+  };
+  
+  revertOnInvalidLineCountInput = () => {
+    const { lineCount, inputError } = this.state;
+    if (inputError) {
+      this.setState({
+        lineCountInput: lineCount
       });
     }
   };
