@@ -98,19 +98,9 @@ class Settings extends Component {
         <div className={styles.container}>
           <div className={styles.row}>
             <div className={styles.text}>Size</div>
-            {inputError === 'baseSizeNaN' &&
+            {inputError === 'baseSizeInvalid' &&
               <div className={styles.inputError}>
                 Oops! Try something within 8 to 25.
-              </div>
-            }
-            {inputError === 'baseSizeTooLow' &&
-              <div className={styles.inputError}>
-                Oops! Try something greater than 7.
-              </div>
-            }
-            {inputError === 'baseSizeTooHigh' &&
-              <div className={styles.inputError}>
-                Oops! Try something less than 26.
               </div>
             }
             <SettingsInput
@@ -123,19 +113,9 @@ class Settings extends Component {
           </div>
           <div className={styles.row}>
             <div className={styles.text}>Ratio</div>
-            {inputError === 'scaleNaN' &&
+            {inputError === 'scaleInvalid' &&
               <div className={styles.inputError}>
                 Oops! Try something within 1.1 to 2.
-              </div>
-            }
-            {inputError === 'scaleTooLow' &&
-              <div className={styles.inputError}>
-                Oops! Try something greater than 1.
-              </div>
-            }
-            {inputError === 'scaleTooHigh' &&
-              <div className={styles.inputError}>
-                Oops! Try something less than 2.1.
               </div>
             }
             <SettingsInput
@@ -148,19 +128,9 @@ class Settings extends Component {
           </div>
           <div className={styles.row}>
             <div className={styles.text}>Line height</div>
-            {inputError === 'lineHeightNaN' &&
+            {inputError === 'lineHeightInvalid' &&
               <div className={styles.inputError}>
                 Oops! Try something within 100 to 200.
-              </div>
-            }
-            {inputError === 'lineHeightTooLow' &&
-              <div className={styles.inputError}>
-                Oops! Try something greater than 99.
-              </div>
-            }
-            {inputError === 'lineHeightTooHigh' &&
-              <div className={styles.inputError}>
-                Oops! Try something less than 201.
               </div>
             }
             <SettingsInput
@@ -173,19 +143,9 @@ class Settings extends Component {
           </div>
           <div className={styles.row}>
             <div className={styles.text}>Line Count</div>
-            {inputError === 'lineCountNaN' &&
+            {inputError === 'lineCountInvalid' &&
               <div className={styles.inputError}>
                 Oops! Try something within 2 to 9.
-              </div>
-            }
-            {inputError === 'lineCountTooLow' &&
-              <div className={styles.inputError}>
-                Oops! Try something greater than 1.
-              </div>
-            }
-            {inputError === 'lineCountTooHigh' &&
-              <div className={styles.inputError}>
-                Oops! Try something less than 10.
               </div>
             }
             <SettingsInput

@@ -192,23 +192,9 @@ class Main extends Component {
         inputError: ''
       });
     }
-    else if (isNaN(input)) {
+    else if (isNaN(input) || input <= 8 || input >= 25) {
       this.setState({
-        inputError: 'baseSizeNaN'
-      }, () => {
-        this.revertOnInvalidBaseSizeInput();
-      });
-    }
-    else if (input <= 8) {
-      this.setState({
-        inputError: 'baseSizeTooLow'
-      }, () => {
-        this.revertOnInvalidBaseSizeInput();
-      });
-    }
-    else if (input >= 25) {
-      this.setState({
-        inputError: 'baseSizeTooHigh'
+        inputError: 'baseSizeInvalid'
       }, () => {
         this.revertOnInvalidBaseSizeInput();
       });
@@ -253,23 +239,9 @@ class Main extends Component {
         inputError: ''
       });
     }
-    else if (isNaN(input)) {
+    else if (isNaN(input) || input <= 1.1 || input >= 2) {
       this.setState({
-        inputError: 'scaleNaN'
-      }, () => {
-        this.revertOnInvalidScaleInput();
-      });
-    }
-    else if (input <= 1.1) {
-      this.setState({
-        inputError: 'scaleTooLow'
-      }, () => {
-        this.revertOnInvalidScaleInput();
-      });
-    }
-    else if (input >= 2) {
-      this.setState({
-        inputError: 'scaleTooHigh'
+        inputError: 'scaleInvalid'
       }, () => {
         this.revertOnInvalidScaleInput();
       });
@@ -314,23 +286,9 @@ class Main extends Component {
         inputError: ''
       });
     }
-    else if (isNaN(input)) {
+    else if (isNaN(input) || input <= 100 || input >= 200) {
       this.setState({
-        inputError: 'lineHeightNaN'
-      }, () => {
-        this.revertOnInvalidLineHeightInput();
-      });
-    }
-    else if (input <= 100) {
-      this.setState({
-        inputError: 'lineHeightTooLow'
-      }, () => {
-        this.revertOnInvalidLineHeightInput();
-      });
-    }
-    else if (input >= 200) {
-      this.setState({
-        inputError: 'lineHeightTooHigh'
+        inputError: 'lineHeightInvalid'
       }, () => {
         this.revertOnInvalidLineHeightInput();
       });
@@ -383,23 +341,9 @@ class Main extends Component {
         });
       }
     }
-    else if (isNaN(input)) {
+    else if (isNaN(input) || input <= 1 || input >= 10) {
       this.setState({
-        inputError: 'lineCountNaN'
-      }, () => {
-        this.revertOnInvalidLineCountInput();
-      });
-    }
-    else if (input <= 1) {
-      this.setState({
-        inputError: 'lineCountTooLow'
-      }, () => {
-        this.revertOnInvalidLineCountInput();
-      });
-    }
-    else if (input >= 10) {
-      this.setState({
-        inputError: 'lineCountTooHigh'
+        inputError: 'lineCountInvalid'
       }, () => {
         this.revertOnInvalidLineCountInput();
       });
