@@ -208,6 +208,13 @@ class Main extends Component {
         inputError: 'lineCountTooHigh'
       });
     }
+    // to ensure input reverts back to actual value on invalid input
+    const { inputError, lineCount } = this.state;
+    if (inputError) {
+      this.setState({
+        lineCountInput: lineCount
+      });
+    }
   };
   
   updateBaseSize = (event) => {
@@ -248,6 +255,13 @@ class Main extends Component {
     else if (input >= 25) {
       this.setState({
         inputError: 'baseSizeTooHigh'
+      });
+    }
+    // to ensure input reverts back to actual value on invalid input
+    const { inputError, baseSize } = this.state;
+    if (inputError) {
+      this.setState({
+        baseSizeInput: baseSize
       });
     }
   };
@@ -291,6 +305,13 @@ class Main extends Component {
         inputError: 'scaleTooHigh'
       });
     }
+    // to ensure input reverts back to actual value on invalid input
+    const { inputError, scale } = this.state;
+    if (inputError) {
+      this.setState({
+        scaleInput: scale
+      });
+    }
   };
   
   updateLineHeight = (event) => {
@@ -330,6 +351,13 @@ class Main extends Component {
     else if (input >= 200) {
       this.setState({
         inputError: 'lineHeightTooHigh'
+      });
+    }
+    // to ensure input reverts back to actual value on invalid input
+    const { inputError, lineHeight } = this.state;
+    if (inputError) {
+      this.setState({
+        lineHeightInput: lineHeight
       });
     }
   };
