@@ -43,13 +43,15 @@ class SettingsInput extends Component {
     this.setState({
       focused: false
     });
+    this.props.toggleCurrentlyInputtingText();
   };
 
   render() {
     let {
       input,
       handleInputChange,
-      inputType
+      inputType,
+      toggleCurrentlyInputtingText
     } = this.props;
     
     const {
@@ -60,6 +62,8 @@ class SettingsInput extends Component {
     return (
       <div
         onClick={this.handleClick}
+        onMouseDown={toggleCurrentlyInputtingText}
+        onTouchStart={toggleCurrentlyInputtingText}
         className={cx(styles.button, {
           submitted: submitted
         })}
@@ -104,7 +108,8 @@ SettingsInput.propTypes = {
   ]).isRequired,
   handleInputChange: PropTypes.func.isRequired,
   handleFormSubmit: PropTypes.func.isRequired,
-  inputType: PropTypes.string.isRequired
+  inputType: PropTypes.string.isRequired,
+  toggleCurrentlyInputtingText: PropTypes.func.isRequired
 };
 
 export default SettingsInput;

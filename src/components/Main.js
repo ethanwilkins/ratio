@@ -192,6 +192,13 @@ class Main extends Component {
         inputError: ''
       });
     }
+    else if (isNaN(input)) {
+      this.setState({
+        inputError: 'baseSizeNaN'
+      }, () => {
+        this.revertOnInvalidBaseSizeInput();
+      });
+    }
     else if (input <= 8) {
       this.setState({
         inputError: 'baseSizeTooLow'
@@ -246,6 +253,13 @@ class Main extends Component {
         inputError: ''
       });
     }
+    else if (isNaN(input)) {
+      this.setState({
+        inputError: 'scaleNaN'
+      }, () => {
+        this.revertOnInvalidScaleInput();
+      });
+    }
     else if (input <= 1.1) {
       this.setState({
         inputError: 'scaleTooLow'
@@ -298,6 +312,13 @@ class Main extends Component {
         lineHeight: input,
         lineHeightInput: input,
         inputError: ''
+      });
+    }
+    else if (isNaN(input)) {
+      this.setState({
+        inputError: 'lineHeightNaN'
+      }, () => {
+        this.revertOnInvalidLineHeightInput();
       });
     }
     else if (input <= 100) {
@@ -361,6 +382,13 @@ class Main extends Component {
           scale: 1.2
         });
       }
+    }
+    else if (isNaN(input)) {
+      this.setState({
+        inputError: 'lineCountNaN'
+      }, () => {
+        this.revertOnInvalidLineCountInput();
+      });
     }
     else if (input <= 1) {
       this.setState({
@@ -480,6 +508,7 @@ class Main extends Component {
           toggleSettings={this.toggleSettings}
           settingsOpen={settingsOpen}
           resetOnboarding={this.resetOnboarding}
+          toggleCurrentlyInputtingText={this.toggleCurrentlyInputtingText}
         />
       </div>
     );
