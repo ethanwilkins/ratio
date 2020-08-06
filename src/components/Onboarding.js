@@ -62,7 +62,12 @@ class Onboarding extends Component {
     const { slideIndex } = this.state;
     if (direction === 'Left') {
       this.setState({
-        slideIndex: (slideIndex > 5 ? 0 : slideIndex + 1)
+        slideIndex: slideIndex + 1
+      }, () => {
+        const { slideIndex } = this.state;
+        if (slideIndex >= 7) {
+          this.close();
+        }
       });
     }
     else if (direction === 'Right') {
@@ -78,10 +83,9 @@ class Onboarding extends Component {
     return (closed === undefined || localStorage.onboardingClosed === undefined) && (
       <Swipeable onSwiped={(eventData) => this.handleSwipe(eventData.dir)} {...{
         delta: 10,                             // min distance(px) before a swipe starts
-        preventDefaultTouchmoveEvent: false,   // preventDefault on touchmove, *See Details*
         trackTouch: true,                      // track touch input
         trackMouse: false,                     // track mouse input
-        rotationAngle: window.orientation,                      // set a rotation angle
+        rotationAngle: window.orientation      // set a rotation angle
       }}>
         <div className={styles.onboarding}>
         <img
