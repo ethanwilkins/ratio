@@ -254,7 +254,7 @@ $settingsTopGap: 65px;
 
 // iPhone 11 with toolbar/address bar showing
 @media only screen and (max-width: 414px) and (max-height: 719px) {
-  $settingsTopGap: 40px;
+  $settingsTopGap: 25px;
   
   .settings {
     height: calc(100vh - #{$settingsTopGap});
@@ -263,7 +263,7 @@ $settingsTopGap: 65px;
     margin-top: $settingsTopGap;
   }
   .exitButton {
-    bottom: 30px;
+    bottom: 70px;
   }
   .chooseFontRow {
     padding-top: 40px;
