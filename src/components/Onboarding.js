@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import _ from 'lodash';
 
 import { isAndroid } from 'react-device-detect';
+import { useSwipeable, Swipeable } from 'react-swipeable';
 
 import miniToolbar from '../images/miniToolbar.svg';
 import exitIcon from '../images/exitIcon.svg';
@@ -61,7 +62,14 @@ class Onboarding extends Component {
     const { closed, slideIndex } = this.state;
 
     return (closed === undefined || localStorage.onboardingClosed === undefined) && (
-      <div className={styles.onboarding}>
+      <Swipeable onSwiped={(eventData) => alert(eventData.dir)} {...{
+        delta: 10,                             // min distance(px) before a swipe starts
+        preventDefaultTouchmoveEvent: false,   // preventDefault on touchmove, *See Details*
+        trackTouch: true,                      // track touch input
+        trackMouse: false,                     // track mouse input
+        rotationAngle: window.orientation,                      // set a rotation angle
+      }}>
+        <div className={styles.onboarding}>
         <img
           onClick={this.close}
           className={styles.exitIcon}
@@ -189,6 +197,8 @@ class Onboarding extends Component {
           })}
         </div>
       </div>
+      </Swipeable>
+      
     );
   }
 }
