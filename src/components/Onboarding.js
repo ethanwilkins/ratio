@@ -58,11 +58,25 @@ class Onboarding extends Component {
     }
   };
   
+  handleSwipe = (direction) => {
+    const { slideIndex } = this.state;
+    if (direction === 'Left') {
+      this.setState({
+        slideIndex: (slideIndex > 5 ? 0 : slideIndex + 1)
+      });
+    }
+    else if (direction === 'Right') {
+      this.setState({
+        slideIndex: (slideIndex <= 0 ? 6 : slideIndex - 1)
+      });
+    }
+  };
+  
   render() {
     const { closed, slideIndex } = this.state;
 
     return (closed === undefined || localStorage.onboardingClosed === undefined) && (
-      <Swipeable onSwiped={(eventData) => alert(eventData.dir)} {...{
+      <Swipeable onSwiped={(eventData) => this.handleSwipe(eventData.dir)} {...{
         delta: 10,                             // min distance(px) before a swipe starts
         preventDefaultTouchmoveEvent: false,   // preventDefault on touchmove, *See Details*
         trackTouch: true,                      // track touch input
