@@ -59,6 +59,14 @@ $settingsTopGap: 65px;
   bottom: 100px;
   right: 40px;
   width: 16px;
+}
+
+.exitButtonTouchTarget {
+  position: absolute;
+  bottom: 100px;
+  right: 23px;
+  width: 48px;
+  height: 48px;
   cursor: pointer;
 }
 
@@ -159,6 +167,8 @@ $settingsTopGap: 65px;
 // Asus laptop 13 inch
 @media only screen and (min-width: 1366px) and (min-height: 640px) {
   $settingsTopGap: 20px;
+  // value for bottom positioning
+  $exitButtonFromBottom: 20px;
   
   .settings {
     height: calc(100vh - #{$settingsTopGap});
@@ -167,7 +177,10 @@ $settingsTopGap: 65px;
     margin-top: $settingsTopGap;
   }
   .exitButton {
-    bottom: 20px;
+    bottom: $exitButtonFromBottom;
+  }
+  .exitButtonTouchTarget {
+    bottom: calc(#{$exitButtonFromBottom} - 16px);
   }
   .chooseFontRow {
     padding-top: 5px;
@@ -263,7 +276,7 @@ $settingsTopGap: 65px;
     margin-top: $settingsTopGap;
   }
   .exitButton {
-    bottom: 70px;
+    bottom: 90px;
   }
   .chooseFontRow {
     padding-top: 40px;

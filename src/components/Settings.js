@@ -182,11 +182,11 @@ class Settings extends Component {
         </div>
         <img
           style={this.isIphone11WithToolbarShown() ? {bottom: '150px'} : null}
-          onClick={toggleSettings}
           className={styles.exitButton}
           src={exitSettingsIcon}
           alt="Exit settings"
         />
+        <div onClick={toggleSettings} className={styles.exitButtonTouchTarget}></div>
       </div>
     )
   }
