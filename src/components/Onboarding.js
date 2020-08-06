@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import _ from 'lodash';
 
 import { isAndroid } from 'react-device-detect';
-import { useSwipeable, Swipeable } from 'react-swipeable';
+import { Swipeable } from 'react-swipeable';
 
 import miniToolbar from '../images/miniToolbar.svg';
 import exitIcon from '../images/exitIcon.svg';
