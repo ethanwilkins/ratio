@@ -50,7 +50,10 @@ Text.propTypes = {
     PropTypes.string,
     PropTypes.number
   ]).isRequired,
-  lineHeight: PropTypes.number.isRequired,
+  lineHeight: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number
+  ]).isRequired,
   lineCount: PropTypes.number.isRequired,
   text: PropTypes.string,
   updateTextInputValue: PropTypes.func.isRequired,

@@ -120,7 +120,10 @@ class TextLine extends Component {
 
 TextLine.propTypes = {
   base: PropTypes.number.isRequired,
-  lineHeight: PropTypes.number.isRequired,
+  lineHeight: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number
+  ]).isRequired,
   text: PropTypes.string,
   updateTextInputValue: PropTypes.func.isRequired,
   toggleCurrentlyInputtingText: PropTypes.func.isRequired
