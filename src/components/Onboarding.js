@@ -185,7 +185,7 @@ class Onboarding extends Component {
                 If you’re feeling lucky tap
                 {mobile() &&
                   <span>
-                    <img src={logo} className={styles.inTextLogo} alt="ratio"/>.
+                    &nbsp;<img src={logo} className={styles.inTextLogo} alt="ratio"/>.
                   </span>
                 }
                 {!mobile() &&
