@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import _ from 'lodash';
 
+import mobile from 'is-mobile';
 import { isAndroid } from 'react-device-detect';
 import { Swipeable } from 'react-swipeable';
 
@@ -181,7 +182,17 @@ class Onboarding extends Component {
           {slideIndex === 5 &&
             <div>
               <div className={styles.customizBodyText}>
-                If you’re feeling lucky tap <img src={logo} className={styles.inTextLogo} alt="ratio"/>.
+                If you’re feeling lucky tap
+                {mobile() &&
+                  <span>
+                    <img src={logo} className={styles.inTextLogo} alt="ratio"/>.
+                  </span>
+                }
+                {!mobile() &&
+                  <span>
+                    &nbsp;the <span className={styles.feelingLuckySpaceBarText}>space bar.</span>
+                  </span>
+                }
               </div>
             </div>
           }

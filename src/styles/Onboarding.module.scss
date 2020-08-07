@@ -162,6 +162,11 @@ $rose: #D1A7AC;
   line-height: 22px;
 }
 
+.feelingLuckySpaceBarText {
+  color: $black;
+  font-family: "Inter Bold";
+}
+
 @keyframes blink {
   50% {
     opacity: 0.0;
