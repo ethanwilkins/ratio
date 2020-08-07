@@ -26,7 +26,7 @@ class Main extends Component {
     text: null,
     currentlyInputtingText: false,
     settingsOpen: false
-  }
+  };
 
   componentDidMount() {
     document.addEventListener("keydown", this.handleKeyDown);

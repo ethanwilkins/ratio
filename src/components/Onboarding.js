@@ -18,8 +18,19 @@ const cx = classNames.bind(styles);
 class Onboarding extends Component {
   state = {
     slideIndex: 0,
-    closed: localStorage.onboardingClosed
+    closed: localStorage.onboardingClosed,
+    loaded: false
   };
+
+  componentDidMount() {
+    setInterval(() => {
+      if (!this.state.loaded) {
+        this.setState({
+          loaded: true
+        });
+      }
+    }, 1);
+  }
   
   handleNextButtonClick = () => {
     const { slideIndex } = this.state;
@@ -41,8 +52,6 @@ class Onboarding extends Component {
       window.navigator.vibrate(1);
     }
   };
-  
-  
   
   // called by onboarding exit button
   close = () => {
@@ -79,16 +88,19 @@ class Onboarding extends Component {
   };
   
   render() {
-    const { closed, slideIndex } = this.state;
+    const { closed, slideIndex, loaded } = this.state;
+    const swipeableConfig = {
+            delta: 10,                             // min distance(px) before a swipe starts
+            trackTouch: true,                      // track touch input
+            trackMouse: false,                     // track mouse input
+            rotationAngle: window.orientation      // set a rotation angle
+          };
 
-    return (closed === undefined || localStorage.onboardingClosed === undefined) && (
-      <Swipeable onSwiped={(eventData) => this.handleSwipe(eventData.dir)} {...{
-        delta: 10,                             // min distance(px) before a swipe starts
-        trackTouch: true,                      // track touch input
-        trackMouse: false,                     // track mouse input
-        rotationAngle: window.orientation      // set a rotation angle
-      }}>
-        <div className={styles.onboarding}>
+    return (
+      <Swipeable onSwiped={(eventData) => this.handleSwipe(eventData.dir)} {...swipeableConfig}>
+        <div className={cx(styles.onboarding, {
+          showOnboarding: (closed === undefined || localStorage.onboardingClosed === undefined) && loaded
+        })}>
           <img
             onClick={this.close}
             className={styles.exitIcon}
