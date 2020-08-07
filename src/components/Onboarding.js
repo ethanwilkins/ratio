@@ -92,7 +92,7 @@ class Onboarding extends Component {
     const swipeableConfig = {
             delta: 10,                             // min distance(px) before a swipe starts
             trackTouch: true,                      // track touch input
-            trackMouse: false,                     // track mouse input
+            trackMouse: true,                     // track mouse input
             rotationAngle: window.orientation      // set a rotation angle
           };
 
