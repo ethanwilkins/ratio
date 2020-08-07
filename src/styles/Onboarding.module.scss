@@ -198,19 +198,22 @@ $rose: #D1A7AC;
 
 .ellipseButtons {
   position: absolute;
-  top: 290px;
-  left: 108px;
+  top: 282px;
+  left: 100px;
 }
 
 .ellipseButton {
   @extend .noSelect;
-  display: inline-block;
   width: 9px;
   height: 9px;
   border: 1px solid $rose;
   border-radius: 50%;
   background: white;
-  margin-right: 16px;
+  margin: 8px 8px;
+}
+
+.ellipseButtonTouchTarget {
+  display: inline-block;
   cursor: pointer;
 }
 

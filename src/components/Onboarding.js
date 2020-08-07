@@ -88,135 +88,138 @@ class Onboarding extends Component {
         rotationAngle: window.orientation      // set a rotation angle
       }}>
         <div className={styles.onboarding}>
-        <img
-          onClick={this.close}
-          className={styles.exitIcon}
-          src={exitIcon}
-          alt="Exit icon"
-        />
-        
-        {slideIndex === 0 &&
-          <div>
-            <img
-              className={styles.logo}
-              src={logo}
-              alt="Logo"
-            />
-            
-            <div className={styles.text}>
-              Creating typographic systems made easy.
+          <img
+            onClick={this.close}
+            className={styles.exitIcon}
+            src={exitIcon}
+            alt="Exit icon"
+          />
+          
+          {slideIndex === 0 &&
+            <div>
+              <img
+                className={styles.logo}
+                src={logo}
+                alt="Logo"
+              />
+              
+              <div className={styles.text}>
+                Creating typographic systems made easy.
+              </div>
             </div>
-          </div>
-        }
-        
-        {slideIndex === 1 &&
-          <div>
-            <img
-              className={styles.miniToolbar}
-              src={miniToolbar}
-              alt="Mini toolbar"
-            />
-            
-            <div
-              className={styles.text}
-              style={{paddingTop: '10px'}}
-            >
-              Select the attribute you want to modify from the tool bar
-            </div>
-          </div>
-        }
-        
-        {slideIndex === 2 &&
-          <div>
-            <div className={styles.mathButtonsContainer}>
+          }
+          
+          {slideIndex === 1 &&
+            <div>
+              <img
+                className={styles.miniToolbar}
+                src={miniToolbar}
+                alt="Mini toolbar"
+              />
+              
               <div
-                className={styles.mathButton}
-                style={{marginRight: '4px'}}
+                className={styles.text}
+                style={{paddingTop: '10px'}}
               >
-                <div className={styles.mathButtonText}>
-                  +
+                Select the attribute you want to modify from the tool bar
+              </div>
+            </div>
+          }
+          
+          {slideIndex === 2 &&
+            <div>
+              <div className={styles.mathButtonsContainer}>
+                <div
+                  className={styles.mathButton}
+                  style={{marginRight: '4px'}}
+                >
+                  <div className={styles.mathButtonText}>
+                    +
+                  </div>
+                </div>
+                <div className={styles.mathButton}>
+                  <div className={styles.mathButtonText}>
+                    -
+                  </div>
                 </div>
               </div>
-              <div className={styles.mathButton}>
-                <div className={styles.mathButtonText}>
-                  -
+              
+              <div
+                className={styles.text}
+                style={{paddingTop: '10px'}}
+              >
+                Tap <span className={styles.blackText}>+</span> & <span className={styles.blackText}>-</span> to increase or decrease the attribute’s value
+              </div>
+            </div>
+          }
+          
+          {slideIndex === 3 &&
+            <div>
+              <div className={styles.increaseLineCountText}>
+                Increase Line Count?
+              </div>
+              <div className={styles.increaseLineCountBodyText}>
+                Want to increase or decrease the number of lines? Tap <img src={settingsIcon} alt="Settings icon" className={styles.settingsIcon} /> and enter your desired number of lines
+              </div>
+            </div>
+          }
+          
+          {slideIndex === 4 &&
+            <div>
+              <div className={styles.customizTextContainer}>
+                <div className={styles.customizText}>
+                  Customiz
                 </div>
+                <div className={styles.customizTextCarat + ' ' + styles.blink}></div>
+              </div>
+              <div className={styles.customizBodyText}>
+                If you want to customize the preview text, select it!
               </div>
             </div>
-            
-            <div
-              className={styles.text}
-              style={{paddingTop: '10px'}}
-            >
-              Tap <span className={styles.blackText}>+</span> & <span className={styles.blackText}>-</span> to increase or decrease the attribute’s value
-            </div>
-          </div>
-        }
-        
-        {slideIndex === 3 &&
-          <div>
-            <div className={styles.increaseLineCountText}>
-              Increase Line Count?
-            </div>
-            <div className={styles.increaseLineCountBodyText}>
-              Want to increase or decrease the number of lines? Tap <img src={settingsIcon} alt="Settings icon" className={styles.settingsIcon} /> and enter your desired number of lines
-            </div>
-          </div>
-        }
-        
-        {slideIndex === 4 &&
-          <div>
-            <div className={styles.customizTextContainer}>
-              <div className={styles.customizText}>
-                Customiz
+          }
+          
+          {slideIndex === 5 &&
+            <div>
+              <div className={styles.customizBodyText}>
+                If you’re feeling lucky tap <img src={logo} className={styles.inTextLogo} alt="ratio"/>.
               </div>
-              <div className={styles.customizTextCarat + ' ' + styles.blink}></div>
             </div>
-            <div className={styles.customizBodyText}>
-              If you want to customize the preview text, select it!
+          }
+          
+          {slideIndex === 6 &&
+            <div>
+              <div className={styles.customizBodyText}>
+                Tap reset to start from scratch.
+              </div>
             </div>
-          </div>
-        }
-        
-        {slideIndex === 5 &&
-          <div>
-            <div className={styles.customizBodyText}>
-              If you’re feeling lucky tap <img src={logo} className={styles.inTextLogo} alt="ratio"/>.
-            </div>
-          </div>
-        }
-        
-        {slideIndex === 6 &&
-          <div>
-            <div className={styles.customizBodyText}>
-              Tap reset to start from scratch.
+          }
+          
+          <div
+            onClick={slideIndex === 6 ? this.close : this.handleNextButtonClick}
+            className={styles.nextButton}
+            style={slideIndex === 6 ? {width: '112px', left: '135px'} : null}
+          >
+            <div className={styles.nextButtonText}>
+              {slideIndex === 6 ? 'Get Started!' : 'Next'}
             </div>
           </div>
-        }
-        
-        <div
-          onClick={slideIndex === 6 ? this.close : this.handleNextButtonClick}
-          className={styles.nextButton}
-          style={slideIndex === 6 ? {width: '112px', left: '135px'} : null}
-        >
-          <div className={styles.nextButtonText}>
-            {slideIndex === 6 ? 'Get Started!' : 'Next'}
+          
+          <div className={styles.ellipseButtons}>
+            {_.times(7, (i) => {
+              return  <div
+                        onClick={() => this.handleEllipseButtonClick(i)}
+                        className={styles.ellipseButtonTouchTarget}
+                      >
+                        <div
+                          key={i}
+                          className={cx(styles.ellipseButton, {
+                            ellipseButtonActive: i === slideIndex
+                          })}></div>
+                      </div>;
+            })}
           </div>
         </div>
-        
-        <div className={styles.ellipseButtons}>
-          {_.times(7, (i) => {
-            return  <span
-                      key={i}
-                      onClick={() => this.handleEllipseButtonClick(i)}
-                      className={cx(styles.ellipseButton, {
-                        ellipseButtonActive: i === slideIndex
-                      })}></span>;
-          })}
-        </div>
-      </div>
       </Swipeable>
-      
     );
   }
 }
