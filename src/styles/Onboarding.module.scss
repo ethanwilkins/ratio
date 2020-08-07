@@ -38,6 +38,7 @@ $rose: #D1A7AC;
   transition: top 400ms ease-out;
   position: relative;
   width: 382px;
+  height: 0px;
   margin: 0 auto;
   top: 100vh;
   background: white;
@@ -45,7 +46,6 @@ $rose: #D1A7AC;
   box-shadow: 0px 1px 16px rgba(0, 0, 0, 0.2);
   border-radius: 20px;
   z-index: 2;
-  height: 0px;
 }
 
 .showOnboarding {
