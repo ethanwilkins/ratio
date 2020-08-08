@@ -39,7 +39,7 @@ $rose: #D1A7AC;
   -webkit-transition: top 400ms ease-out;
   position: absolute;
   width: 382px;
-  height: 0px;
+  height: 355px;
   top: 100vh;
   left: calc(50vw - 191px);
   background: white;
@@ -51,7 +51,14 @@ $rose: #D1A7AC;
 
 .showOnboarding {
   top: 20vh;
-  height: 355px;
+}
+
+.slideCard {
+  transition: opacity 400s ease-out;
+}
+
+.faded {
+  opacity: 0;
 }
 
 .exitIcon {

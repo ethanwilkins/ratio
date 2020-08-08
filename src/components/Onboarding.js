@@ -19,7 +19,8 @@ class Onboarding extends Component {
   state = {
     slideIndex: 0,
     closed: localStorage.onboardingClosed,
-    loaded: false
+    loaded: false,
+    faded: false
   };
 
   componentDidMount() {
@@ -87,6 +88,12 @@ class Onboarding extends Component {
     }
   };
   
+  fade = () => {
+    this.setState({
+      faded: true
+    });
+  };
+  
   render() {
     const { closed, slideIndex, loaded } = this.state;
     const swipeableConfig = {
@@ -109,7 +116,7 @@ class Onboarding extends Component {
           />
           
           {slideIndex === 0 &&
-            <div>
+            <div className={styles.slideCard} onClick={this.fade}>
               <img
                 className={styles.logo}
                 src={logo}
@@ -123,7 +130,7 @@ class Onboarding extends Component {
           }
           
           {slideIndex === 1 &&
-            <div>
+            <div className={styles.slideCard}>
               <img
                 className={styles.miniToolbar}
                 src={miniToolbar}
@@ -140,7 +147,7 @@ class Onboarding extends Component {
           }
           
           {slideIndex === 2 &&
-            <div>
+            <div className={styles.slideCard}>
               <div className={styles.mathButtonsContainer}>
                 <div
                   className={styles.mathButton}
@@ -167,7 +174,7 @@ class Onboarding extends Component {
           }
           
           {slideIndex === 3 &&
-            <div>
+            <div className={styles.slideCard}>
               <div className={styles.increaseLineCountText}>
                 Increase Line Count?
               </div>
@@ -178,7 +185,7 @@ class Onboarding extends Component {
           }
           
           {slideIndex === 4 &&
-            <div>
+            <div className={styles.slideCard}>
               <div className={styles.customizTextContainer}>
                 <div className={styles.customizText}>
                   Customiz
@@ -192,7 +199,7 @@ class Onboarding extends Component {
           }
           
           {slideIndex === 5 &&
-            <div>
+            <div className={styles.slideCard}>
               <div className={styles.customizBodyText}>
                 If you’re feeling lucky tap
                 {mobile() &&
@@ -210,7 +217,7 @@ class Onboarding extends Component {
           }
           
           {slideIndex === 6 &&
-            <div>
+            <div className={styles.slideCard}>
               <div className={styles.customizBodyText}>
                 Tap reset to start from scratch.
               </div>
