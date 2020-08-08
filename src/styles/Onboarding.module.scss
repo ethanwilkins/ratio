@@ -225,6 +225,7 @@ $rose: #D1A7AC;
 
 .ellipseButton {
   @extend .noSelect;
+  transition: background 1s ease-in-out;
   width: 9px;
   height: 9px;
   border: 1px solid $rose;

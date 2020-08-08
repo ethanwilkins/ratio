@@ -89,7 +89,13 @@ class Onboarding extends Component {
   };
   
   render() {
-    const { closed, slideIndex, loaded, faded } = this.state;
+    const {
+      closed,
+      slideIndex,
+      loaded,
+      faded
+    } = this.state;
+    
     const swipeableConfig = {
             delta: 10,                             // min distance(px) before a swipe starts
             trackTouch: true,                      // track touch input
