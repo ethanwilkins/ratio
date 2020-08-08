@@ -67,6 +67,15 @@ $rose: #D1A7AC;
   right: 31px;
   width: 16px;
   cursor: pointer;
+}
+
+.exitIconTouchTarget {
+  position: absolute;
+  top: 7px;
+  right: 15px;
+  width: 48px;
+  height: 48px;
+  cursor: pointer;
   z-index: 1;
 }
 

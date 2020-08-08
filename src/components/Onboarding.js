@@ -107,11 +107,11 @@ class Onboarding extends Component {
           showOnboarding: (closed === undefined || localStorage.onboardingClosed === undefined) && loaded
         })}>
           <img
-            onClick={this.close}
             className={styles.exitIcon}
             src={exitIcon}
             alt="Exit icon"
           />
+          <div onClick={this.close} className={styles.exitIconTouchTarget}></div>
           
           {/* Slide 1 */}
           <div
