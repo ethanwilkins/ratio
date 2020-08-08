@@ -405,9 +405,7 @@ class Main extends Component {
     } = this.state;
 
     return (
-      <div>  
-        <Onboarding />
-        
+      <div>
         <div className={styles.main}>
           <Text
             baseSize={baseSize}
@@ -429,6 +427,8 @@ class Main extends Component {
             generateRandom={this.generateRandom}
           />
         </div>
+        
+        <Onboarding />
         
         <Settings
           baseSizeInput={baseSizeInput}
