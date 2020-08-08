@@ -55,8 +55,6 @@ $rose: #D1A7AC;
 
 .slideCard {
   transition: opacity 0.6s ease-in-out;
-  width: 100%;
-  height: 100%;
 }
 
 .fadedOut {
@@ -69,6 +67,7 @@ $rose: #D1A7AC;
   right: 31px;
   width: 16px;
   cursor: pointer;
+  z-index: 1;
 }
 
 .logo {
