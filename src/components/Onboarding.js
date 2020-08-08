@@ -29,7 +29,7 @@ class Onboarding extends Component {
           loaded: true
         });
       }
-    }, 100);
+    }, 1);
   }
   
   handleNextButtonClick = () => {
