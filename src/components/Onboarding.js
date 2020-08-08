@@ -19,8 +19,7 @@ class Onboarding extends Component {
   state = {
     slideIndex: 0,
     closed: localStorage.onboardingClosed,
-    loaded: false,
-    faded: false
+    loaded: false
   };
 
   componentDidMount() {
@@ -92,8 +91,7 @@ class Onboarding extends Component {
     const {
       closed,
       slideIndex,
-      loaded,
-      faded
+      loaded
     } = this.state;
     
     const swipeableConfig = {
