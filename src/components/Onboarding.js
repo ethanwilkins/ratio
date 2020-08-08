@@ -88,14 +88,8 @@ class Onboarding extends Component {
     }
   };
   
-  fade = () => {
-    this.setState({
-      faded: true
-    });
-  };
-  
   render() {
-    const { closed, slideIndex, loaded } = this.state;
+    const { closed, slideIndex, loaded, faded } = this.state;
     const swipeableConfig = {
             delta: 10,                             // min distance(px) before a swipe starts
             trackTouch: true,                      // track touch input
@@ -115,114 +109,133 @@ class Onboarding extends Component {
             alt="Exit icon"
           />
           
-          {slideIndex === 0 &&
-            <div className={styles.slideCard} onClick={this.fade}>
-              <img
-                className={styles.logo}
-                src={logo}
-                alt="Logo"
-              />
-              
-              <div className={styles.text}>
-                Creating typographic systems made easy.
-              </div>
+          {/* Slide 1 */}
+          <div
+            className={cx(styles.slideCard, {
+              fadedOut: slideIndex !== 0
+            })}
+          >
+            <img
+              className={styles.logo}
+              src={logo}
+              alt="Logo"
+            />
+            <div
+              className={styles.text}>
+              Creating typographic systems made easy.
             </div>
-          }
-          
-          {slideIndex === 1 &&
-            <div className={styles.slideCard}>
-              <img
-                className={styles.miniToolbar}
-                src={miniToolbar}
-                alt="Mini toolbar"
-              />
-              
+          </div>
+        
+          {/* Slide 2 */}
+          <div
+            className={cx(styles.slideCard, {
+              fadedOut: slideIndex !== 1
+            })}
+          >
+            <img
+              className={styles.miniToolbar}
+              src={miniToolbar}
+              alt="Mini toolbar"
+            />
+            <div
+              className={styles.text}
+              style={{paddingTop: '10px'}}
+            >
+              Select the attribute you want to modify from the tool bar
+            </div>
+          </div>
+        
+          {/* Slide 3 */}
+          <div
+            className={cx(styles.slideCard, {
+              fadedOut: slideIndex !== 2
+            })}
+          >
+            <div className={styles.mathButtonsContainer}>
               <div
-                className={styles.text}
-                style={{paddingTop: '10px'}}
+                className={styles.mathButton}
+                style={{marginRight: '4px'}}
               >
-                Select the attribute you want to modify from the tool bar
-              </div>
-            </div>
-          }
-          
-          {slideIndex === 2 &&
-            <div className={styles.slideCard}>
-              <div className={styles.mathButtonsContainer}>
-                <div
-                  className={styles.mathButton}
-                  style={{marginRight: '4px'}}
-                >
-                  <div className={styles.mathButtonText}>
-                    +
-                  </div>
-                </div>
-                <div className={styles.mathButton}>
-                  <div className={styles.mathButtonText}>
-                    -
-                  </div>
+                <div className={styles.mathButtonText}>
+                  +
                 </div>
               </div>
-              
-              <div
-                className={styles.text}
-                style={{paddingTop: '10px'}}
-              >
-                Tap <span className={styles.blackText}>+</span> & <span className={styles.blackText}>-</span> to increase or decrease the attribute’s value
-              </div>
-            </div>
-          }
-          
-          {slideIndex === 3 &&
-            <div className={styles.slideCard}>
-              <div className={styles.increaseLineCountText}>
-                Increase Line Count?
-              </div>
-              <div className={styles.increaseLineCountBodyText}>
-                Want to increase or decrease the number of lines? Tap <img src={settingsIcon} alt="Settings icon" className={styles.settingsIcon} /> and enter your desired number of lines
-              </div>
-            </div>
-          }
-          
-          {slideIndex === 4 &&
-            <div className={styles.slideCard}>
-              <div className={styles.customizTextContainer}>
-                <div className={styles.customizText}>
-                  Customiz
+              <div className={styles.mathButton}>
+                <div className={styles.mathButtonText}>
+                  -
                 </div>
-                <div className={styles.customizTextCarat + ' ' + styles.blink}></div>
-              </div>
-              <div className={styles.customizBodyText}>
-                If you want to customize the preview text, select it!
               </div>
             </div>
-          }
+            <div
+              className={styles.text}
+              style={{paddingTop: '10px'}}
+            >
+              Tap <span className={styles.blackText}>+</span> & <span className={styles.blackText}>-</span> to increase or decrease the attribute’s value
+            </div>
+          </div>
           
-          {slideIndex === 5 &&
-            <div className={styles.slideCard}>
-              <div className={styles.customizBodyText}>
-                If you’re feeling lucky tap
-                {mobile() &&
-                  <span>
-                    &nbsp;<img src={logo} className={styles.inTextLogo} alt="ratio"/>.
-                  </span>
-                }
-                {!mobile() &&
-                  <span>
-                    &nbsp;the <span className={styles.feelingLuckySpaceBarText}>space bar.</span>
-                  </span>
-                }
-              </div>
+          {/* Slide 4 */}
+          <div
+            className={cx(styles.slideCard, {
+              fadedOut: slideIndex !== 3
+            })}
+          >
+            <div className={styles.increaseLineCountText}>
+              Increase Line Count?
             </div>
-          }
+            <div className={styles.increaseLineCountBodyText}>
+              Want to increase or decrease the number of lines? Tap <img src={settingsIcon} alt="Settings icon" className={styles.settingsIcon} /> and enter your desired number of lines
+            </div>
+          </div>
           
-          {slideIndex === 6 &&
-            <div className={styles.slideCard}>
-              <div className={styles.customizBodyText}>
-                Tap reset to start from scratch.
+          {/* Slide 5 */}
+          <div
+            className={cx(styles.slideCard, {
+              fadedOut: slideIndex !== 4
+            })}
+          >
+            <div className={styles.customizTextContainer}>
+              <div className={styles.customizText}>
+                Customiz
               </div>
+              <div className={styles.customizTextCarat + ' ' + styles.blink}></div>
             </div>
-          }
+            <div className={styles.customizBodyText}>
+              If you want to customize the preview text, select it!
+            </div>
+          </div>
+          
+          {/* Slide 6 */}
+          <div
+            className={cx(styles.slideCard, {
+              fadedOut: slideIndex !== 5
+            })}
+          >
+            <div className={styles.customizBodyText}>
+              If you’re feeling lucky tap
+              {mobile() &&
+                <span>
+                  &nbsp;<img src={logo} className={styles.inTextLogo} alt="ratio"/>.
+                </span>
+              }
+              {!mobile() &&
+                <span>
+                  &nbsp;the <span className={styles.feelingLuckySpaceBarText}>space bar.</span>
+                </span>
+              }
+            </div>
+          </div>
+          
+          {/* Slide 7 */}
+          <div
+            className={cx(styles.slideCard, {
+              fadedOut: slideIndex !== 6
+            })}
+          >
+            <div className={styles.customizBodyText}>
+              Tap reset to start from scratch.
+            </div>
+          </div>
           
           <div
             onClick={slideIndex === 6 ? this.close : this.handleNextButtonClick}
