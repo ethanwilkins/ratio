@@ -428,8 +428,6 @@ class Main extends Component {
           />
         </div>
         
-        <Onboarding />
-        
         <Settings
           baseSizeInput={baseSizeInput}
           updateBaseSize={this.updateBaseSize}
@@ -454,6 +452,8 @@ class Main extends Component {
           resetOnboarding={this.resetOnboarding}
           toggleCurrentlyInputtingText={this.toggleCurrentlyInputtingText}
         />
+        
+        <Onboarding />
       </div>
     );
   }
