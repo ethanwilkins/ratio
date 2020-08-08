@@ -242,12 +242,24 @@ class Onboarding extends Component {
           </div>
           
           <div
-            onClick={slideIndex === 6 ? this.close : this.handleNextButtonClick}
-            className={styles.nextButton}
-            style={slideIndex === 6 ? {width: '112px', left: '135px'} : null}
+            onClick={this.handleNextButtonClick}
+            className={cx(styles.nextButton, {
+              fadedOut: slideIndex === 6
+            })}
           >
             <div className={styles.nextButtonText}>
-              {slideIndex === 6 ? 'Get Started!' : 'Next'}
+              Next
+            </div>
+          </div>
+          
+          <div
+            onClick={this.close}
+            className={cx(styles.getStartedButton, {
+              fadedOut: slideIndex !== 6
+            })}
+          >
+            <div className={styles.nextButtonText}>
+              Get Started!
             </div>
           </div>
           

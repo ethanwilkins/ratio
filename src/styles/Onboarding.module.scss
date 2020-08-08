@@ -59,6 +59,7 @@ $rose: #D1A7AC;
 
 .fadedOut {
   opacity: 0;
+  z-index: -1;
 }
 
 .exitIcon {
@@ -209,6 +210,7 @@ $rose: #D1A7AC;
 }
 
 .nextButton {
+  transition: opacity 0.6s ease-in-out;
   position: absolute;
   top: 230px;
   left: 159px;
@@ -223,6 +225,12 @@ $rose: #D1A7AC;
   font-size: 12px;
   text-align: center;
   margin-top: 11px;
+}
+
+.getStartedButton {
+  @extend .nextButton;
+  width: 112px;
+  left: 135px;
 }
 
 .ellipseButtons {
