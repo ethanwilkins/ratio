@@ -406,7 +406,9 @@ class Main extends Component {
 
     return (
       <div>
-        <div className={styles.main}>
+        <div className={styles.main}>      
+          <Onboarding />
+          
           <Text
             baseSize={baseSize}
             scale={scale}
@@ -452,8 +454,6 @@ class Main extends Component {
           resetOnboarding={this.resetOnboarding}
           toggleCurrentlyInputtingText={this.toggleCurrentlyInputtingText}
         />
-        
-        <Onboarding />
       </div>
     );
   }
