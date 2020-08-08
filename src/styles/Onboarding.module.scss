@@ -37,16 +37,16 @@ $rose: #D1A7AC;
   @extend .noSelect;
   transition: top 400ms ease-out;
   -webkit-transition: top 400ms ease-out;
-  position: relative;
+  position: absolute;
   width: 382px;
   height: 0px;
-  margin: 0 auto;
   top: 100vh;
+  left: calc(50vw - 191px);
   background: white;
   color: $black;
   box-shadow: 0px 1px 16px rgba(0, 0, 0, 0.2);
   border-radius: 20px;
-  z-index: 2;
+  z-index: 5;
 }
 
 .showOnboarding {
