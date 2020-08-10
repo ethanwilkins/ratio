@@ -40,8 +40,7 @@ class Settings extends Component {
   
   // sets to true if iPhone11 and has toolbar and address bar shown
   isIphone11WithToolbarShown = () => {
-    return isMobileSafari
-        && window.screen.width === 414 && window.screen.height === 896
+    return window.screen.width === 414 && window.screen.height === 896
         && window.innerHeight === 719
         && window.devicePixelRatio === 2
         && window.orientation === 0;
@@ -181,12 +180,16 @@ class Settings extends Component {
           </div>
         </div>
         <img
-          style={this.isIphone11WithToolbarShown() ? {bottom: '150px'} : null}
           className={styles.exitButton}
+          style={this.isIphone11WithToolbarShown() ? {bottom: '150px'} : null}
           src={exitSettingsIcon}
           alt="Exit settings"
         />
-        <div onClick={toggleSettings} className={styles.exitButtonTouchTarget}></div>
+        <div
+          onClick={toggleSettings}
+          className={styles.exitButtonTouchTarget}
+          style={this.isIphone11WithToolbarShown() ? {bottom: '134px'} : null}
+        ></div>
       </div>
     )
   }
