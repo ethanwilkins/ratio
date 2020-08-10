@@ -373,11 +373,8 @@ class Main extends Component {
   
   // brings Onboarding back up, from settings, also closes settings
   resetOnboarding = () => {
-    localStorage.clear();
-    this.setState({
-      onboardingClosed: false
-    });
     this.toggleSettings();
+    localStorage.clear();
   };
   
   // blurs for any currently focused input

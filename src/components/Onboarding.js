@@ -266,11 +266,11 @@ class Onboarding extends Component {
           <div className={styles.ellipseButtons}>
             {_.times(7, (i) => {
               return  <div
+                        key={i}
                         onClick={() => this.handleEllipseButtonClick(i)}
                         className={styles.ellipseButtonTouchTarget}
                       >
                         <div
-                          key={i}
                           className={cx(styles.ellipseButton, {
                             ellipseButtonActive: i === slideIndex
                           })}></div>
