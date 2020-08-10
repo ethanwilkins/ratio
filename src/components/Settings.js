@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import mobile from 'is-mobile';
-import { isMobileSafari } from 'react-device-detect';
 
 import SettingsInput from '../components/SettingsInput';
 
