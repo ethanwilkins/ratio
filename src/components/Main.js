@@ -25,7 +25,8 @@ class Main extends Component {
     font: '',
     text: null,
     currentlyInputtingText: false,
-    settingsOpen: false
+    settingsOpen: false,
+    onboardingClosed: localStorage.onboardingClosed
   };
 
   componentDidMount() {
@@ -371,10 +372,29 @@ class Main extends Component {
     }
   };
   
+  // called by onboarding exit button
+  closeOnboarding = () => {
+    // saves for next visit
+    localStorage.setItem('onboardingClosed', true);
+    // sets state for immediate visual feedback
+    this.setState({
+      onboardingClosed: true,
+    });
+    // haptic feedback for android
+    if (isAndroid) {
+      window.navigator.vibrate(1);
+    }
+  };
+  
   // brings Onboarding back up, from settings, also closes settings
   resetOnboarding = () => {
     this.toggleSettings();
-    localStorage.clear();
+    setTimeout(() => {
+      this.setState({
+        onboardingClosed: undefined
+      });
+      localStorage.clear();
+    }, 400);
   };
   
   // blurs for any currently focused input
@@ -389,6 +409,7 @@ class Main extends Component {
     const {
       activeControl,
       settingsOpen,
+      onboardingClosed,
       baseSize,
       baseSizeInput,
       scale,
@@ -403,8 +424,11 @@ class Main extends Component {
 
     return (
       <div>
-        <div className={styles.main}>      
-          <Onboarding />
+        <div className={styles.main}>
+          <Onboarding
+            closeOnboarding={this.closeOnboarding}
+            onboardingClosed={onboardingClosed}
+          />
           
           <Text
             baseSize={baseSize}

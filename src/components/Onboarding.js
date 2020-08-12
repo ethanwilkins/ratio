@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import _ from 'lodash';
 
 import mobile from 'is-mobile';
@@ -18,17 +19,14 @@ const cx = classNames.bind(styles);
 class Onboarding extends Component {
   state = {
     slideIndex: 0,
-    closed: localStorage.onboardingClosed,
     loaded: false
   };
 
   componentDidMount() {
-    setInterval(() => {
-      if (!this.state.loaded) {
-        this.setState({
-          loaded: true
-        });
-      }
+    setTimeout(() => {
+      this.setState({
+        loaded: true
+      });
     }, 1);
   }
   
@@ -55,17 +53,12 @@ class Onboarding extends Component {
   
   // called by onboarding exit button
   close = () => {
-    // saves for next visit
-    localStorage.setItem('onboardingClosed', true);
-    // sets state for immediate visual feedback
+    const { closeOnboarding } = this.props;
+    closeOnboarding();
+    // resets onboarding back to first slide on close
     this.setState({
-      closed: true,
       slideIndex: 0
     });
-    // haptic feedback for android
-    if (isAndroid) {
-      window.navigator.vibrate(1);
-    }
   };
   
   handleSwipe = (direction) => {
@@ -89,10 +82,11 @@ class Onboarding extends Component {
   
   render() {
     const {
-      closed,
       slideIndex,
       loaded
     } = this.state;
+    
+    const { onboardingClosed } = this.props;
     
     const swipeableConfig = {
             delta: 10,                             // min distance(px) before a swipe starts
@@ -104,7 +98,7 @@ class Onboarding extends Component {
     return (
       <Swipeable onSwiped={(eventData) => this.handleSwipe(eventData.dir)} {...swipeableConfig}>
         <div className={cx(styles.onboarding, {
-          showOnboarding: (closed === undefined || localStorage.onboardingClosed === undefined) && loaded
+          showOnboarding: (onboardingClosed === undefined || localStorage.onboardingClosed === undefined) && loaded
         })}>
           <img
             className={styles.exitIcon}
@@ -282,5 +276,10 @@ class Onboarding extends Component {
     );
   }
 }
+
+Onboarding.propTypes = {
+  onboardingClosed: PropTypes.bool.isRequired,
+  closeOnboarding: PropTypes.func.isRequired
+};
 
 export default Onboarding;
