@@ -303,6 +303,7 @@ $settingsTopGap: 65px;
   }
   .exitButtonTouchTarget {
     bottom: calc(#{$exitButtonFromBottom} - 16px);
+    border: 1px solid $rose;
   }
   .chooseFontRow {
     padding-top: 40px;
