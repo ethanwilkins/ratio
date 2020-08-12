@@ -215,7 +215,7 @@ $settingsTopGap: 65px;
 // end of iMac
 
 // iPad Pro 11
-@media only screen and (min-width: 834px) and (max-width: 1194px)  {
+@media only screen and (max-height: 834px) and (max-width: 1194px) and (orientation: landscape) {
   $settingsTopGap: 50px;
   // value for bottom positioning
   $exitButtonFromBottom: 50px;
@@ -236,7 +236,7 @@ $settingsTopGap: 65px;
 // end of iPad Pro 11
 
 // iPad Air 3
-@media only screen and (min-width: 731px) and (max-width: 1112px)  {
+@media only screen and (max-height: 731px) and (max-width: 1112px) and (orientation: landscape) {
   $settingsTopGap: 20px;
   // value for bottom positioning
   $exitButtonFromBottom: 110px;
@@ -260,6 +260,7 @@ $settingsTopGap: 65px;
     padding-top: 50px;
   }
 }
+// end of iPad Air 3
 
 // Pixel 2, LG Stylo 5
 @media only screen and (max-width: 412px) and (max-height: 823px) {
