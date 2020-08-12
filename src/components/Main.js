@@ -93,12 +93,12 @@ class Main extends Component {
     else if (activeControl === 'scale') {
       const { scale } = this.state;
       // floor to strip all digits starting 1 after decimal
-      const scaleUp = Math.floor((scale + 0.1 ) * 10) / 10;
-      const scaleDown = Math.floor((scale - 0.1 ) * 10) / 10;
+      const scaleUp = Math.floor((scale + 0.05 ) * 10) / 10;
+      const scaleDown = Math.floor((scale - 0.05 ) * 10) / 10;
       this.setState({
         // directionIsUp === increment, otherwise decrement (if scale is above 0.1)
-        scale: (directionIsUp ? scaleUp : (scale > 1 ? scaleDown : scale)),
-        scaleInput: (directionIsUp ? scaleUp : (scale > 1 ? scaleDown : scale))
+        scale: (directionIsUp ? scaleUp : (scale > 1.1 ? scaleDown : scale)),
+        scaleInput: (directionIsUp ? scaleUp : (scale > 1.1 ? scaleDown : scale))
       });
     }
     else if (activeControl === 'lineHeight') {
