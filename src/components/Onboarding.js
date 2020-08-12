@@ -278,7 +278,10 @@ class Onboarding extends Component {
 }
 
 Onboarding.propTypes = {
-  onboardingClosed: PropTypes.bool.isRequired,
+  onboardingClosed: PropTypes.PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number
+  ]),
   closeOnboarding: PropTypes.func.isRequired
 };
 
