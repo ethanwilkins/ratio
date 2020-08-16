@@ -4,7 +4,9 @@ server {
     root /home/node/ratio/build;
     server_name typeratio.com;
     index index.html index.htm;
+    
     location / {
+      try_files $uri $uri/ /index.html;
     }
 
     include /etc/nginx/snippets/letsencrypt.conf;
