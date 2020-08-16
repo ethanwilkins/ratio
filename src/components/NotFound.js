@@ -1,9 +1,8 @@
 import React from 'react';
+import Main from '../components/Main';
 
 const NotFound = () => (
-  <div>
-    404
-  </div>
+  <Main />
 );
 
 export default NotFound;
